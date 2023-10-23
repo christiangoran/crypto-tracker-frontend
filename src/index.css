@@ -4,11 +4,18 @@ body {
   font-size: larger;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(circle, #6e34bf, #201740);
 }
 
 h1 {
   font-family: "Teko", sans-serif;
+  color: white;
+}
+
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #4ea66d;
 }
 
 p {

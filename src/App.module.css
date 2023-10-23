@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: radial-gradient(circle, #6e34bf, #201740);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Main {
+  padding-top: 81px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #555555;
+  transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:hover i {
+  color: #6e34bf;
+  transition: color ease-in-out 0.3s;
+}
+
+i {
+  color: #cfced3;
+  font-size: 1.3rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+i:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #6e34bf;
+}

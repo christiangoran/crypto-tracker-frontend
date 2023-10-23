@@ -2,31 +2,67 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo.webp";
+import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <Navbar expand="md" className="bg-body-tertiary">
+    <Navbar expand="md" className={`bg-body-tertiary ${styles.navBar}`}>
       <Container>
-        <Navbar.Brand className="blockboard">
-          <img src={logo} alt="logo" height="25"></img>
-        </Navbar.Brand>
+        <NavLink to={"/"}>
+          <Navbar.Brand className={styles.navLink}>
+            <img src={logo} alt="logo" height="25"></img>
+          </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto text-start">
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Cryptocurrencies</Nav.Link>
-            <Nav.Link>Forum</Nav.Link>
-            <Nav.Link>About</Nav.Link>
+          <Nav className={`me-auto text-start ${styles.NavLink}`}>
+            <NavLink
+              exact
+              to={"/"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to={"/cryptocurrencies"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              Cryptocurrencies
+            </NavLink>
+            <NavLink
+              to={"/forum"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              Forum
+            </NavLink>
+            <NavLink
+              to={"/about"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              About
+            </NavLink>
           </Nav>
           <Nav className="ml-auto text-start">
-            <Nav.Link>
+            <NavLink
+              to={"/signin"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
               <i className="fas fa-sign-in-alt"></i>Sign In
-            </Nav.Link>
-            <Nav.Link>
+            </NavLink>
+            <NavLink
+              to={"/signup"}
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
               <i className="fas fa-user-plus"></i>Sign Up
-            </Nav.Link>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
