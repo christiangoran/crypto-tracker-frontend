@@ -1,3 +1,8 @@
+## Installed apps
+
+React-router-dom - To create the differenct sites and connect navbar links
+Axios Library - To call our backend API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

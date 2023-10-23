@@ -2,6 +2,8 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Routes } from "react-router-dom";
+import "./api/axiosDefaults";
+import SignUpForm from "./pages/auth/SignUpForm";
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<h1>Home Page</h1>} />
           <Route path="/signin" element={<h1>Sign In</h1>} />
-          <Route path="/signup" element={<h1>Sign Up</h1>} />
+          <Route path="/signup" element={<SignUpForm />} />
           <Route path="/cryptocurrencies" element={<h1>Cryptocurrencies</h1>} />
           <Route path="/forum" element={<h1>Forum</h1>} />
           <Route path="/about" element={<h1>About</h1>} />
