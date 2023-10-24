@@ -3,7 +3,7 @@
 }
 .Input {
   background: #201740;
-  border: 1px solid #f0f1f9;
+  border: 1px solid #201740;
   box-sizing: border-box;
   border-radius: 20px;
   color: white;
@@ -11,14 +11,30 @@
   padding: 10px;
 }
 
+.Input:focus {
+  background-color: #201740;
+  color: #201740;
+  caret-color: #4ea66d;
+}
+
+.Input:focus::placeholder {
+  background-color: #201740;
+  color: #201740;
+}
+
+.Input::placeholder {
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8rem; /* Change to your desired color */
+}
+
 .Header {
   font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
+  font-weight: normal;
+  font-size: 2rem;
   text-align: center;
-  letter-spacing: 0.2em;
-  color: #ffffff;
+  color: white;
+  margin-bottom: 20px;
 }
 
 .Link {
@@ -26,6 +42,10 @@
   text-align: center;
   display: block;
   margin: auto;
+  color: white;
+  font-weight: 300;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
 }
 
 .Link span {
@@ -55,4 +75,14 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.Form {
+  color: white;
+}
+
+.FormText {
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8rem;
 }

@@ -1,12 +1,16 @@
 .Button {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
   align-self: center;
-  border-radius: 100px;
+  border-radius: 20px;
   border-color: transparent;
   padding: 4px 10px;
   margin-left: 2px;
   margin-right: 2px;
-  min-width: 75px;
+  margin-top: 15px;
+  min-width: 130px;
+  min-height: 60px;
 }
 
 .Button:hover {
@@ -16,15 +20,15 @@
 }
 
 .Button:hover:active {
-  background-color: #2142b2 !important;
+  background-color: #4ea66d !important;
 }
 
 .Button:active {
-  background-color: #2142b2 !important;
+  background-color: #4ea66d !important;
 }
 
 .Button:focus {
-  background-color: #2142b2;
+  background-color: #4ea66d;
 }
 
 .Wide {
@@ -34,9 +38,16 @@
 
 .Blue,
 .BlueOutline:hover,
-.Bright:hover {
-  background-color: #2142b2;
-  color: #ffffff;
+.Dark:hover {
+  background-color: #6e34bf;
+  color: white;
+
+  /* Glow effect */
+  box-shadow: 0 0 10px #6e34bf, 0 0 20px #6e34bf, 0 0 30px #4ea66d;
+  transition: box-shadow 0.3s ease;
+}
+.Blue:not(:hover) {
+  box-shadow: 0 0 5px #6e34bf;
 }
 
 .BlueOutline,
@@ -63,7 +74,7 @@
   color: #242a3d;
 }
 
-.Bright {
-  background-color: #2ed9ff;
-  color: #2142b2;
+.Dark {
+  background-color: #201740;
+  color: white;
 }
