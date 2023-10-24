@@ -13,7 +13,7 @@
 
 .Input:focus {
   background-color: #201740;
-  color: #201740;
+  color: white;
   caret-color: #4ea66d;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .Input::placeholder {
-  color: white;
+  color: #4ea66d;
   font-family: "Ubuntu", sans-serif;
   font-size: 0.8rem; /* Change to your desired color */
 }
