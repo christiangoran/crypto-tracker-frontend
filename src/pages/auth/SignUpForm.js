@@ -25,7 +25,7 @@ const SignUpForm = () => {
 
   const [errors, setErrors] = useState({});
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSignUpData({
