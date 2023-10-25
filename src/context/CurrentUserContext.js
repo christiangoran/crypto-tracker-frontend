@@ -64,7 +64,7 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
-  });
+  }, [history]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
