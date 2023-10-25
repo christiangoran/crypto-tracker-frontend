@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.webp";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from "../context/CurrentUserContext";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUser();
 
   const loggedInIcons = <>{currentUser?.username}</>;
   const loggedOutIcons = (
@@ -31,6 +29,7 @@ const NavBar = () => {
       </Nav>
     </>
   );
+
   return (
     <Navbar expand="md" className={`bg-body-tertiary ${styles.navBar}`}>
       <Container>
