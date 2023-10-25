@@ -28,6 +28,7 @@
   object-fit: cover;
   height: 100%;
   width: 100%;
+  mix-blend-mode: screen;
 }
 
 .Image {
