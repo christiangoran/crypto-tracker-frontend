@@ -3,30 +3,64 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.webp";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../context/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../context/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const handleLogout = async () => {
+    try {
+      await axios.post("/dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const loggedInIcons = (
+    <>
+      <NavLink to={"/"} onClick={handleLogout} className={styles.NavLink}>
+        <i className="fas fa-sign-out-alt"></i>Log out
+      </NavLink>
+
+      <NavLink
+        to={"/dashboard"}
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fa-solid fa-gauge"></i>Dashboard
+      </NavLink>
+
+      <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.NavLink}
+      >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={25} />
+      </NavLink>
+    </>
+  );
   const loggedOutIcons = (
     <>
-      <Nav className="ml-auto text-start">
-        <NavLink
-          to={"/signin"}
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-        >
-          <i className="fas fa-sign-in-alt"></i>Sign In
-        </NavLink>
-        <NavLink
-          to={"/signup"}
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-        >
-          <i className="fas fa-user-plus"></i>Sign Up
-        </NavLink>
-      </Nav>
+      <NavLink
+        to={"/signin"}
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fas fa-sign-in-alt"></i>Sign In
+      </NavLink>
+      <NavLink
+        to={"/signup"}
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fas fa-user-plus"></i>Sign Up
+      </NavLink>
     </>
   );
 
