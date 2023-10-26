@@ -20,7 +20,7 @@ function LandingPage() {
   const getCurrencies = async () => {
     try {
       const response = await axios.get("/currencies/");
-      setCurrencies(response.data.slice(0, 10));
+      setCurrencies(response.data.results.slice(0, 10));
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -35,7 +35,9 @@ function LandingPage() {
       <ul>
         {currencies.map((currency) => (
           <li key={currency.id}>
-            {currency.name} - {currency.symbol}
+            {currency.logo} {currency.name} - {currency.symbol}-
+            {currency.current_price} -{currency.market_cap} -
+            {currency.total_volume}
           </li>
         ))}
       </ul>
