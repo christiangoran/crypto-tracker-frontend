@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.webp";
 import styles from "../styles/NavBar.module.css";
@@ -13,6 +13,20 @@ import axios from "axios";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const [expanded, setExpanded] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setExpanded(false);
+      }
+    };
+    document.addEventListener("mouseup", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("mouseup", checkIfClickedOutside);
+    };
+  }, [ref]);
 
   const handleLogout = async () => {
     try {
@@ -65,7 +79,11 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar expand="md" className={`bg-body-tertiary ${styles.navBar}`}>
+    <Navbar
+      expanded={expanded}
+      expand="md"
+      className={`bg-body-tertiary ${styles.navBar}`}
+    >
       <Container>
         <NavLink to={"/"}>
           <Navbar.Brand className={styles.navLink}>
@@ -73,7 +91,11 @@ const NavBar = () => {
           </Navbar.Brand>
         </NavLink>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`text-start ${styles.NavLink}`}>
             <NavLink
