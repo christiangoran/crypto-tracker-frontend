@@ -59,12 +59,12 @@ export const CurrentUserProvider = ({ children }) => {
               return null;
             });
           }
-          return axiosRes(err.config);
+          return axios(err.config);
         }
         return Promise.reject(err);
       }
     );
-  }, [Route]);
+  }, [navigate]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

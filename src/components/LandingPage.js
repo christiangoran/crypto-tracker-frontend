@@ -35,9 +35,9 @@ function LandingPage() {
       <ul>
         {currencies.map((currency) => (
           <li key={currency.id}>
-            {currency.logo} {currency.name} - {currency.symbol}-
-            {currency.current_price} -{currency.market_cap} -
-            {currency.total_volume}
+            <Image src={currency.logo_url} alt={`${currency.name} logo`} /> -
+            {currency.name} - {currency.symbol} -{currency.current_price} -
+            {currency.market_cap} -{currency.total_volume}
           </li>
         ))}
       </ul>
