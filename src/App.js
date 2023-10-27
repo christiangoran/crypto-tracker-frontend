@@ -5,7 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import LandingPage from "./components/LandingPage";
-import CurrencyPage from "./pages/CurrencyPage";
+import CurrencyPage from "./pages/currency/CurrencyPage";
+import Currencies from "./pages/currency/Currencies";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/forum" element={<h1>Forum</h1>} />
           <Route exact path="/about" element={<h1>About</h1>} />
           <Route exact path="/currencies/:id" element={<CurrencyPage />} />
+          <Route exact path="/currencies/" element={<Currencies />} />
           <Route exact path="*" element={<h1>Uh oh, Page Not Found!</h1>} />
         </Routes>
       </Container>

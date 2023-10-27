@@ -11,9 +11,11 @@ import {
   Table,
 } from "react-bootstrap";
 
-import appStyles from "../App.module.css";
+import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
-import { axiosRes } from "../api/axiosDefaults";
+import { axiosRes } from "../../api/axiosDefaults";
+import Currencies from "./Currencies";
+import axios from "axios";
 
 function CurrencyPage() {
   const { id } = useParams();
@@ -35,18 +37,7 @@ function CurrencyPage() {
     handleMount();
   }, [id]);
 
-  return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
-        <p>Post component</p>
-        <Container className={appStyles.Content}>Comments</Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
-      </Col>
-    </Row>
-  );
+  return <div></div>;
 }
 
 export default CurrencyPage;

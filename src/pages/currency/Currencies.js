@@ -9,23 +9,34 @@ import {
   Alert,
   Table,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import btnStyles from "../styles/Button.module.css";
-import appStyles from "../App.module.css";
-import styles from "../styles/LandingPage.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
+import styles from "../../styles/Currency.module.css";
 
-function LandingPage() {
+function Currencies() {
   const [currencies, setCurrencies] = useState([]);
   const [errors, setErrors] = useState([]);
 
+  const navigate = useNavigate();
+
   const getCurrencies = async () => {
     try {
-      const response = await axios.get("/currencies/");
-      setCurrencies(response.data.results.slice(0, 10));
+      const response = await axios.get("/currencies/", {
+        params: {
+          page: 1,
+          per_page: 30,
+        },
+      });
+      setCurrencies(response.data.results);
     } catch (err) {
       setErrors(err.response?.data);
     }
+  };
+
+  const handleRowClick = (id) => {
+    navigate(`/currencies/${id}`);
   };
 
   useEffect(() => {
@@ -48,7 +59,11 @@ function LandingPage() {
           </thead>
           <tbody>
             {currencies.map((currency) => (
-              <tr key={currency.id}>
+              <tr
+                key={currency.id}
+                onClick={() => handleRowClick(currency.id)}
+                style={{ cursor: "pointer" }}
+              >
                 <td>{currency.id}</td>
                 <td>
                   <Image
@@ -68,7 +83,7 @@ function LandingPage() {
         </Table>
       </div>
       <ul></ul>
-      <Link to="/currencies">
+      <Link to="/cryptocurrencies">
         <Button className={`${btnStyles.Button} ${btnStyles.Dark}`}>
           See More
         </Button>
@@ -77,4 +92,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Currencies;

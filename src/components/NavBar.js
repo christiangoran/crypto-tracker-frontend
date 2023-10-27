@@ -97,7 +97,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink
-              to={"/cryptocurrencies"}
+              to={"/currencies"}
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
