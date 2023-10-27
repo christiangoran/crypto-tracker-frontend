@@ -19,16 +19,13 @@ import axios from "axios";
 
 function CurrencyPage() {
   const { id } = useParams();
-  const [currency, setCurrency] = useState({ results: [] });
+  const [currency, setCurrency] = useState({});
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: currency }] = await Promise.all([
-          axiosRes.get(`/currencies/${id}/`),
-        ]);
-        setCurrency({ results: currency });
-        console.log(currency);
+        const { data } = await axiosRes.get(`/currencies/${id}/`);
+        setCurrency(data);
       } catch (err) {
         console.log(err);
       }
@@ -37,7 +34,21 @@ function CurrencyPage() {
     handleMount();
   }, [id]);
 
-  return <div></div>;
+  return (
+    <Container>
+      <Row>
+        <Col sm={8}>
+          <p>Rank #{currency.id}</p>
+          <h1>{currency.name}</h1>
+        </Col>
+        <Col sm={4}>select icon</Col>
+      </Row>
+      <Row>
+        <Col sm={8}>Chart goes in here</Col>
+        <Col sm={4}>{currency.description}</Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default CurrencyPage;
