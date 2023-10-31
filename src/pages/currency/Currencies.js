@@ -14,9 +14,12 @@ import axios from "axios";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Currency.module.css";
+import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function Currencies() {
+  const currentUser = useCurrentUser();
   const [currencies, setCurrencies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
@@ -35,12 +38,41 @@ function Currencies() {
     }
   };
 
+  const getFavourites = async () => {
+    try {
+      const response = await axios.get("/favouritecurrencies/");
+      setFavourites(response.data.results);
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
+  const toggleFavourite = async (currencyId) => {
+    const isFavourite = favourites.some(
+      (fav) => fav.currency.id === currencyId
+    );
+    try {
+      if (isFavourite) {
+        const favObject = favourites.find(
+          (fav) => fav.currency.id === currencyId
+        );
+        await axios.delete(`favouritecurrencies/${favObject.id}/`);
+      } else {
+        await axios.post("/favouritecurrencies/", { currency: currencyId });
+      }
+      getFavourites();
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
   const handleRowClick = (id) => {
     navigate(`/currencies/${id}`);
   };
 
   useEffect(() => {
     getCurrencies();
+    getFavourites();
   }, []);
 
   return (
@@ -76,7 +108,21 @@ function Currencies() {
                 <td>{currency.current_price}</td>
                 <td>{currency.market_cap}</td>
                 <td>{currency.total_volume}</td>
-                <td></td>
+
+                <td
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavourite(currency.id);
+                  }}
+                >
+                  <i
+                    className={
+                      favourites.some((fav) => fav.currency.id === currency.id)
+                        ? "fas fa-star"
+                        : "far fa-star"
+                    }
+                  ></i>
+                </td>
               </tr>
             ))}
           </tbody>
