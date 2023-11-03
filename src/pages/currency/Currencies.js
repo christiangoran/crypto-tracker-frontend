@@ -41,7 +41,11 @@ function Currencies() {
   const getFavourites = async () => {
     try {
       const response = await axios.get("/favouritecurrencies/");
-      setFavourites(response.data.results);
+      const user_favourites = response.data.results.map(
+        (item) => item.currency
+      );
+      setFavourites(user_favourites);
+      console.log(user_favourites);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -49,14 +53,15 @@ function Currencies() {
 
   const toggleFavourite = async (currencyId) => {
     const isFavourite = favourites.some(
-      (fav) => fav.currency.id === currencyId
+      (favCurrency) => favCurrency.id === currencyId
     );
+
     try {
       if (isFavourite) {
         const favObject = favourites.find(
-          (fav) => fav.currency.id === currencyId
+          (favCurrency) => favCurrency.id === currencyId
         );
-        await axios.delete(`favouritecurrencies/${favObject.id}/`);
+        await axios.delete(`/favouritecurrencies/${favObject.id}/`);
       } else {
         await axios.post("/favouritecurrencies/", { currency: currencyId });
       }
@@ -117,10 +122,19 @@ function Currencies() {
                 >
                   <i
                     className={
-                      favourites.some((fav) => fav.currency.id === currency.id)
+                      favourites.some(
+                        (favCurrency) => favCurrency === currency.id
+                      )
                         ? "fas fa-star"
                         : "far fa-star"
                     }
+                    style={{
+                      color: favourites.some(
+                        (favCurrency) => favCurrency === currency.id
+                      )
+                        ? "#ff9200"
+                        : undefined,
+                    }}
                   ></i>
                 </td>
               </tr>
