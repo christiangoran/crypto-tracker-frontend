@@ -29,6 +29,9 @@ function LandingPage() {
   };
 
   useEffect(() => {
+    console.log(
+      "getCurrencies within useEffect in LandingPage about to be called"
+    );
     getCurrencies();
   }, []);
 

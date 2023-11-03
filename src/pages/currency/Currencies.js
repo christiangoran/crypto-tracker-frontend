@@ -8,6 +8,8 @@ import {
   Container,
   Alert,
   Table,
+  Tooltip,
+  OverlayTrigger,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +17,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Currency.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
+import { axiosRes } from "../../api/axiosDefaults";
 
 function Currencies() {
   const currentUser = useCurrentUser();
@@ -53,18 +56,17 @@ function Currencies() {
 
   const toggleFavourite = async (currencyId) => {
     const isFavourite = favourites.some(
-      (favCurrency) => favCurrency.id === currencyId
+      (favCurrency) => favCurrency === currencyId
     );
 
     try {
       if (isFavourite) {
-        const favObject = favourites.find(
-          (favCurrency) => favCurrency.id === currencyId
-        );
-        await axios.delete(`/favouritecurrencies/${favObject.id}/`);
+        console.log(currencyId);
+        await axiosRes.delete(`/favouritecurrencies/${currencyId}/`);
       } else {
         await axios.post("/favouritecurrencies/", { currency: currencyId });
       }
+      console.log("getFavourites within toggleFavourite about to be called");
       getFavourites();
     } catch (err) {
       setErrors(err.response?.data);
@@ -77,6 +79,7 @@ function Currencies() {
 
   useEffect(() => {
     getCurrencies();
+    console.log("getFavourites within useEffect about to be called");
     getFavourites();
   }, []);
 
@@ -120,22 +123,35 @@ function Currencies() {
                     toggleFavourite(currency.id);
                   }}
                 >
-                  <i
-                    className={
-                      favourites.some(
-                        (favCurrency) => favCurrency === currency.id
-                      )
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{
-                      color: favourites.some(
-                        (favCurrency) => favCurrency === currency.id
-                      )
-                        ? "#ff9200"
-                        : undefined,
-                    }}
-                  ></i>
+                  {currentUser ? (
+                    <i
+                      className={
+                        favourites.some(
+                          (favCurrency) => favCurrency === currency.id
+                        )
+                          ? "fas fa-star"
+                          : "far fa-star"
+                      }
+                      style={{
+                        color: favourites.some(
+                          (favCurrency) => favCurrency === currency.id
+                        )
+                          ? "#ff9200"
+                          : undefined,
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={<Tooltip>Log in to select currencies!</Tooltip>}
+                    >
+                      <i
+                        className="far fa-star"
+                        style={{ cursor: "not-allowed" }}
+                      />
+                    </OverlayTrigger>
+                  )}
                 </td>
               </tr>
             ))}
