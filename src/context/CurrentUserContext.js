@@ -1,7 +1,7 @@
-import { useState, useEffect, createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // imported useNavigate instead of useHistory
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -11,11 +11,11 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // use useNavigate here
 
   const handleMount = async () => {
     try {
-      const { data } = await axiosRes.get("/dj-rest-auth/user/");
+      const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       console.log(err);
@@ -27,14 +27,14 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
-    axiosReq.interceptors.request.use(
+    const requestInterceptor = axiosReq.interceptors.request.use(
       async (config) => {
         try {
           await axios.post("/dj-rest-auth/token/refresh/");
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
-              navigate("/signin");
+              navigate("/signin"); // use navigate instead of history.push
             }
             return null;
           });
@@ -42,10 +42,12 @@ export const CurrentUserProvider = ({ children }) => {
         }
         return config;
       },
-      (err) => Promise.reject(err)
+      (err) => {
+        return Promise.reject(err);
+      }
     );
 
-    axiosRes.interceptors.response.use(
+    const responseInterceptor = axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
@@ -54,7 +56,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                navigate("/signin");
+                navigate("/signin"); // use navigate instead of history.push
               }
               return null;
             });
@@ -64,7 +66,13 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
-  }, [navigate]);
+
+    // Cleanup interceptors on unmount
+    return () => {
+      axiosReq.interceptors.request.eject(requestInterceptor);
+      axiosRes.interceptors.response.eject(responseInterceptor);
+    };
+  }, [navigate]); // Add navigate to the dependency array
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
