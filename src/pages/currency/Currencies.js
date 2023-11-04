@@ -43,28 +43,26 @@ function Currencies() {
 
   const getFavourites = async () => {
     try {
-      const response = await axios.get("/favouritecurrencies/");
-      const user_favourites = response.data.results.map(
-        (item) => item.currency
-      );
-      setFavourites(user_favourites);
-      console.log(user_favourites);
+      const { data } = await axios.get("/favouritecurrencies/");
+      setFavourites(data.results);
+      console.log(data.results);
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
 
   const toggleFavourite = async (currencyId) => {
-    const isFavourite = favourites.some(
-      (favCurrency) => favCurrency === currencyId
-    );
+    const favourite = favourites.find((fav) => fav.currency === currencyId);
 
     try {
-      if (isFavourite) {
-        console.log(currencyId);
-        await axiosRes.delete(`/favouritecurrencies/${currencyId}/`);
+      if (favourite) {
+        console.log("just before the delete request", currencyId, favourite.id);
+        await axiosRes.delete(`/favouritecurrencies/${favourite.id}/`);
       } else {
-        await axios.post("/favouritecurrencies/", { currency: currencyId });
+        const { data } = await axios.post("/favouritecurrencies/", {
+          currency: currencyId,
+        });
+        setFavourites([...favourites, data]);
       }
       console.log("getFavourites within toggleFavourite about to be called");
       getFavourites();
@@ -127,14 +125,14 @@ function Currencies() {
                     <i
                       className={
                         favourites.some(
-                          (favCurrency) => favCurrency === currency.id
+                          (favCurrency) => favCurrency.currency === currency.id
                         )
                           ? "fas fa-star"
                           : "far fa-star"
                       }
                       style={{
                         color: favourites.some(
-                          (favCurrency) => favCurrency === currency.id
+                          (favCurrency) => favCurrency.currency === currency.id
                         )
                           ? "#ff9200"
                           : undefined,
