@@ -71,6 +71,22 @@ function Currencies() {
     }
   };
 
+  function formatNumbers(value, locale = "en-US", currency = "USD") {
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      maximumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  }
+
+  function formatLargeNumbers(value) {
+    if (value >= 1e3 && value < 1e6) return +(value / 1e3).toFixed(1) + "K";
+    if (value >= 1e6 && value < 1e9) return +(value / 1e6).toFixed(1) + "M";
+    if (value >= 1e9 && value < 1e12) return +(value / 1e9).toFixed(1) + "B";
+    if (value >= 1e12) return +(value / 1e12).toFixed(1) + "T";
+  }
+
   const handleRowClick = (id) => {
     navigate(`/currencies/${id}`);
   };
@@ -83,7 +99,7 @@ function Currencies() {
 
   return (
     <div>
-      <div>
+      <div className="col-md-8 mx-auto">
         <Table
           striped
           bordered
@@ -116,9 +132,9 @@ function Currencies() {
                   />
                   {currency.name} - {currency.symbol}
                 </td>
-                <td>{Number(currency.current_price).toFixed(2)}</td>
-                <td>{currency.market_cap}</td>
-                <td>{currency.total_volume}</td>
+                <td>{formatNumbers(currency.current_price)}</td>
+                <td>{formatLargeNumbers(currency.market_cap)}</td>
+                <td>{formatLargeNumbers(currency.total_volume)}</td>
 
                 <td
                   onClick={(e) => {
