@@ -1,0 +1,6 @@
+.tableRoundedCorners {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 10px;
+  overflow: hidden;
+}

@@ -7,6 +7,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import LandingPage from "./components/LandingPage";
 import CurrencyPage from "./pages/currency/CurrencyPage";
 import Currencies from "./pages/currency/Currencies";
+import "./styles/custom.css";
 
 function App() {
   return (

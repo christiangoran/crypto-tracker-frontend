@@ -41,10 +41,6 @@
 .Dark:hover {
   background-color: #6e34bf;
   color: white;
-
-  /* Glow effect */
-  box-shadow: 0 0 10px #6e34bf, 0 0 20px #6e34bf, 0 0 30px #4ea66d;
-  transition: box-shadow 0.3s ease;
 }
 .Blue:not(:hover) {
   box-shadow: 0 0 5px #6e34bf;

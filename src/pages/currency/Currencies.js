@@ -84,7 +84,12 @@ function Currencies() {
   return (
     <div>
       <div>
-        <Table striped bordered hover className={styles.TableStyle}>
+        <Table
+          striped
+          bordered
+          hover
+          className={`${styles.TableStyle} ${styles.tableRoundedCorners}`}
+        >
           <thead>
             <tr>
               <th>#</th>
@@ -111,7 +116,7 @@ function Currencies() {
                   />
                   {currency.name} - {currency.symbol}
                 </td>
-                <td>{currency.current_price}</td>
+                <td>{Number(currency.current_price).toFixed(2)}</td>
                 <td>{currency.market_cap}</td>
                 <td>{currency.total_volume}</td>
 

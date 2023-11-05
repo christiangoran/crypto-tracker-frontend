@@ -14,6 +14,7 @@ import axios from "axios";
 import btnStyles from "../styles/Button.module.css";
 import appStyles from "../App.module.css";
 import styles from "../styles/LandingPage.module.css";
+import Currencies from "../pages/currency/Currencies";
 
 function LandingPage() {
   const [currencies, setCurrencies] = useState([]);
@@ -37,7 +38,8 @@ function LandingPage() {
 
   return (
     <div>
-      <div>
+      <Currencies />
+      {/* <div>
         <Table striped bordered hover className={styles.TableStyle}>
           <thead>
             <tr>
@@ -75,7 +77,7 @@ function LandingPage() {
         <Button className={`${btnStyles.Button} ${btnStyles.Dark}`}>
           See More
         </Button>
-      </Link>
+      </Link> */}
     </div>
   );
 }
