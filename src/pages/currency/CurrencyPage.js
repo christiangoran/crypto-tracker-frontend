@@ -16,10 +16,14 @@ import { useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import Currencies from "./Currencies";
 import axios from "axios";
+import CurrencyPostForm from "../posts/CurrencyPostForm";
+import ShowPosts from "../posts/ShowPosts";
+import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function CurrencyPage() {
   const { id } = useParams();
   const [currency, setCurrency] = useState({});
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -47,6 +51,14 @@ function CurrencyPage() {
         <Col sm={8}>Chart goes in here</Col>
         <Col sm={4}>{currency.description}</Col>
       </Row>
+      <ShowPosts currencyId={currency.id} />
+      <Container>
+        {currentUser ? (
+          <CurrencyPostForm currencyId={currency.id} />
+        ) : (
+          "Comments"
+        )}
+      </Container>
     </Container>
   );
 }

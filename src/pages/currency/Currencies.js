@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Currency.module.css";
+import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 
