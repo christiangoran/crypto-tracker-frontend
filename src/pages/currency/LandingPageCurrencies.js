@@ -19,7 +19,7 @@ import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 
-function Currencies(currenciesProp) {
+export const LandingPageCurrencies = () => {
   const currentUser = useCurrentUser();
   const [currencies, setCurrencies] = useState([]);
   const [favourites, setFavourites] = useState([]);
@@ -29,13 +29,9 @@ function Currencies(currenciesProp) {
 
   const getCurrencies = async () => {
     try {
-      const response = await axios.get("/currencies/", {
-        params: {
-          page: 1,
-          per_page: 30,
-        },
-      });
-      setCurrencies(response.data.results);
+      const response = await axios.get("/currencies/");
+      setCurrencies(response.data.results.slice(0, 10));
+      console.log("this is from landing page receiving the call", currencies);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -191,6 +187,6 @@ function Currencies(currenciesProp) {
       <ul></ul>
     </div>
   );
-}
+};
 
-export default Currencies;
+export default LandingPageCurrencies;

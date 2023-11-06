@@ -17,6 +17,7 @@ import styles from "../styles/LandingPage.module.css";
 import Currencies from "../pages/currency/Currencies";
 import rocket from "../assets/rocket.mp4";
 import indexStyles from "../index.css";
+import LandingPageCurrencies from "../pages/currency/LandingPageCurrencies";
 
 function LandingPage() {
   const [currencies, setCurrencies] = useState([]);
@@ -26,6 +27,7 @@ function LandingPage() {
     try {
       const response = await axios.get("/currencies/");
       setCurrencies(response.data.results.slice(0, 10));
+      console.log("this is from landing page receiving the call", currencies);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -40,7 +42,7 @@ function LandingPage() {
 
   return (
     <div>
-      <Container className="col-md-9 mx-auto">
+      <Container className={`col-md-9 mx-auto ${styles.divStyle}`}>
         <Row>
           <Col sm={4}>
             <h1 className={styles.h1}>Launch Your Portfolio</h1>
@@ -69,46 +71,12 @@ function LandingPage() {
           </Col>
         </Row>
       </Container>
-      <Currencies />
-      {/* <div>
-        <Table striped bordered hover className={styles.TableStyle}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Market Cap</th>
-              <th>Total Volume</th>
-              <th>Select</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currencies.map((currency) => (
-              <tr key={currency.id}>
-                <td>{currency.id}</td>
-                <td>
-                  <Image
-                    src={currency.logo_url}
-                    alt={`${currency.name} logo`}
-                    height={25}
-                  />
-                  {currency.name} - {currency.symbol}
-                </td>
-                <td>{currency.current_price}</td>
-                <td>{currency.market_cap}</td>
-                <td>{currency.total_volume}</td>
-                <td></td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-      <ul></ul>
+      <LandingPageCurrencies />
       <Link to="/currencies">
         <Button className={`${btnStyles.Button} ${btnStyles.Dark}`}>
           See More
         </Button>
-      </Link> */}
+      </Link>
     </div>
   );
 }
