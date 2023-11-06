@@ -99,7 +99,7 @@ function Currencies() {
 
   return (
     <div>
-      <div className="col-md-8 mx-auto">
+      <div className="col-md-9 mx-auto">
         <Table
           striped
           bordered
@@ -123,18 +123,27 @@ function Currencies() {
                 onClick={() => handleRowClick(currency.id)}
                 style={{ cursor: "pointer" }}
               >
-                <td>{currency.id}</td>
-                <td>
+                <td className={`${styles.textLeft} ${styles.tdHd}`}>
+                  {currency.id}
+                </td>
+                <td className={styles.textLeft}>
                   <Image
+                    className={styles.logo}
                     src={currency.logo_url}
                     alt={`${currency.name} logo`}
                     height={25}
                   />
                   {currency.name} - {currency.symbol}
                 </td>
-                <td>{formatNumbers(currency.current_price)}</td>
-                <td>{formatLargeNumbers(currency.market_cap)}</td>
-                <td>{formatLargeNumbers(currency.total_volume)}</td>
+                <td className={styles.centerText}>
+                  {formatNumbers(currency.current_price)}
+                </td>
+                <td className={styles.centerText}>
+                  {formatLargeNumbers(currency.market_cap)}
+                </td>
+                <td className={styles.centerText}>
+                  {formatLargeNumbers(currency.total_volume)}
+                </td>
 
                 <td
                   onClick={(e) => {

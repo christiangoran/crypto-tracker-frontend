@@ -237,12 +237,13 @@ h1,
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--bs-heading-color);
 }
 
 h1,
 .h1 {
   font-size: calc(1.375rem + 1.5vw);
+  color: white;
+  font-family: "Teko", sans-serif;
 }
 @media (min-width: 1200px) {
   h1,
@@ -254,6 +255,9 @@ h1,
 h2,
 .h2 {
   font-size: calc(1.325rem + 0.9vw);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  color: #4ea66d;
 }
 @media (min-width: 1200px) {
   h2,

@@ -3,3 +3,32 @@
   color: white !important;
   border-radius: 25px !important;
 }
+
+h1 {
+  font-family: "Teko", sans-serif;
+  color: white;
+  text-align: left !important;
+  margin-top: 200px !important;
+}
+
+h2 {
+  font-family: "Ubuntu", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1.5rem !important;
+  color: white !important;
+  text-align: left !important;
+}
+
+h3 {
+  font-family: "Ubuntu", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1.5rem !important;
+  color: #4ea66d !important;
+  text-align: left !important;
+}
+
+p {
+  font-family: "Ubuntu", sans-serif !important;
+  color: white !important;
+  text-align: left !important;
+}

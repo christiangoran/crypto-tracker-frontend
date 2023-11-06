@@ -3,4 +3,30 @@
   border-collapse: separate;
   border-radius: 10px;
   overflow: hidden;
+  border: 5px solid #6e34bf;
+}
+
+.tdHd {
+  border: none;
+}
+
+.logo {
+  margin-right: 15px;
+}
+
+.centerText {
+  text-align: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.textLeft {
+  text-align: left;
+  align-items: left;
+  padding: 15px;
+}
+
+.i {
+  font-size: 1.5rem;
+  margin-right: 10px;
 }
