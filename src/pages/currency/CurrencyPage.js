@@ -63,7 +63,7 @@ function CurrencyPage() {
 
       <Row>
         <Col sm={8} className={styles.window}>
-          <ShowPosts currencyId={currency.id} />
+          {currency.id && <ShowPosts currencyId={currency.id} />}
           <Container>
             {currentUser ? (
               <CurrencyPostForm currencyId={currency.id} />

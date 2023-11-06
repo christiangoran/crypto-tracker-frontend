@@ -7,6 +7,7 @@ import Avatar from "../../components/Avatar";
 const ShowPosts = (props) => {
   const [posts, setPosts] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { currencyId } = props;
 
   useEffect(() => {
@@ -21,12 +22,22 @@ const ShowPosts = (props) => {
         );
         console.log(matchingPosts);
         setPosts(matchingPosts);
+        setLoading(false);
       } catch (err) {
         console.log(err);
+        setLoading(false);
       }
     };
     fetchPosts();
   }, [currencyId]);
+
+  if (loading) {
+    return (
+      <div>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="col-md-11">
