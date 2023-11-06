@@ -13,7 +13,7 @@ h1 {
   font-family: "Teko", sans-serif;
   color: white;
   text-align: left !important;
-  margin-top: 200px !important;
+  margin-top: 10px !important;
 }
 
 @media (max-width: 768px) {
@@ -42,4 +42,17 @@ p {
   font-family: "Ubuntu", sans-serif !important;
   color: white !important;
   text-align: left !important;
+}
+
+.greyText {
+  font-family: "Ubuntu", sans-serif !important;
+  color: rgb(213, 213, 213) !important;
+  text-align: left !important;
+}
+
+.window {
+  background-color: #201740;
+  border-radius: 25px;
+  padding: 25px !important;
+  margin: 10px;
 }

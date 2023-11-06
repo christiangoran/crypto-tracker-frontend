@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { axiosRes } from "../../api/axiosDefaults";
+import { Col, Row } from "react-bootstrap";
+import styles from "../../styles/ShowPosts.module.css";
+import Avatar from "../../components/Avatar";
 
 const ShowPosts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -26,12 +29,31 @@ const ShowPosts = (props) => {
   }, [currencyId]);
 
   return (
-    <div>
+    <div className="col-md-11">
       {posts.map((post, index) => {
         return (
-          <div key={index}>
-            <p>{post.topic}</p>
-            <p>{post.content}</p>
+          <div key={index} className={styles.window}>
+            <Row>
+              <Col sm={12}>
+                <h4>{post.topic}</h4>
+              </Col>
+              <Col sm={12}>
+                <p>{post.created_at}</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={12}>
+                <p className={styles.greyText}>{post.content}</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={2}>
+                <Avatar src={post.image} alt="Profile" height={40} />
+              </Col>
+              <Col sm={8}>
+                <h4>{post.user}</h4>
+              </Col>
+            </Row>
           </div>
         );
       })}
