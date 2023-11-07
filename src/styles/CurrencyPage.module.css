@@ -70,3 +70,11 @@ p {
 .padding {
   padding: 25px !important;
 }
+
+.distanceTop {
+  margin-top: 55px !important;
+}
+
+.distanceLessTop {
+  margin-top: 25px !important;
+}

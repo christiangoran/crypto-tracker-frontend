@@ -53,7 +53,9 @@ function CurrencyPage() {
           <p className={styles.p}>Rank #{currency.id}</p>
           <h1>{currency.name}</h1>
         </Col>
+
         <Col sm={3} className={styles.window}>
+          <p className={styles.greyText}>Add to your dashboard:</p>
           <Favourite currency={currency} currentUser={currentUser} />
         </Col>
       </Row>
@@ -68,14 +70,14 @@ function CurrencyPage() {
         </Col>
       </Row>
 
-      <Row className={`col-md-11 mx-auto ${styles.window}`}>
+      <Row className="col-md-11 mx-auto">
         <Row className="mx-auto">
-          <Col sm={12}>
+          <Col sm={12} className={styles.distanceTop}>
             <h3>Currency Channel:</h3>
           </Col>
         </Row>
 
-        <Col sm={12} className={`${styles.window}`}>
+        <Col sm={12} className={styles.distanceLessTop}>
           {currency.id && (
             <ShowPosts
               currencyId={currency.id}
@@ -85,7 +87,7 @@ function CurrencyPage() {
         </Col>
 
         <Row className="mx-auto">
-          <Col sm={12}>
+          <Col sm={12} className={styles.distanceLessTop}>
             <h3>Post a Comment:</h3>
           </Col>
         </Row>

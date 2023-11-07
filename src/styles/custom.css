@@ -11914,4 +11914,18 @@ h1, .h1 {
   color: white;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #201740;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: #6E34BF;
+  border-radius: 6px;
+}
+
 /*# sourceMappingURL=custom.css.map */
