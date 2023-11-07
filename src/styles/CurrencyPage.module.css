@@ -56,3 +56,17 @@ p {
   padding: 25px !important;
   margin: 10px;
 }
+
+.border {
+  border: 5px solid#6E34BF;
+  border-radius: 25px;
+  margin-bottom: 10px;
+}
+
+.distance {
+  margin-bottom: 55px !important;
+}
+
+.padding {
+  padding: 25px !important;
+}

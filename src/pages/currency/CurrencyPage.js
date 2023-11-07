@@ -25,6 +25,8 @@ import { Favourite } from "../../components/Favourite";
 function CurrencyPage() {
   const { id } = useParams();
   const [currency, setCurrency] = useState({});
+  const [errors, setErrors] = useState([]);
+  const [updatePostTrigger, setUpdatePostTrigger] = useState(0);
   const currentUser = useCurrentUser();
 
   useEffect(() => {
@@ -39,6 +41,10 @@ function CurrencyPage() {
 
     handleMount();
   }, [id]);
+
+  const incrementPostTrigger = () => {
+    setUpdatePostTrigger((prev) => prev + 1);
+  };
 
   return (
     <Container className="col-md-10 mx-auto">
@@ -62,20 +68,37 @@ function CurrencyPage() {
         </Col>
       </Row>
 
-      <Row>
-        <Col sm={11} className={styles.window}>
-          {currency.id && <ShowPosts currencyId={currency.id} />}
+      <Row className={`col-md-11 mx-auto ${styles.window}`}>
+        <Row className="mx-auto">
+          <Col sm={12}>
+            <h3>Currency Channel:</h3>
+          </Col>
+        </Row>
+
+        <Col sm={12} className={`${styles.window}`}>
+          {currency.id && (
+            <ShowPosts
+              currencyId={currency.id}
+              updatePostTrigger={updatePostTrigger}
+            />
+          )}
         </Col>
-      </Row>
-      <Row>
-        <Col sm={11} className={styles.window}>
-          <Container>
-            {currentUser ? (
-              <CurrencyPostForm currencyId={currency.id} />
-            ) : (
-              "Comments"
-            )}
-          </Container>
+
+        <Row className="mx-auto">
+          <Col sm={12}>
+            <h3>Post a Comment:</h3>
+          </Col>
+        </Row>
+
+        <Col sm={11} className=" col-md-11">
+          {currentUser ? (
+            <CurrencyPostForm
+              currencyId={currency.id}
+              onPostCreated={incrementPostTrigger}
+            />
+          ) : (
+            "Comments"
+          )}
         </Col>
       </Row>
     </Container>

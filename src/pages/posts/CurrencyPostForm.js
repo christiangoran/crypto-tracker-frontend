@@ -7,7 +7,7 @@ import { axios, axiosRes, axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/CurrencyPostForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-const CurrencyPostForm = ({ currencyId }) => {
+const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
   const [errors, setErrors] = useState([]);
   const [postData, setPostData] = useState({
     topic: "",
@@ -56,6 +56,7 @@ const CurrencyPostForm = ({ currencyId }) => {
         image: null,
         currency: currencyId,
       });
+      onPostCreated();
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -65,38 +66,30 @@ const CurrencyPostForm = ({ currencyId }) => {
   };
 
   return (
-    <Form className="col-md-11 mx-auto" onSubmit={handleSubmit}>
-      <Form.Group>
-        <Row>
-          <Col sm={12}>
-            <h3>Post a Comment</h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={12}>
-            <Form.Control
-              className={styles.window}
-              as="textarea"
-              rows={1}
-              placeholder="my topic..."
-              onChange={handleChange}
-              value={topic}
-              name="topic"
-            />
-          </Col>
-          <Col sm={12}>
-            <Form.Control
-              className={styles.window}
-              as="textarea"
-              rows={3}
-              placeholder="my comment..."
-              onChange={handleChange}
-              value={content}
-              name="content"
-            />
-          </Col>
-        </Row>
-      </Form.Group>
+    <Form onSubmit={handleSubmit}>
+      <Row>
+        <Col sm={12}>
+          <Form.Control
+            as="textarea"
+            rows={1}
+            placeholder="my topic..."
+            onChange={handleChange}
+            value={topic}
+            name="topic"
+          />
+        </Col>
+        <Col sm={12}>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="What does the TA tell you, going up, going down...?"
+            onChange={handleChange}
+            value={content}
+            name="content"
+          />
+        </Col>
+      </Row>
+
       {/* 
       <Form.File
         id="image-upload"
@@ -105,7 +98,11 @@ const CurrencyPostForm = ({ currencyId }) => {
         onChange={handleChangeImage}
       /> */}
 
-      <Button variant="dark" type="submit" disabled={!content.trim()}>
+      <Button
+        type="submit"
+        disabled={!content.trim()}
+        className={`${btnStyles.Button} ${btnStyles.Dark}`}
+      >
         Post Comment
       </Button>
     </Form>

@@ -29,7 +29,7 @@ const ShowPosts = (props) => {
       }
     };
     fetchPosts();
-  }, [currencyId]);
+  }, [currencyId, props.updatePostTrigger]);
 
   if (loading) {
     return (
@@ -43,7 +43,7 @@ const ShowPosts = (props) => {
     <div className={`col-md-11 ${styles.scrollBox}`}>
       {posts.map((post, index) => {
         return (
-          <div key={index} className={styles.window}>
+          <div key={index} className={`${styles.window}`}>
             <Row>
               <Col sm={12}>
                 <h4>{post.topic}</h4>

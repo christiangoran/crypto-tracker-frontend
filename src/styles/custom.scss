@@ -1,19 +1,12 @@
-// custom.scss
-// Override Bootstrap's default theme colors
-
-// // Navbar Colors
-// $navbar-color: #201740 !important;
-// $navbar-text-color: white;
-// $navbar-bg: #201740;
 
 // Button Colors
-$primary: #556270;  // dark blue
+$primary: #2B1E59;  // dark blue
 $success: #4ECDC4;  // aqua
-$info: #C7F464;     // lime
+$info: #4EA66D;     // lime
 $warning: #FF6B6B;  // red
 $danger: #C44D58;   // dark red
 $light: white;     // white
-$dark: #000000;     // black
+$dark: #2B1E59;     // black
 
 
 // Table Colors
@@ -28,3 +21,61 @@ $table-border-radius: 30;
 // Then import Bootstrap's SCSS
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+.navbar-toggler-icon {
+    color: white !important;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  color: white !important;; 
+}
+
+.form-control {
+    background-color: #201740;
+    border-radius: 15px;
+    padding: 25px !important;
+    margin: 10px;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #42208C;
+    border-radius: 15px;
+    padding: 25px !important;
+    margin: 10px;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: rgb(182, 182, 182);
+    opacity: 1;  
+    font-family: "Ubuntu", sans-serif !important;
+  }
+
+.bg-body-tertiary {
+    background-color: #201740 !important;
+}
+
+h1 {
+    font-family: "Teko", sans-serif !important;
+    color: white;
+}
+
+.btn {
+    align-self: center;
+    border-radius: 20px;
+    border-color:  #6E34BF;
+    padding: 15px 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 15px;
+    min-width: 130px;
+    min-height: 60px;
+}
+
+.btn:disabled {
+    border-color:  #6E34BF;
+    color: white;
+    background-color: #201740;
+    color: white;
+}

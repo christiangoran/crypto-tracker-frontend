@@ -15,3 +15,12 @@
 .Active i {
   color: #6e34bf;
 }
+
+.navbar-toggler-icon {
+  color: white;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  color: white;
+}
