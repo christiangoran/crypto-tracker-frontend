@@ -28,14 +28,12 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
     });
   };
 
-  //   const handleChangeImage = (e) => {
-  //     if (e.target.files[0]) {
-  //       setPostData((prevState) => ({
-  //         ...prevState,
-  //         image: e.target.files[0],
-  //       }));
-  //     }
-  //   };
+  const handleChangeImage = (e) => {
+    setPostData({
+      ...postData,
+      image: e.target.files[0], // Assuming you want to handle only one image
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,13 +88,13 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
         </Col>
       </Row>
 
-      {/* 
-      <Form.File
+      <Form.Control
+        type="file"
         id="image-upload"
         accept="image/*"
         ref={imageInput}
         onChange={handleChangeImage}
-      /> */}
+      />
 
       <Button
         type="submit"

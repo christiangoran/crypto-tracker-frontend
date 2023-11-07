@@ -10,7 +10,7 @@
 }
 
 .scrollBox {
-  height: 500px;
+  height: 900px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -47,7 +47,7 @@ h3 {
 h4 {
   font-family: "Ubuntu", sans-serif !important;
   font-weight: 400 !important;
-  font-size: 1.1rem !important;
+  font-size: 1.5rem !important;
   color: #4ea66d !important;
   text-align: left !important;
 }
@@ -69,4 +69,9 @@ p {
   border-radius: 25px;
   padding: 25px !important;
   margin: 10px;
+}
+
+.Image {
+  border-radius: 25px;
+  margin: 15px 0px;
 }
