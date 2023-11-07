@@ -41,7 +41,7 @@ function CurrencyPage() {
   }, [id]);
 
   return (
-    <Container className="col-md-9 mx-auto">
+    <Container className="col-md-10 mx-auto">
       <Row>
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>Rank #{currency.id}</p>
@@ -51,6 +51,7 @@ function CurrencyPage() {
           <Favourite currency={currency} currentUser={currentUser} />
         </Col>
       </Row>
+
       <Row>
         <Col sm={8} className={styles.window}>
           Chart goes in here
@@ -62,8 +63,12 @@ function CurrencyPage() {
       </Row>
 
       <Row>
-        <Col sm={8} className={styles.window}>
+        <Col sm={11} className={styles.window}>
           {currency.id && <ShowPosts currencyId={currency.id} />}
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={11} className={styles.window}>
           <Container>
             {currentUser ? (
               <CurrencyPostForm currencyId={currency.id} />

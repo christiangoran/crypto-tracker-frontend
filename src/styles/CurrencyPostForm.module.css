@@ -64,8 +64,13 @@ p {
 }
 
 .window {
-  background-color: #2b1e59;
-  border-radius: 25px;
+  background-color: #201740;
+  border-radius: 15px;
   padding: 25px !important;
   margin: 10px;
+  color: white;
+}
+
+.window:focus {
+  background-color: #2b1e59;
 }

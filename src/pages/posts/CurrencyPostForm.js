@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
-import { Form, Button, InputGroup } from "react-bootstrap";
+import { Form, Button, InputGroup, Col, Row } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 import { Link, useNavigate } from "react-router-dom";
 import { axios, axiosRes, axiosReq } from "../../api/axiosDefaults";
+import styles from "../../styles/CurrencyPostForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
 const CurrencyPostForm = ({ currencyId }) => {
   const [errors, setErrors] = useState([]);
@@ -63,33 +65,37 @@ const CurrencyPostForm = ({ currencyId }) => {
   };
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
+    <Form className="col-md-11 mx-auto" onSubmit={handleSubmit}>
       <Form.Group>
-        <InputGroup>
-          <Link to={`/profiles/${currentUser?.profile_id}`}>
-            <Avatar
-              src={currentUser?.profile_image}
-              text="Profile"
-              height={25}
+        <Row>
+          <Col sm={12}>
+            <h3>Post a Comment</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={12}>
+            <Form.Control
+              className={styles.window}
+              as="textarea"
+              rows={1}
+              placeholder="my topic..."
+              onChange={handleChange}
+              value={topic}
+              name="topic"
             />
-          </Link>
-          <Form.Control
-            as="textarea"
-            rows={1}
-            placeholder="my topic..."
-            onChange={handleChange}
-            value={topic}
-            name="topic"
-          />
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="my comment..."
-            onChange={handleChange}
-            value={content}
-            name="content"
-          />
-        </InputGroup>
+          </Col>
+          <Col sm={12}>
+            <Form.Control
+              className={styles.window}
+              as="textarea"
+              rows={3}
+              placeholder="my comment..."
+              onChange={handleChange}
+              value={content}
+              name="content"
+            />
+          </Col>
+        </Row>
       </Form.Group>
       {/* 
       <Form.File

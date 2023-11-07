@@ -2204,7 +2204,7 @@ progress {
   padding: 0;
 }
 .form-control::placeholder {
-  color: var(--bs-secondary-color);
+  color: white;
   opacity: 1;
 }
 .form-control:disabled {
