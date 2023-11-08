@@ -98,7 +98,7 @@ const ShowPosts = (props) => {
 
             <Row>
               <Col sm={2}>
-                <Avatar src={post.profile_image} alt="Profile" height={30} />
+                <Avatar src={post.image} alt="Profile" height={30} />
               </Col>
               <Col sm={8}>
                 <p>{post.user}</p>
