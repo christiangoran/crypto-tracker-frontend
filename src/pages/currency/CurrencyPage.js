@@ -42,8 +42,14 @@ function CurrencyPage() {
     handleMount();
   }, [id]);
 
+  // This function is passed to the CurrencyPostForm component and
+  // triggers the showpost component to update
   const incrementPostTrigger = () => {
     setUpdatePostTrigger((prev) => prev + 1);
+  };
+
+  const decrementPostTrigger = () => {
+    setUpdatePostTrigger((prev) => prev - 1);
   };
 
   return (
@@ -64,6 +70,7 @@ function CurrencyPage() {
         <Col sm={8} className={styles.window}>
           Chart goes in here
         </Col>
+
         <Col sm={3} className={styles.window}>
           <h3>Background:</h3>
           <p className={styles.greyText}>{currency.description}</p>
@@ -82,6 +89,7 @@ function CurrencyPage() {
             <ShowPosts
               currencyId={currency.id}
               updatePostTrigger={updatePostTrigger}
+              decrementPostTrigger={decrementPostTrigger}
             />
           )}
         </Col>

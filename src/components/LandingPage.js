@@ -71,6 +71,7 @@ function LandingPage() {
           </Col>
         </Row>
       </Container>
+
       <LandingPageCurrencies />
       <Link to="/currencies">
         <Button className={`${btnStyles.Button} ${btnStyles.Dark}`}>

@@ -5,6 +5,7 @@ import styles from "../../styles/ShowPosts.module.css";
 import Avatar from "../../components/Avatar";
 import { PostDropdown } from "../../components/PostDropdown";
 import { useCurrentUser } from "../../context/CurrentUserContext";
+import { useNavigate } from "react-router-dom";
 
 const ShowPosts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -12,6 +13,7 @@ const ShowPosts = (props) => {
   const [loading, setLoading] = useState(true);
   const { currencyId } = props;
   const currentUser = useCurrentUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -23,7 +25,7 @@ const ShowPosts = (props) => {
         const matchingPosts = data.results.filter(
           (post) => post.currency === Number(currencyId)
         );
-        console.log(matchingPosts);
+        console.log("this is the matching posts", matchingPosts);
         setPosts(matchingPosts);
         setLoading(false);
       } catch (err) {
@@ -42,6 +44,19 @@ const ShowPosts = (props) => {
     );
   }
 
+  const handleEdit = (id) => {
+    navigate(`/currencyposts/${id}/edit`);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axiosRes.delete(`/currencyposts/${id}/`);
+      props.decrementPostTrigger();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className={`col-md-11 ${styles.scrollBox}`}>
       {posts.map((post, index) => {
@@ -51,7 +66,14 @@ const ShowPosts = (props) => {
               <Col sm={11}>
                 <h4>{post.topic}</h4>
               </Col>
-              <Col sm={1}>{post.is_owner && <PostDropdown post={post} />}</Col>
+              <Col sm={1}>
+                {post.is_owner && (
+                  <PostDropdown
+                    handleEdit={() => handleEdit(post.id)}
+                    handleDelete={() => handleDelete(post.id)}
+                  />
+                )}
+              </Col>
               <Col sm={12}>
                 <p>{post.created_at}</p>
               </Col>

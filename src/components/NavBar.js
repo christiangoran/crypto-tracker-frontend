@@ -25,6 +25,9 @@ const NavBar = () => {
       console.log(err);
     }
   };
+  useEffect(() => {
+    console.log("currentUser:", currentUser); // Check what this prints out
+  }, [currentUser]);
 
   const loggedInIcons = (
     <>

@@ -10,7 +10,7 @@
 }
 
 .scrollBox {
-  height: 900px;
+  max-height: 900px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -74,4 +74,7 @@ p {
 .Image {
   border-radius: 25px;
   margin: 15px 0px;
+  width: 60%;
+  max-height: 500px;
+  object-fit: contain;
 }

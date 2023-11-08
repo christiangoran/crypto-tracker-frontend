@@ -1,6 +1,6 @@
 .DropdownItem {
   display: inline-block;
-  max-width: 50%;
+  max-width: 50% !important;
   padding: 0px;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .DropdownBg {
-  background-color: #42208c;
+  background-color: #42208c !important;
 }
