@@ -67,24 +67,24 @@ function CurrencyPage() {
       </Row>
 
       <Row>
-        <Col sm={8} className={styles.window}>
+        <Col lg={8} className={styles.window}>
           Chart goes in here
         </Col>
 
-        <Col sm={3} className={styles.window}>
+        <Col lg={3} className={styles.window}>
           <h3>Background:</h3>
           <p className={styles.greyText}>{currency.description}</p>
         </Col>
       </Row>
 
-      <Row className="col-md-11 mx-auto">
-        <Row className="mx-auto">
-          <Col sm={12} className={styles.distanceTop}>
+      <Row className="col-md-11">
+        <Row>
+          <Col md={12} className={styles.distanceTop}>
             <h3>Currency Channel:</h3>
           </Col>
         </Row>
 
-        <Col sm={12} className={styles.distanceLessTop}>
+        <Col md={12} className={styles.distanceLessTop}>
           {currency.id && (
             <ShowPosts
               currencyId={currency.id}
@@ -94,13 +94,13 @@ function CurrencyPage() {
           )}
         </Col>
 
-        <Row className="mx-auto">
-          <Col sm={12} className={styles.distanceLessTop}>
+        <Row>
+          <Col md={8} className={styles.distanceLessTop}>
             <h3>Post a Comment:</h3>
           </Col>
         </Row>
 
-        <Col sm={11} className=" col-md-11">
+        <Col md={11}>
           {currentUser ? (
             <CurrencyPostForm
               currencyId={currency.id}

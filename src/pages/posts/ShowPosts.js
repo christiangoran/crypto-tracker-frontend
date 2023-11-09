@@ -58,7 +58,7 @@ const ShowPosts = (props) => {
   };
 
   return (
-    <div className={`col-md-11 ${styles.scrollBox}`}>
+    <div className={`col-md-10 mx-auto ${styles.scrollBox}`}>
       {posts.map((post, index) => {
         return (
           <div key={index} className={`${styles.window}`}>
@@ -97,11 +97,11 @@ const ShowPosts = (props) => {
               )}
 
             <Row>
-              <Col sm={2}>
-                <Avatar src={post.image} alt="Profile" height={30} />
+              <Col sm={1}>
+                <Avatar src={post.profile_image} alt="Profile" height={55} />
               </Col>
-              <Col sm={8}>
-                <p>{post.user}</p>
+              <Col sm={10}>
+                <p className={styles.largerText}>{post.user}</p>
               </Col>
             </Row>
           </div>

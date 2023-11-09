@@ -58,6 +58,12 @@ p {
   text-align: left !important;
 }
 
+.largerText {
+  font-size: 1.2rem !important;
+  text-align: left !important;
+  padding: 10px 0px 0px 10px !important;
+}
+
 .greyText {
   font-family: "Ubuntu", sans-serif !important;
   color: rgb(182, 182, 182) !important;

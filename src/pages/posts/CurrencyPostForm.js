@@ -64,46 +64,48 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col sm={12}>
-          <Form.Control
-            as="textarea"
-            rows={1}
-            placeholder="my topic..."
-            onChange={handleChange}
-            value={topic}
-            name="topic"
-          />
-        </Col>
-        <Col sm={12}>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="What does the TA tell you, going up, going down...?"
-            onChange={handleChange}
-            value={content}
-            name="content"
-          />
-        </Col>
-      </Row>
+    <div className="col-md-10 mx-auto">
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col sm={12}>
+            <Form.Control
+              as="textarea"
+              rows={1}
+              placeholder="my topic..."
+              onChange={handleChange}
+              value={topic}
+              name="topic"
+            />
+          </Col>
+          <Col sm={12}>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="What does the TA tell you, going up, going down...?"
+              onChange={handleChange}
+              value={content}
+              name="content"
+            />
+          </Col>
+        </Row>
 
-      <Form.Control
-        type="file"
-        id="image-upload"
-        accept="image/*"
-        ref={imageInput}
-        onChange={handleChangeImage}
-      />
+        <Form.Control
+          type="file"
+          id="image-upload"
+          accept="image/*"
+          ref={imageInput}
+          onChange={handleChangeImage}
+        />
 
-      <Button
-        type="submit"
-        disabled={!content.trim()}
-        className={`${btnStyles.Button} ${btnStyles.Dark}`}
-      >
-        Post Comment
-      </Button>
-    </Form>
+        <Button
+          type="submit"
+          disabled={!content.trim()}
+          className={`${btnStyles.Button} ${btnStyles.Dark}`}
+        >
+          Post Comment
+        </Button>
+      </Form>
+    </div>
   );
 };
 
