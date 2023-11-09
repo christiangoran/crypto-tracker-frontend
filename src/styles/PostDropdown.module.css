@@ -2,6 +2,8 @@
   display: inline-block;
   max-width: 50% !important;
   padding: 0px;
+  color: white !important;
+  text-align: left !important;
 }
 
 .Absolute {

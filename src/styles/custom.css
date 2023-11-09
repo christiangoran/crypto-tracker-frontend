@@ -11927,4 +11927,10 @@ h1, .h1 {
   border-radius: 6px;
 }
 
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: #6E34BF;
+  --bs-dropdown-link-active-color: #6E34BF;
+  --bs-dropdown-min-width: 5rem ;
+}
+
 /*# sourceMappingURL=custom.css.map */

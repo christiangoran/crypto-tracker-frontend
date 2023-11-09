@@ -29,14 +29,16 @@ export const PostDropdown = ({ handleEdit, handleDelete }) => {
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i className="fas fa-edit" />
+          Edit
+          {/* <i className="fas fa-edit" /> */}
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >
-          <i className="fas fa-trash-alt" />
+          Delete
+          {/* <i className="fas fa-trash-alt" /> */}
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
