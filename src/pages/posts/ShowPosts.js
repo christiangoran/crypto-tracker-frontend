@@ -44,8 +44,9 @@ const ShowPosts = (props) => {
     );
   }
 
-  const handleEdit = (id) => {
-    navigate(`/currencyposts/${id}/edit`);
+  const handleEdit = async (id) => {
+    console.log("1 - handle edit");
+    props.handleEditPost(id);
   };
 
   const handleDelete = async (id) => {
@@ -88,10 +89,9 @@ const ShowPosts = (props) => {
             {post.image &&
               post.image !==
                 "https://res.cloudinary.com/dzw4z92rn/image/upload/v1/media/../default_post_ltn67t" && (
-                <Row>
+                <Row className={styles.dist}>
                   <Col sm={12}>
                     <img src={post.image} alt="Post" className={styles.Image} />
-                    <p className={styles.greyText}>{post.content}</p>
                   </Col>
                 </Row>
               )}

@@ -1,3 +1,17 @@
+.ProfileImage {
+  object-fit: cover;
+  height: 120px;
+  width: 120px;
+  margin: 4px;
+}
+
+@media screen and (max-width: 991px) {
+  .ProfileImage {
+    width: 250px;
+    height: 250px;
+  }
+}
+
 .TableStyle {
   background-color: #201740 !important;
   color: white !important;
@@ -7,12 +21,6 @@
 .divStyle {
   margin-top: 50px;
   margin-bottom: 50px;
-}
-
-.scrollBox {
-  max-height: 900px;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 h1 {
@@ -39,15 +47,7 @@ h2 {
 h3 {
   font-family: "Ubuntu", sans-serif !important;
   font-weight: 300 !important;
-  font-size: 1.2rem !important;
-  color: #4ea66d !important;
-  text-align: left !important;
-}
-
-h4 {
-  font-family: "Ubuntu", sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1.2rem !important;
+  font-size: 1.5rem !important;
   color: #4ea66d !important;
   text-align: left !important;
 }
@@ -58,33 +58,37 @@ p {
   text-align: left !important;
 }
 
-.largerText {
-  font-size: 1.1rem !important;
-  text-align: left !important;
-  padding: 10px 0px 0px 10px !important;
-}
-
 .greyText {
   font-family: "Ubuntu", sans-serif !important;
-  color: rgb(182, 182, 182) !important;
+  color: rgb(213, 213, 213) !important;
   text-align: left !important;
 }
 
 .window {
-  background-color: #2b1e59;
+  background-color: #201740;
   border-radius: 25px;
   padding: 25px !important;
   margin: 10px;
 }
 
-.Image {
+.border {
+  border: 5px solid#6E34BF;
   border-radius: 25px;
-  margin: 15px 0px;
-  width: 60%;
-  max-height: 200px;
-  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.dist {
-  margin-bottom: 20px;
+.distance {
+  margin-bottom: 55px !important;
+}
+
+.padding {
+  padding: 25px !important;
+}
+
+.distanceTop {
+  margin-top: 55px !important;
+}
+
+.distanceLessTop {
+  margin-top: 25px !important;
 }

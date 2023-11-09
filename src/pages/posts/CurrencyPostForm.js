@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Form, Button, InputGroup, Col, Row } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import Avatar from "../../components/Avatar";
@@ -7,16 +7,24 @@ import { axios, axiosRes, axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/CurrencyPostForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
+const CurrencyPostForm = ({
+  currencyId,
+  onPostCreated,
+  editPost,
+  isEditing,
+  onPostUpdated,
+}) => {
   const [errors, setErrors] = useState([]);
+  const [previewImage, setPreviewImage] = useState("");
   const [postData, setPostData] = useState({
     topic: "",
     content: "",
-    image: null,
+    image: "",
     currency: currencyId,
   });
   const { topic, content, image } = postData;
   const currentUser = useCurrentUser();
+  const formRef = useRef(null);
 
   const imageInput = useRef();
   const navigate = useNavigate();
@@ -28,11 +36,53 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
     });
   };
 
-  const handleChangeImage = (e) => {
-    setPostData({
-      ...postData,
-      image: e.target.files[0], // Assuming you want to handle only one image
-    });
+  useEffect(() => {
+    console.log("3?");
+
+    const fetchEditPost = async () => {
+      try {
+        const { data } = await axiosRes.get(`/currencyposts/${editPost}/`);
+        setPostData({
+          topic: data.topic,
+          content: data.content,
+          image: data.image,
+          currency: currencyId,
+        });
+        console.log("4 -this is the edit post data image", data.image);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (isEditing && editPost) {
+      fetchEditPost();
+    }
+  }, [editPost, isEditing, axiosRes]);
+
+  useEffect(() => {
+    if (typeof image === "string") {
+      setPreviewImage(image);
+    }
+  }, [image]);
+
+  // const handleChangeImage = (e) => {
+  //   setPostData({
+  //     ...postData,
+  //     image: e.target.files[0], // this is the file object and only takes one file
+  //   });
+  // };
+
+  const handleChangeImage = (event) => {
+    //This function is only for changing preview image in edit
+    if (event.target.files.length) {
+      //contains the new file object
+      URL.revokeObjectURL(image); // Removes any old image from the preview
+      setPostData({
+        ...postData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+      console.log("this is the new image", event.target.files[0]);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -41,20 +91,42 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
 
     formData.append("topic", topic);
     formData.append("content", content);
-    if (postData.image) {
+    if (image && typeof image === "object") {
       formData.append("image", postData.image);
     }
-    formData.append("currency", currencyId);
 
+    formData.append("currency", currencyId);
+    console.log("this is the form data", formData);
     try {
-      const { data } = await axiosReq.post("/currencyposts/", formData);
+      let data;
+      if (isEditing) {
+        console.log("this is the edit post id", editPost);
+        data = await axiosReq.put(`/currencyposts/${editPost}/`, formData);
+        setPostData({
+          topic: "",
+          content: "",
+          image: "",
+          currency: currencyId,
+        });
+        onPostUpdated(); //Function in parent component CurrencyPage.js
+      } else {
+        console.log("this is the else statement axios post request");
+        data = await axiosReq.post("/currencyposts/", formData);
+        setPostData({
+          topic: "",
+          content: "",
+          image: "",
+          currency: currencyId,
+        });
+        onPostCreated();
+      }
+      formRef.current.reset();
       setPostData({
         topic: "",
         content: "",
-        image: null,
+        image: "",
         currency: currencyId,
       });
-      onPostCreated();
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -65,7 +137,7 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
 
   return (
     <div className="col-md-10 mx-auto">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} ref={formRef}>
         <Row>
           <Col sm={12}>
             <Form.Control
@@ -97,9 +169,17 @@ const CurrencyPostForm = ({ currencyId, onPostCreated }) => {
           onChange={handleChangeImage}
         />
 
+        {isEditing && typeof image === "string" && (
+          <img
+            src={image}
+            alt="Current"
+            style={{ width: "100px", height: "auto" }}
+          />
+        )}
+
         <Button
           type="submit"
-          disabled={!content.trim()}
+          disabled={!isEditing && !content.trim()}
           className={`${btnStyles.Button} ${btnStyles.Dark}`}
         >
           Post Comment

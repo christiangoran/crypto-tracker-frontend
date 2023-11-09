@@ -36,7 +36,7 @@ const NavBar = () => {
       </NavLink>
 
       <NavLink
-        to={"/dashboard"}
+        to={`/profiles/${currentUser?.profile_id}`}
         className={styles.NavLink}
         activeClassName={styles.Active}
       >

@@ -22,11 +22,13 @@ import ShowPosts from "../posts/ShowPosts";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Favourite } from "../../components/Favourite";
 
-function CurrencyPage() {
+function CurrencyPage(props) {
   const { id } = useParams();
   const [currency, setCurrency] = useState({});
   const [errors, setErrors] = useState([]);
   const [updatePostTrigger, setUpdatePostTrigger] = useState(0);
+  const [editPost, setEditPost] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
   const currentUser = useCurrentUser();
 
   useEffect(() => {
@@ -50,6 +52,18 @@ function CurrencyPage() {
 
   const decrementPostTrigger = () => {
     setUpdatePostTrigger((prev) => prev - 1);
+  };
+
+  const handleEditPost = (id) => {
+    console.log("2 - handleEditPost", id);
+    setEditPost(id);
+    setIsEditing(true);
+  };
+
+  const onPostUpdated = () => {
+    setUpdatePostTrigger((prev) => prev + 1);
+    setIsEditing(false);
+    setEditPost(null);
   };
 
   return (
@@ -90,6 +104,7 @@ function CurrencyPage() {
               currencyId={currency.id}
               updatePostTrigger={updatePostTrigger}
               decrementPostTrigger={decrementPostTrigger}
+              handleEditPost={handleEditPost}
             />
           )}
         </Col>
@@ -105,6 +120,9 @@ function CurrencyPage() {
             <CurrencyPostForm
               currencyId={currency.id}
               onPostCreated={incrementPostTrigger}
+              editPost={editPost}
+              isEditing={isEditing}
+              onPostUpdated={onPostUpdated}
             />
           ) : (
             "Comments"

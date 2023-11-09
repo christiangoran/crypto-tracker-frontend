@@ -7,6 +7,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import LandingPage from "./components/LandingPage";
 import CurrencyPage from "./pages/currency/CurrencyPage";
 import Currencies from "./pages/currency/Currencies";
+import Dashboard from "./pages/dashboard/Dashboard";
 import "./styles/custom.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/about" element={<h1>About</h1>} />
           <Route exact path="/currencies/:id" element={<CurrencyPage />} />
           <Route exact path="/currencies/" element={<Currencies />} />
+          <Route exact path="/profiles/:id" element={<Dashboard />} />
           <Route exact path="*" element={<h1>Uh oh, Page Not Found!</h1>} />
         </Routes>
       </Container>
