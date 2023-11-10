@@ -48,23 +48,35 @@ export const Dashboard = () => {
     }
   }, [currentUser]);
 
+  //  This formats the numbers in the table to currency format
+  function formatNumbers(value, locale = "en-US", currency = "USD") {
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      maximumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  }
+
   const profileFavourites = (
     <>
-      {/* {currencies.map(() => (
-        <Row noGutters className="px-3 text-center">
-          <Col lg={3} className="text-lg-left">
-            <p>Image</p>
-          </Col>
-          <Col lg={6}>
-            <h3 className="m-2">Profile username</h3>
-            <p>Profile stats</p>
-          </Col>
-          <Col lg={3} className="text-lg-right">
-            <p>Follow button</p>
-          </Col>
-          <Col className="p-3">Profile content</Col>
-        </Row>
-      ))} */}
+      <Row>
+        {favourites.map((favourite) => {
+          const matchedCurrency = currencies.find(
+            (currency) => currency.id === favourite.currency
+          );
+
+          return matchedCurrency ? (
+            <Col sm={3} key={favourite.id} className={styles.windowBright}>
+              <h2>{matchedCurrency.name}</h2>
+              <h3>{matchedCurrency.symbol}</h3>
+              <p>{formatNumbers(matchedCurrency.current_price)}</p>
+              <Favourite currencyId={currencies} currentUser={currentUser} />
+              {console.log("matchedCurrency:", matchedCurrency)}
+            </Col>
+          ) : null;
+        })}
+      </Row>
     </>
   );
 
