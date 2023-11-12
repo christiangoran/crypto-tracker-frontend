@@ -4,6 +4,14 @@ React-router-dom - To create the differenct sites and connect navbar links
 Axios Library - To call our backend API
 Bootstrap sass - To work with custom colors (npm run watch-css to run the compiler)
 
+- Left to do
+  - Connect facourite component
+  - Profile page, creating forms so user can change info
+  - Fix currentUser problem
+  - Write tests
+  - Finish readme
+  - If time left, create price charts.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
