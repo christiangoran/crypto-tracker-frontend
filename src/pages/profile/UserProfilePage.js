@@ -38,9 +38,12 @@ export const UserProfilePage = () => {
     }
   }, [currentUser]);
 
-  useEffect(() => {
-    console.log("Updated userProfile:", userProfile);
-  }, [userProfile]);
+  const handleChange = (e) => {
+    setUserProfile({
+      ...userProfile,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <Container className="col-md-10 mx-auto">
@@ -52,7 +55,12 @@ export const UserProfilePage = () => {
           <Form>
             <Form.Group>
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="name" value={userProfile.name} />
+              <Form.Control
+                type="text"
+                name="name"
+                value={userProfile.name}
+                onChange={handleChange}
+              />
             </Form.Group>
 
             <Button type="submit">Update Name</Button>
@@ -85,7 +93,12 @@ export const UserProfilePage = () => {
           <Form>
             <Form.Group>
               <Form.Label>Bio</Form.Label>
-              <Form.Control as="textarea" name="bio" value={userProfile.bio} />
+              <Form.Control
+                as="textarea"
+                name="bio"
+                value={userProfile.bio}
+                onChange={handleChange}
+              />
             </Form.Group>
 
             <Button type="submit">Update Bio</Button>
