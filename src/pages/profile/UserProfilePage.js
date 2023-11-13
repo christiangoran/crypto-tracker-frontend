@@ -45,6 +45,13 @@ export const UserProfilePage = () => {
     });
   };
 
+  const handleChangeImage = (e) => {
+    setUserProfile({
+      ...userProfile,
+      image: e.target.files[0],
+    });
+  };
+
   return (
     <Container className="col-md-10 mx-auto">
       <Row>
@@ -78,10 +85,14 @@ export const UserProfilePage = () => {
           <Form>
             <Form.Group>
               <Form.Label>Image</Form.Label>
-              <Form.Control type="file" name="image" />
+              <Form.Control
+                type="file"
+                name="image"
+                onChange={handleChangeImage}
+              />
             </Form.Group>
 
-            <Button type="submit">Update Bio</Button>
+            <Button type="submit">Update Image</Button>
           </Form>
         </Col>
       </Row>
