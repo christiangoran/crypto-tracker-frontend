@@ -18,12 +18,37 @@ export const UserProfilePage = () => {
     image: null,
   });
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const { data } = await axios.get(
+          `/profiles/${currentUser.profile_id}/`
+        );
+        setUserProfile({
+          name: data.name,
+          bio: data.bio,
+          image: data.image,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (currentUser) {
+      fetchUserProfile();
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    console.log("Updated userProfile:", userProfile);
+  }, [userProfile]);
+
   return (
     <Container className="col-md-10 mx-auto">
       <Row>
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>User Profile</p>
           <h3>Update Name</h3>
+          <h1>{userProfile.name}</h1>
           <Form>
             <Form.Group>
               <Form.Label>Name</Form.Label>
@@ -42,28 +67,32 @@ export const UserProfilePage = () => {
               height={180}
             />
           </p>
-          <p>Change Image</p>
+          <Form>
+            <Form.Group>
+              <Form.Label>Image</Form.Label>
+              <Form.Control type="file" name="image" />
+            </Form.Group>
+
+            <Button type="submit">Update Bio</Button>
+          </Form>
         </Col>
       </Row>
 
       <Row>
         <Col lg={8} className={styles.window}>
-          <h3>NOT SURE WHAT TO HAVE HERE</h3>
-        </Col>
-
-        <Col lg={3} className={styles.window}>
           <h3>Background:</h3>
+          <p>{userProfile.bio}</p>
           <Form>
             <Form.Group>
               <Form.Label>Bio</Form.Label>
               <Form.Control as="textarea" name="bio" value={userProfile.bio} />
             </Form.Group>
 
-            {/* Image upload logic needs to be implemented */}
-
             <Button type="submit">Update Bio</Button>
           </Form>
         </Col>
+
+        <Col lg={3} className={styles.window}></Col>
       </Row>
     </Container>
   );
