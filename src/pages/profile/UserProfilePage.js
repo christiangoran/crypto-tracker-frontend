@@ -52,6 +52,28 @@ export const UserProfilePage = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", userProfile.name);
+    formData.append("bio", userProfile.bio);
+    if (userProfile.image && userProfile instanceof File) {
+      formData.append("image", userProfile.image);
+    }
+    try {
+      const { data } = await axios.put(
+        `/profiles/${currentUser.profile_id}/`,
+        formData
+      );
+      setCurrentUser((prev) => ({
+        ...prev,
+        ...data,
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Container className="col-md-10 mx-auto">
       <Row>
@@ -59,7 +81,7 @@ export const UserProfilePage = () => {
           <p className={styles.p}>User Profile</p>
           <h3>Update Name</h3>
           <h1>{userProfile.name}</h1>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -82,7 +104,7 @@ export const UserProfilePage = () => {
               height={180}
             />
           </p>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>Image</Form.Label>
               <Form.Control
@@ -101,7 +123,7 @@ export const UserProfilePage = () => {
         <Col lg={8} className={styles.window}>
           <h3>Background:</h3>
           <p>{userProfile.bio}</p>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>Bio</Form.Label>
               <Form.Control
