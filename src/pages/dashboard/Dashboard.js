@@ -38,7 +38,6 @@ export const Dashboard = () => {
         setCurrencies(currenciesResponse.results);
         console.log("Dashboard - favouritesResponse:", favouritesResponse);
         console.log("Dashboard - currenciesResponse:", currenciesResponse);
-        console.log("Dashboard - profileResponse:", profileResponse);
       } catch (err) {
         console.log(err);
       }
@@ -71,8 +70,7 @@ export const Dashboard = () => {
               <h2>{matchedCurrency.name}</h2>
               <h3>{matchedCurrency.symbol}</h3>
               <p>{formatNumbers(matchedCurrency.current_price)}</p>
-              <Favourite currencyId={currencies} currentUser={currentUser} />
-              {console.log("matchedCurrency:", matchedCurrency)}
+              <Favourite currency={matchedCurrency} currentUser={currentUser} />
             </Col>
           ) : null;
         })}

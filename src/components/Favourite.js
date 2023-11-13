@@ -34,16 +34,20 @@ export const Favourite = (props) => {
     }
   };
 
-  const toggleFavourite = async (currencyId) => {
-    const favourite = favourites.find((fav) => fav.currency === currencyId);
+  const toggleFavourite = async () => {
+    const favourite = favourites.find((fav) => fav.currency === currency.id);
 
     try {
       if (favourite) {
-        console.log("just before the delete request", currencyId, favourite.id);
+        console.log(
+          "just before the delete request",
+          currency.id,
+          favourite.id
+        );
         await axiosRes.delete(`/favouritecurrencies/${favourite.id}/`);
       } else {
         const { data } = await axios.post("/favouritecurrencies/", {
-          currency: currencyId,
+          currency: currency.id,
         });
         setFavourites([...favourites, data]);
       }

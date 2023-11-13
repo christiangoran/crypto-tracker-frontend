@@ -43,10 +43,7 @@ const NavBar = () => {
         <i className="fa-solid fa-gauge"></i>Dashboard
       </NavLink>
 
-      <NavLink
-        to={`/profiles/${currentUser?.profile_id}`}
-        className={styles.NavLink}
-      >
+      <NavLink to={`/edit-profile/`} className={styles.NavLink}>
         <Avatar src={currentUser?.profile_image} alt="Profile" height={40} />
         {currentUser?.username}
       </NavLink>

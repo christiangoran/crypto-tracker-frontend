@@ -9,6 +9,7 @@ import CurrencyPage from "./pages/currency/CurrencyPage";
 import Currencies from "./pages/currency/Currencies";
 import Dashboard from "./pages/dashboard/Dashboard";
 import "./styles/custom.css";
+import UserProfilePage from "./pages/profile/UserProfilePage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/currencies/:id" element={<CurrencyPage />} />
           <Route exact path="/currencies/" element={<Currencies />} />
           <Route exact path="/profiles/:id" element={<Dashboard />} />
+          <Route exact path="/edit-profile/" element={<UserProfilePage />} />
           <Route exact path="*" element={<h1>Uh oh, Page Not Found!</h1>} />
         </Routes>
       </Container>

@@ -35,6 +35,7 @@ function CurrencyPage(props) {
     const handleMount = async () => {
       try {
         const { data } = await axiosRes.get(`/currencies/${id}/`);
+        console.log("CurrencyPage - Currency data:", data);
         setCurrency(data);
       } catch (err) {
         console.log(err);
