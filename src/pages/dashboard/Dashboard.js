@@ -87,7 +87,7 @@ export const Dashboard = () => {
           <Col sm={3} className={styles.window}>
             <p className={styles.greyText}>
               <Avatar
-                src={currentUser.profile_image}
+                src={currentUser?.profile_image}
                 alt="Profile"
                 height={180}
               />

@@ -102,7 +102,7 @@ export const UserProfilePage = () => {
           <h3>Update Image:</h3>
           <p className={styles.greyText}>
             <Avatar
-              src={currentUser.profile_image}
+              src={currentUser?.profile_image}
               alt="Profile"
               height={180}
             />
