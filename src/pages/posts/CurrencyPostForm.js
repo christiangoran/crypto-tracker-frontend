@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Form, Button, InputGroup, Col, Row } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
-import Avatar from "../../components/Avatar";
-import { Link, useNavigate } from "react-router-dom";
-import { axios, axiosRes, axiosReq } from "../../api/axiosDefaults";
-import styles from "../../styles/CurrencyPostForm.module.css";
+import { useNavigate } from "react-router-dom";
+import { axiosRes, axiosReq } from "../../api/axiosDefaults";
 import btnStyles from "../../styles/Button.module.css";
 
 const CurrencyPostForm = ({
@@ -23,7 +21,6 @@ const CurrencyPostForm = ({
     currency: currencyId,
   });
   const { topic, content, image } = postData;
-  const currentUser = useCurrentUser();
   const formRef = useRef(null);
 
   const imageInput = useRef();
@@ -37,8 +34,6 @@ const CurrencyPostForm = ({
   };
 
   useEffect(() => {
-    console.log("3?");
-
     const fetchEditPost = async () => {
       try {
         const { data } = await axiosRes.get(`/currencyposts/${editPost}/`);
@@ -48,7 +43,6 @@ const CurrencyPostForm = ({
           image: data.image,
           currency: currencyId,
         });
-        console.log("4 -this is the edit post data image", data.image);
       } catch (err) {
         console.log(err);
       }
@@ -65,13 +59,6 @@ const CurrencyPostForm = ({
     }
   }, [image]);
 
-  // const handleChangeImage = (e) => {
-  //   setPostData({
-  //     ...postData,
-  //     image: e.target.files[0], // this is the file object and only takes one file
-  //   });
-  // };
-
   const handleChangeImage = (event) => {
     //This function is only for changing preview image in edit
     if (event.target.files.length) {
@@ -81,7 +68,6 @@ const CurrencyPostForm = ({
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
-      console.log("this is the new image", event.target.files[0]);
     }
   };
 
@@ -96,11 +82,9 @@ const CurrencyPostForm = ({
     }
 
     formData.append("currency", currencyId);
-    console.log("this is the form data", formData);
     try {
       let data;
       if (isEditing) {
-        console.log("this is the edit post id", editPost);
         data = await axiosReq.put(`/currencyposts/${editPost}/`, formData);
         setPostData({
           topic: "",
@@ -110,7 +94,6 @@ const CurrencyPostForm = ({
         });
         onPostUpdated(); //Function in parent component CurrencyPage.js
       } else {
-        console.log("this is the else statement axios post request");
         data = await axiosReq.post("/currencyposts/", formData);
         setPostData({
           topic: "",

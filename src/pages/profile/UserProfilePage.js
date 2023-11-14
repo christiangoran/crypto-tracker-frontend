@@ -15,7 +15,7 @@ export const UserProfilePage = () => {
   const [userProfile, setUserProfile] = useState({
     name: "",
     bio: "",
-    image: null,
+    profile_image: null,
   });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const UserProfilePage = () => {
         setUserProfile({
           name: data.name,
           bio: data.bio,
-          image: data.image,
+          profile_image: data.profile_image,
         });
       } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ export const UserProfilePage = () => {
   const handleChangeImage = (e) => {
     setUserProfile({
       ...userProfile,
-      image: e.target.files[0],
+      profile_image: e.target.files[0],
     });
   };
 
@@ -57,16 +57,19 @@ export const UserProfilePage = () => {
     const formData = new FormData();
     formData.append("name", userProfile.name);
     formData.append("bio", userProfile.bio);
-    if (userProfile.image && userProfile instanceof File) {
-      formData.append("image", userProfile.image);
+    if (
+      userProfile.profile_image &&
+      userProfile.profile_image instanceof File
+    ) {
+      formData.append("image", userProfile.profile_image);
     }
     try {
       const { data } = await axios.put(
         `/profiles/${currentUser.profile_id}/`,
         formData
       );
-      setCurrentUser((prev) => ({
-        ...prev,
+      setCurrentUser((oldUserData) => ({
+        ...oldUserData,
         ...data,
       }));
     } catch (err) {
@@ -79,11 +82,10 @@ export const UserProfilePage = () => {
       <Row>
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>User Profile</p>
-          <h3>Update Name</h3>
+          <h3>Update Name:</h3>
           <h1>{userProfile.name}</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
@@ -97,6 +99,7 @@ export const UserProfilePage = () => {
         </Col>
 
         <Col sm={3} className={styles.window}>
+          <h3>Update Image:</h3>
           <p className={styles.greyText}>
             <Avatar
               src={currentUser.profile_image}
@@ -104,9 +107,9 @@ export const UserProfilePage = () => {
               height={180}
             />
           </p>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Image</Form.Label>
               <Form.Control
                 type="file"
                 name="image"
@@ -125,7 +128,6 @@ export const UserProfilePage = () => {
           <p>{userProfile.bio}</p>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Bio</Form.Label>
               <Form.Control
                 as="textarea"
                 name="bio"
@@ -137,8 +139,6 @@ export const UserProfilePage = () => {
             <Button type="submit">Update Bio</Button>
           </Form>
         </Col>
-
-        <Col lg={3} className={styles.window}></Col>
       </Row>
     </Container>
   );

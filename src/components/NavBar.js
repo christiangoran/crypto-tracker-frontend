@@ -10,6 +10,7 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -21,13 +22,12 @@ const NavBar = () => {
     try {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
   };
-  useEffect(() => {
-    console.log("currentUser:", currentUser); // Check what this prints out
-  }, [currentUser]);
+  useEffect(() => {}, [currentUser]);
 
   const loggedInIcons = (
     <>
@@ -37,8 +37,9 @@ const NavBar = () => {
 
       <NavLink
         to={`/profiles/${currentUser?.profile_id}`}
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={({ isActive }) =>
+          isActive ? styles.Active : styles.NavLink
+        }
       >
         <i className="fa-solid fa-gauge"></i>Dashboard
       </NavLink>
@@ -53,15 +54,17 @@ const NavBar = () => {
     <>
       <NavLink
         to={"/signin"}
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={({ isActive }) =>
+          isActive ? styles.Active : styles.NavLink
+        }
       >
         <i className="fas fa-sign-in-alt"></i>Sign In
       </NavLink>
       <NavLink
         to={"/signup"}
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={({ isActive }) =>
+          isActive ? styles.Active : styles.NavLink
+        }
       >
         <i className="fas fa-user-plus"></i>Sign Up
       </NavLink>
@@ -89,34 +92,37 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`text-start ${styles.NavLink}`}>
             <NavLink
-              exact
               to={"/"}
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavLink
+              }
             >
               Home
             </NavLink>
 
             <NavLink
               to={"/currencies"}
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavLink
+              }
             >
               Cryptocurrencies
             </NavLink>
 
             <NavLink
               to={"/forum"}
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavLink
+              }
             >
               Forum
             </NavLink>
 
             <NavLink
               to={"/about"}
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavLink
+              }
             >
               About
             </NavLink>

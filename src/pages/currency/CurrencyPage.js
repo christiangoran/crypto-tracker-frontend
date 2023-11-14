@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-  Table,
-} from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 
-import appStyles from "../../App.module.css";
 import styles from "../../styles/CurrencyPage.module.css";
 import { useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import Currencies from "./Currencies";
-import axios from "axios";
 import CurrencyPostForm from "../posts/CurrencyPostForm";
 import ShowPosts from "../posts/ShowPosts";
 import { useCurrentUser } from "../../context/CurrentUserContext";
@@ -35,7 +23,6 @@ function CurrencyPage(props) {
     const handleMount = async () => {
       try {
         const { data } = await axiosRes.get(`/currencies/${id}/`);
-        console.log("CurrencyPage - Currency data:", data);
         setCurrency(data);
       } catch (err) {
         console.log(err);
@@ -56,7 +43,6 @@ function CurrencyPage(props) {
   };
 
   const handleEditPost = (id) => {
-    console.log("2 - handleEditPost", id);
     setEditPost(id);
     setIsEditing(true);
   };

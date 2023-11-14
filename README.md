@@ -3,6 +3,7 @@
 React-router-dom - To create the differenct sites and connect navbar links
 Axios Library - To call our backend API
 Bootstrap sass - To work with custom colors (npm run watch-css to run the compiler)
+Jwt decoder - jwt-decode
 
 - Left to do
   - Connect facourite component

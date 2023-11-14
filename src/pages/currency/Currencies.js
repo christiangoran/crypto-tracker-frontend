@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-  Table,
-  Tooltip,
-  OverlayTrigger,
-} from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
 import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -45,7 +32,6 @@ function Currencies(currenciesProp) {
     try {
       const { data } = await axios.get("/favouritecurrencies/");
       setFavourites(data.results);
-      console.log(data.results);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -56,7 +42,6 @@ function Currencies(currenciesProp) {
 
     try {
       if (favourite) {
-        console.log("just before the delete request", currencyId, favourite.id);
         await axiosRes.delete(`/favouritecurrencies/${favourite.id}/`);
       } else {
         const { data } = await axios.post("/favouritecurrencies/", {
@@ -64,7 +49,6 @@ function Currencies(currenciesProp) {
         });
         setFavourites([...favourites, data]);
       }
-      console.log("getFavourites within toggleFavourite about to be called");
       getFavourites();
     } catch (err) {
       setErrors(err.response?.data);
@@ -95,7 +79,6 @@ function Currencies(currenciesProp) {
 
   useEffect(() => {
     getCurrencies();
-    console.log("getFavourites within useEffect about to be called");
     getFavourites();
   }, []);
 

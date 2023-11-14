@@ -13,7 +13,9 @@
 }
 
 .Active i {
-  color: #6e34bf;
+  color: #6e34bf !important;
+  padding: 5px;
+  text-decoration: none !important;
 }
 
 .navbar-toggler-icon {
@@ -23,4 +25,17 @@
 .navbar-toggler-icon::before,
 .navbar-toggler-icon::after {
   color: white;
+}
+
+a {
+  color: #6e34bf !important;
+  font-size: 1rem;
+  margin-left: 10px;
+  text-decoration: none !important;
+  line-height: normal;
+
+  &:hover {
+    color: #6e34bf;
+    text-decoration: none !important;
+  }
 }

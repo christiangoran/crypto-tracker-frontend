@@ -15,6 +15,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import axios from "axios";
 import { useSetCurrentUser } from "../../context/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -34,6 +35,7 @@ function SignInForm() {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data);
+      setTokenTimestamp(data);
       navigate("/");
     } catch (err) {
       setErrors(err.response?.data);

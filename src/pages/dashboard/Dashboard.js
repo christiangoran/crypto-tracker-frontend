@@ -11,14 +11,12 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 export const Dashboard = () => {
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
   const [userProfile, setUserProfile] = useState({});
   const [favourites, setFavourites] = useState([]);
   const [currencies, setCurrencies] = useState({});
 
   useEffect(() => {
     const handleMount = async () => {
-      console.log("Dashboard: currentUser.id:", currentUser.profile_id);
       try {
         const urls = [
           `/profiles/${currentUser.profile_id}/`,
@@ -36,8 +34,6 @@ export const Dashboard = () => {
         setUserProfile(profileResponse);
         setFavourites(favouritesResponse.results);
         setCurrencies(currenciesResponse.results);
-        console.log("Dashboard - favouritesResponse:", favouritesResponse);
-        console.log("Dashboard - currenciesResponse:", currenciesResponse);
       } catch (err) {
         console.log(err);
       }
@@ -84,7 +80,7 @@ export const Dashboard = () => {
         <Row>
           <Col sm={8} className={styles.window}>
             <p className={styles.p}>Portfolio</p>
-            <h1>Name here soon</h1>
+            <h1>{userProfile.name}</h1>
             <h3 className={styles.greyText}>@{userProfile.user}</h3>
           </Col>
 
@@ -108,18 +104,7 @@ export const Dashboard = () => {
 
           <Col lg={3} className={styles.window}>
             <h3>Background:</h3>
-            <p className={styles.greyText}>
-              Buzz Lightyear is a daring space ranger known across the galaxy
-              for his bravery and unwavering commitment to protecting the
-              universe from the threat of invasion by the evil Emperor Zurg.
-              With his iconic suit equipped with retractable wings and a laser
-              arm cannon, he embarks on thrilling interstellar adventures,
-              always by the motto, "To infinity and beyond!" Despite being a
-              toy, Buzz's belief in his mission as a defender of the cosmos
-              inspires those around him, both toy and human alike. His legendary
-              status is forever etched in the stars and the hearts of children
-              everywhere who dream of their own spacefaring heroics.
-            </p>
+            <p className={styles.greyText}>{userProfile.bio}</p>
           </Col>
         </Row>
       </Container>

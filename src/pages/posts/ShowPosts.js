@@ -4,7 +4,6 @@ import { Col, Row } from "react-bootstrap";
 import styles from "../../styles/ShowPosts.module.css";
 import Avatar from "../../components/Avatar";
 import { PostDropdown } from "../../components/PostDropdown";
-import { useCurrentUser } from "../../context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 
 const ShowPosts = (props) => {
@@ -12,7 +11,6 @@ const ShowPosts = (props) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
   const { currencyId } = props;
-  const currentUser = useCurrentUser();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,11 +19,9 @@ const ShowPosts = (props) => {
         const { data } = await axiosRes.get(
           `/currencyposts/?currency=${currencyId}`
         );
-        console.log(data.results);
         const matchingPosts = data.results.filter(
           (post) => post.currency === Number(currencyId)
         );
-        console.log("this is the matching posts", matchingPosts);
         setPosts(matchingPosts);
         setLoading(false);
       } catch (err) {
@@ -45,7 +41,6 @@ const ShowPosts = (props) => {
   }
 
   const handleEdit = async (id) => {
-    console.log("1 - handle edit");
     props.handleEditPost(id);
   };
 

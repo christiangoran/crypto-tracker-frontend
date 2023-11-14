@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-  Table,
-} from "react-bootstrap";
+import { Button, Col, Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import btnStyles from "../styles/Button.module.css";
 import appStyles from "../App.module.css";
 import styles from "../styles/LandingPage.module.css";
-import Currencies from "../pages/currency/Currencies";
 import rocket from "../assets/rocket.mp4";
-import indexStyles from "../index.css";
 import LandingPageCurrencies from "../pages/currency/LandingPageCurrencies";
 
 function LandingPage() {
@@ -27,16 +16,12 @@ function LandingPage() {
     try {
       const response = await axios.get("/currencies/");
       setCurrencies(response.data.results.slice(0, 10));
-      console.log("this is from landing page receiving the call", currencies);
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
 
   useEffect(() => {
-    console.log(
-      "getCurrencies within useEffect in LandingPage about to be called"
-    );
     getCurrencies();
   }, []);
 

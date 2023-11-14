@@ -30,7 +30,6 @@ export const PostDropdown = ({ handleEdit, handleDelete }) => {
           aria-label="edit"
         >
           Edit
-          {/* <i className="fas fa-edit" /> */}
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
@@ -38,7 +37,6 @@ export const PostDropdown = ({ handleEdit, handleDelete }) => {
           aria-label="delete"
         >
           Delete
-          {/* <i className="fas fa-trash-alt" /> */}
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
