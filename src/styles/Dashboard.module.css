@@ -99,3 +99,9 @@ p {
 .distanceLessTop {
   margin-top: 25px !important;
 }
+
+.largerText {
+  font-size: 1.3rem !important;
+  text-align: left !important;
+  padding: 10px 0px 0px 10px !important;
+}

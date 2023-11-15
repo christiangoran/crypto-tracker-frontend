@@ -92,7 +92,10 @@ export const Dashboard = () => {
                 height={180}
               />
             </p>
-            <p>No. Of Currencies: {userProfile.favourite_currencies_count}</p>
+            <h4>
+              No. Of Currencies:
+              <strong> {userProfile.favourite_currencies_count}</strong>
+            </h4>
           </Col>
         </Row>
 
@@ -104,7 +107,9 @@ export const Dashboard = () => {
 
           <Col lg={3} className={styles.window}>
             <h3>Background:</h3>
-            <p className={styles.greyText}>{userProfile.bio}</p>
+            <p className={`${styles.largerText} ${styles.greyText}`}>
+              {userProfile.bio}
+            </p>
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -17,6 +17,9 @@ export const UserProfilePage = () => {
     bio: "",
     profile_image: null,
   });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState("");
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -72,13 +75,26 @@ export const UserProfilePage = () => {
         ...oldUserData,
         ...data,
       }));
+      setAlertContent("Profile updated successfully!");
+      setShowAlert(true);
     } catch (err) {
       console.log(err);
+      setAlertContent("Failed to update profile.");
+      setShowAlert(true);
     }
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
   };
 
   return (
     <Container className="col-md-10 mx-auto">
+      {showAlert && (
+        <Alert variant="success" onClose={handleCloseAlert} dismissible>
+          {alertContent}
+        </Alert>
+      )}
       <Row>
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>User Profile</p>
