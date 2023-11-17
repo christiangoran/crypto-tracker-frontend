@@ -41,7 +41,7 @@ export const Dashboard = () => {
     if (currentUser) {
       handleMount();
     }
-  }, [currentUser]);
+  }, [currentUser, favourites]);
 
   //  This formats the numbers in the table to currency format
   function formatNumbers(value, locale = "en-US", currency = "USD") {
@@ -93,7 +93,7 @@ export const Dashboard = () => {
               />
             </p>
             <h4>
-              No. Of Currencies:
+              Number of added currencies:
               <strong> {userProfile.favourite_currencies_count}</strong>
             </h4>
           </Col>
