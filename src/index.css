@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Teko", sans-serif;
-  font-size: larger;
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;

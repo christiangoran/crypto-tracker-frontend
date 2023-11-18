@@ -66,11 +66,11 @@ const CurrencyPostForm = ({
     //This function is only for changing preview image in edit
     if (event.target.files.length) {
       //contains the new file object
-      URL.revokeObjectURL(image); // Removes any old image from the preview
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
+        image: event.target.files[0],
       });
+      setPreviewImage(URL.createObjectURL(event.target.files[0]));
     }
   };
 
@@ -80,8 +80,8 @@ const CurrencyPostForm = ({
 
     formData.append("topic", topic);
     formData.append("content", content);
-    if (image && typeof image === "object") {
-      formData.append("image", postData.image);
+    if (image && image instanceof File) {
+      formData.append("image", image);
     }
 
     formData.append("currency", currencyId);
