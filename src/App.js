@@ -10,11 +10,13 @@ import Currencies from "./pages/currency/Currencies";
 import Dashboard from "./pages/dashboard/Dashboard";
 import "./styles/custom.css";
 import UserProfilePage from "./pages/profile/UserProfilePage";
+import { useCurrentUser } from "./context/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
   return (
     <div className={styles.App}>
-      <NavBar />
+      <NavBar key={currentUser?.profile_image} />
       <Container className={styles.Main}>
         <Routes>
           <Route path="/" element={<LandingPage />} />

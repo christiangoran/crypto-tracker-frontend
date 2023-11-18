@@ -73,10 +73,16 @@ export const UserProfilePage = () => {
         `/profiles/${currentUser.profile_id}/`,
         formData
       );
+      console.log("1 Updated user data:", data);
+      console.log("1 Old user data:", currentUser.profile_image);
       setCurrentUser((oldUserData) => ({
         ...oldUserData,
         ...data,
+        profile_image: data.image,
       }));
+      console.log("2 Updated user data:", data);
+      console.log("2 new profile image:", data.profile_image);
+      console.log("2 Old user data:", currentUser.profile_image);
       setAlertContent("Profile updated successfully!");
       setShowAlert(true);
     } catch (err) {
