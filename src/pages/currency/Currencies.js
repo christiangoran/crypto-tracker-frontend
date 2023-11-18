@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
+import {
+  Image,
+  Table,
+  Tooltip,
+  OverlayTrigger,
+  Pagination,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import appStyles from "../../App.module.css";
@@ -11,16 +17,21 @@ function Currencies(currenciesProp) {
   const currentUser = useCurrentUser();
   const [currencies, setCurrencies] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
 
-  const getCurrencies = async () => {
+  const itemsPerPage = 32;
+  const totalItems = 56;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const getCurrencies = async (page = currentPage) => {
     try {
       const response = await axios.get("/currencies/", {
         params: {
-          page: 1,
-          per_page: 30,
+          page: page,
+          per_page: itemsPerPage,
         },
       });
       setCurrencies(response.data.results);
@@ -81,7 +92,24 @@ function Currencies(currenciesProp) {
   useEffect(() => {
     getCurrencies();
     getFavourites();
-  }, []);
+  }, [currentPage]);
+
+  const renderPagination = () => {
+    let items = [];
+    for (let number = 1; number <= totalPages; number++) {
+      items.push(
+        <Pagination.Item
+          key={number}
+          active={number === currentPage}
+          onClick={() => setCurrentPage(number)}
+        >
+          {number}
+        </Pagination.Item>
+      );
+    }
+
+    return <Pagination>{items}</Pagination>;
+  };
 
   return (
     <div className={appStyles.Distance}>
@@ -171,8 +199,8 @@ function Currencies(currenciesProp) {
             ))}
           </tbody>
         </Table>
+        {renderPagination()}
       </div>
-      <ul></ul>
     </div>
   );
 }
