@@ -7,8 +7,10 @@ import {
 import axios from "axios";
 import styles from "../../styles/UserProfilePage.module.css";
 import Avatar from "../../components/Avatar";
+import { useRedirect } from "../../hooks/useRedirect";
 
 export const UserProfilePage = () => {
+  useRedirect("loggedOut");
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
