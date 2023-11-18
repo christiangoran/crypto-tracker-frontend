@@ -26,7 +26,7 @@ const ShowPosts = (props) => {
         setPosts(matchingPosts);
         setLoading(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         setLoading(false);
       }
     };
@@ -50,7 +50,7 @@ const ShowPosts = (props) => {
       await axiosRes.delete(`/currencyposts/${id}/`);
       props.decrementPostTrigger();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

@@ -51,7 +51,7 @@ const CurrencyPostForm = ({
           currency: currencyId,
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -120,7 +120,7 @@ const CurrencyPostForm = ({
       setAlertContent("Post was successfull!");
       setShowAlert(true);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setAlertContent("There was problem with the submission.");
       setShowAlert(true);
       if (err.response?.status !== 401) {

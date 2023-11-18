@@ -25,7 +25,7 @@ function CurrencyPage(props) {
         const { data } = await axiosRes.get(`/currencies/${id}/`);
         setCurrency(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

@@ -39,7 +39,7 @@ export const Dashboard = () => {
         setFavourites(favouritesResponse.results);
         setCurrencies(currenciesResponse.results);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     if (currentUser) {

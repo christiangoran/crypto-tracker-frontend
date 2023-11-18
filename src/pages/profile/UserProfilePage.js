@@ -40,7 +40,7 @@ export const UserProfilePage = () => {
           profile_image: data.profile_image,
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     if (currentUser) {
@@ -86,7 +86,7 @@ export const UserProfilePage = () => {
       setAlertContent("Profile updated successfully!");
       setShowAlert(true);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setAlertContent("Failed to update profile.");
       setShowAlert(true);
     }
