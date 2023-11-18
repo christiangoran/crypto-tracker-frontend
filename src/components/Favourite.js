@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import axios from "axios";
-import axiosRes from "../api/axiosDefaults";
+import { axiosRes } from "../api/axiosDefaults";
 
 export const Favourite = (props) => {
   const [favourites, setFavourites] = useState([]);

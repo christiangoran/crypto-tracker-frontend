@@ -7,8 +7,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import loginImage from "../../assets/login.webp";
-import Link from "react-router-dom/Link";
-import useNavigate from "react-router-dom/useNavigate";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
@@ -18,8 +17,8 @@ import { setTokenTimestamp } from "../../utils/utils";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function SignInForm() {
-  const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -37,7 +36,7 @@ function SignInForm() {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
-      navigate.goBack();
+      navigate("/");
     } catch (err) {
       setErrors(err.response?.data);
     }

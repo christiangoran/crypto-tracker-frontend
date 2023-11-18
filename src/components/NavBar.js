@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/logo2.webp";
 import styles from "../styles/NavBar.module.css";
-import NavLink from "react-router-dom/NavLink";
+import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
