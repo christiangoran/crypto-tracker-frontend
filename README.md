@@ -119,19 +119,6 @@ This site was created according to the Five Planes Of Website Design.
 <br>
 <br>
 
-## Project Goal and Objectives
-
-### Project Goal:
-
-The goal of the CryptoTracker project is to develop a highly intuitive and user-friendly web application dedicated to cryptocurrency enthusiasts. The application aims to provide a seamless and engaging user experience, offering insightful and real-time data on various cryptocurrencies. By focusing on a clean, intuitive design and user-centric features, the project seeks to evoke a positive emotional response and cater to both novice and experienced users in the crypto community.
-
-### Project Objectives:
-
-- **Create an Intuitive User Experience**: Design a simple and user-friendly interface that allows users to easily navigate and interact with the application, ensuring a positive user experience.
-- **Instill a Professional Image**: Utilize modern design principles and high-quality content to project a professional and trustworthy image of the application, enhancing user confidence and engagement.
-- **Feature-Rich and Responsive Design**: Integrate a variety of features such as real-time cryptocurrency tracking, portfolio management, community interaction, and educational resources, all within a responsive design that works seamlessly across various devices and screen sizes.
-- **Enhance User Experience with Advanced Features**: Continuously update the application with advanced features like market analysis tools, customizable alerts, and integration with external crypto wallets and exchanges, to provide an enriched experience that keeps users engaged and informed.
-
 ### Scope
 
 The scope encompasses the following:
