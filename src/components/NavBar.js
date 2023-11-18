@@ -88,6 +88,7 @@ const NavBar = () => {
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
+          className="navbar-toggler-icon-bg"
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`text-start ${styles.NavLink}`}>

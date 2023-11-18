@@ -96,7 +96,7 @@ export const UserProfilePage = () => {
         </Alert>
       )}
       <Row>
-        <Col sm={8} className={styles.window}>
+        <Col md={8} className={styles.window}>
           <p className={styles.p}>User Profile</p>
           <h3>Update Name:</h3>
           <h1>{userProfile.name}</h1>
@@ -114,14 +114,10 @@ export const UserProfilePage = () => {
           </Form>
         </Col>
 
-        <Col sm={3} className={styles.window}>
+        <Col md={3} className={styles.window}>
           <h3>Update Image:</h3>
           <p className={styles.greyText}>
-            <Avatar
-              src={currentUser?.profile_image}
-              alt="Profile"
-              height={180}
-            />
+            <Avatar src={currentUser?.profile_image} alt="Profile" />
           </p>
 
           <Form onSubmit={handleSubmit}>

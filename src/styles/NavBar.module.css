@@ -18,15 +18,6 @@
   text-decoration: none !important;
 }
 
-.navbar-toggler-icon {
-  color: white;
-}
-
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-  color: white;
-}
-
 a {
   color: #6e34bf !important;
   font-size: 1rem;

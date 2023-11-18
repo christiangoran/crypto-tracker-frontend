@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Form, Button, InputGroup, Col, Row } from "react-bootstrap";
+import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { axiosRes, axiosReq } from "../../api/axiosDefaults";
@@ -20,6 +20,9 @@ const CurrencyPostForm = ({
     image: "",
     currency: currencyId,
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState("");
+
   const { topic, content, image } = postData;
   const formRef = useRef(null);
 
@@ -110,16 +113,29 @@ const CurrencyPostForm = ({
         image: "",
         currency: currencyId,
       });
+      setAlertContent("Post was successfull!");
+      setShowAlert(true);
     } catch (err) {
       console.log(err);
+      setAlertContent("There was problem with the submission.");
+      setShowAlert(true);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
   };
 
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   return (
-    <div className="col-md-10 mx-auto">
+    <div className="col-md-8 mx-auto">
+      {showAlert && (
+        <Alert variant="success" onClose={handleCloseAlert} dismissible>
+          {alertContent}
+        </Alert>
+      )}
       <Form onSubmit={handleSubmit} ref={formRef}>
         <Row>
           <Col sm={12}>

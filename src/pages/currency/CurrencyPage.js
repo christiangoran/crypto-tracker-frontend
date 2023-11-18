@@ -78,10 +78,10 @@ function CurrencyPage(props) {
         </Col>
       </Row>
 
-      <Row className="col-md-11">
-        <Row>
+      <Row className="col-md-11 mx-auto">
+        <Row className="mx-auto">
           <Col md={12} className={styles.distanceTop}>
-            <h3>Currency Channel:</h3>
+            <h3 className={styles.centerText}>Currency Forum</h3>
           </Col>
         </Row>
 
@@ -96,9 +96,9 @@ function CurrencyPage(props) {
           )}
         </Col>
 
-        <Row>
-          <Col md={8} className={styles.distanceLessTop}>
-            <h3>Post a Comment:</h3>
+        <Row className="mx-auto">
+          <Col md={12} className={styles.distanceTop}>
+            <h3 className={styles.centerText}>Post a Comment</h3>
           </Col>
         </Row>
 
@@ -112,7 +112,9 @@ function CurrencyPage(props) {
               onPostUpdated={onPostUpdated}
             />
           ) : (
-            "Comments"
+            <p className={styles.greyText}>
+              You must be logged in to post a comment.
+            </p>
           )}
         </Col>
       </Row>

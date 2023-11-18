@@ -78,3 +78,7 @@ p {
 .distanceLessTop {
   margin-top: 25px !important;
 }
+
+.centerText {
+  text-align: center !important;
+}

@@ -1,6 +1,6 @@
 .ProfileImage {
   object-fit: cover;
-  height: 120px;
+  height: 180px;
   width: 120px;
   margin: 4px;
 }
@@ -28,12 +28,6 @@ h1 {
   color: white;
   text-align: left !important;
   margin-top: 10px !important;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    margin-top: 0px !important;
-  }
 }
 
 h2 {
@@ -104,4 +98,10 @@ p {
   font-size: 1.3rem !important;
   text-align: left !important;
   padding: 10px 0px 0px 10px !important;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    margin-top: 0px !important;
+  }
 }

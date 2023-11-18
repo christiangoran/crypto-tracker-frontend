@@ -86,11 +86,7 @@ export const Dashboard = () => {
 
           <Col sm={3} className={styles.window}>
             <p className={styles.greyText}>
-              <Avatar
-                src={currentUser?.profile_image}
-                alt="Profile"
-                height={180}
-              />
+              <Avatar src={currentUser?.profile_image} alt="Profile" />
             </p>
             <h4>
               Number of added currencies:
@@ -107,9 +103,7 @@ export const Dashboard = () => {
 
           <Col lg={3} className={styles.window}>
             <h3>Background:</h3>
-            <p className={`${styles.largerText} ${styles.greyText}`}>
-              {userProfile.bio}
-            </p>
+            <p className={styles.greyText}>{userProfile.bio}</p>
           </Col>
         </Row>
       </Container>
