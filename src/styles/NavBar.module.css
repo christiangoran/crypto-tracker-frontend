@@ -3,7 +3,7 @@
 }
 
 .NavLink {
-  padding: 5px;
+  font-family: "Teko", sans-serif !important;
   color: white !important;
   text-decoration: none;
 }
