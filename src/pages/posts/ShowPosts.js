@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosRes } from "../../api/axiosDefaults";
-import { Col, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import styles from "../../styles/ShowPosts.module.css";
 import Avatar from "../../components/Avatar";
 import { PostDropdown } from "../../components/PostDropdown";

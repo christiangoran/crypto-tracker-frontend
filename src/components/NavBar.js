@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 import logo from "../assets/logo2.webp";
 import styles from "../styles/NavBar.module.css";
-import { NavLink } from "react-router-dom";
+import NavLink from "react-router-dom/NavLink";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -14,7 +16,6 @@ import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
-  console.log("Current user data in navbar:", currentUser);
   const setCurrentUser = useSetCurrentUser();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();

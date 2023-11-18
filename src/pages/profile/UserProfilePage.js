@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -73,16 +78,11 @@ export const UserProfilePage = () => {
         `/profiles/${currentUser.profile_id}/`,
         formData
       );
-      console.log("1 Updated user data:", data);
-      console.log("1 Old user data:", currentUser.profile_image);
       setCurrentUser((oldUserData) => ({
         ...oldUserData,
         ...data,
         profile_image: data.image,
       }));
-      console.log("2 Updated user data:", data);
-      console.log("2 new profile image:", data.profile_image);
-      console.log("2 Old user data:", currentUser.profile_image);
       setAlertContent("Profile updated successfully!");
       setShowAlert(true);
     } catch (err) {

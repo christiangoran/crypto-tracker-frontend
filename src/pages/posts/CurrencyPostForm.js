@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Form, Button, Col, Row, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { axiosRes, axiosReq } from "../../api/axiosDefaults";

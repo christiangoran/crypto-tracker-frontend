@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  Image,
-  Table,
-  Tooltip,
-  OverlayTrigger,
-  Pagination,
-} from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import Image from "react-bootstrap/Image";
+import Table from "react-bootstrap/Table";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Pagination from "react-bootstrap/Pagination";
+import useNavigate from "react-router-dom/useNavigate"; // Make sure to use the appropriate hook
 import axios from "axios";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Currencies.module.css";

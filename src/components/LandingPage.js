@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Row, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Link from "react-router-dom/Link";
 import axios from "axios";
 import btnStyles from "../styles/Button.module.css";
 import appStyles from "../App.module.css";
 import styles from "../styles/LandingPage.module.css";
 import rocket from "../assets/rocket.mp4";
 import LandingPageCurrencies from "../pages/currency/LandingPageCurrencies";
+import axiosRes from "../api/axiosDefaults";
 
 function LandingPage() {
   const [currencies, setCurrencies] = useState([]);

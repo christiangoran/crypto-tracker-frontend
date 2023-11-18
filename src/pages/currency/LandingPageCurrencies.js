@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import Table from "react-bootstrap/Table";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/Currencies.module.css";
