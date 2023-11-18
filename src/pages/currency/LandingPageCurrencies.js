@@ -3,6 +3,7 @@ import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/Currencies.module.css";
+import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 
@@ -78,7 +79,7 @@ export const LandingPageCurrencies = () => {
   }, []);
 
   return (
-    <div>
+    <div className={appStyles.scrollBoxX}>
       <div className="col-md-9 mx-auto">
         <Table
           striped

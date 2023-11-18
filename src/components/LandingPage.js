@@ -26,10 +26,10 @@ function LandingPage() {
   }, []);
 
   return (
-    <div>
-      <Container className={`col-md-9 mx-auto ${styles.divStyle}`}>
-        <Row>
-          <Col sm={4}>
+    <div className={appStyles.Distance}>
+      <Container className="col-md-10 mx-auto">
+        <Row className="align-items-center">
+          <Col xs={12} lg={4}>
             <h1 className={styles.h1}>Launch Your Portfolio</h1>
             <h2 className={styles.h2}>Endless Possibilities with</h2>
             <h3 className={styles.h3}>Cryptocurrency</h3>
@@ -41,15 +41,16 @@ function LandingPage() {
               investors make informed decisions.{" "}
             </p>
           </Col>
-          <Col sm={8}>
+
+          <Col xs={12} lg={8}>
             <video
-              className={`${appStyles.FillerImage}`} // Use your own classname here
+              className={`${appStyles.FillerImage}`}
               src={rocket}
               alt="video of rocket"
               autoPlay
               // controls
               loop
-              muted // Mute by default if autoplay is desired
+              muted
             >
               Your browser does not support the video tag.
             </video>

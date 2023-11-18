@@ -2,6 +2,7 @@
   text-align: center;
   min-height: 100vh;
   background: radial-gradient(circle, #6e34bf, #201740);
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -36,6 +37,14 @@
   max-height: 40vh;
   max-width: 100%;
   object-fit: contain;
+}
+
+.Distance {
+  margin-top: 5vh;
+}
+
+.scrollBoxX {
+  overflow-x: auto;
 }
 
 a {
@@ -82,4 +91,20 @@ figure {
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding-bottom: 0;
+  }
+  .Main {
+    padding-bottom: 0;
+  }
+
+  .Image {
+    max-height: 50vh;
+  }
+  .Distance {
+    margin-top: 5vh;
+  }
 }

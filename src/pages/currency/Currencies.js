@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -83,7 +84,7 @@ function Currencies(currenciesProp) {
   }, []);
 
   return (
-    <div>
+    <div className={appStyles.Distance}>
       <div className="col-md-9 mx-auto">
         <Table
           striped

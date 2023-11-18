@@ -25,7 +25,7 @@
 .Input::placeholder {
   color: #4ea66d;
   font-family: "Ubuntu", sans-serif;
-  font-size: 0.8rem; /* Change to your desired color */
+  font-size: 0.8rem;
 }
 
 .Header {
@@ -56,15 +56,7 @@
   padding: 30px 10px;
 }
 
-.SignInCol {
-  height: 320px;
-}
-
-.SignUpCol {
-  height: 375px;
-}
-
-.SignUpCol {
+.SignUpInCol {
   height: 100%;
   display: flex;
   align-items: center;
@@ -72,8 +64,7 @@
 }
 
 .FillerImage {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 600px;
   object-fit: contain;
 }
 
@@ -85,4 +76,8 @@
   color: white;
   font-family: "Ubuntu", sans-serif;
   font-size: 0.8rem;
+}
+
+.Distance {
+  margin-top: 20px;
 }

@@ -178,8 +178,8 @@ The wireframes for mobile and desktop were created with [Balsamiq](https://balsa
 </details><br>
 
 **Database**<br>
-The project uses ElephantSQL as PostgreSQL relational database for storing the data.<br>
-This diagram was created to represent the relationships between the tables. The diagram was created before the website was developed, and it was used to identify the most relevant and useful attributes and tables. The final structure of the models in the project have been tweaked along the development of the project.
+The project is connected to the backend API which uses ElephantSQL as PostgreSQL relational database for storing the data.<br>
+This diagram below was created to represent the relationships between the tables. The diagram was created before the website was developed, and it was used to identify the most relevant and useful attributes and tables. The final structure of the models in the project have been tweaked along the development of the project.
 
 <details>
   <summary>Initial Model</summary>
