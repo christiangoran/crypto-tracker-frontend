@@ -8,8 +8,10 @@ import {
 } from "../../context/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 export const Dashboard = () => {
+  useRedirect("loggedOut");
   const currentUser = useCurrentUser();
   const [userProfile, setUserProfile] = useState({});
   const [favourites, setFavourites] = useState([]);
