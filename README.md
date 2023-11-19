@@ -1,6 +1,6 @@
 # CryptoTracker Frontend
 
-![CryptoTracker Screenshot](path/to/screenshot.png)
+<img src="src/assets/landingpage.png" alt="CryptoTracker Screenshot" width="500"/>
 
 CryptoTracker is an innovative web application designed to monitor and analyze the cryptocurrency market. This project is the culmination of efforts to utilize React and modern web development practices to provide real-time data and interactive features for both novice and seasoned cryptocurrency enthusiasts.
 
@@ -42,7 +42,7 @@ CryptoTracker is an innovative web application designed to monitor and analyze t
 
 CryptoTracker provides a centralized platform for tracking cryptocurrency performance. The application is built with React.js for seamless user interaction and state management, integrated with backend services for up-to-date cryptocurrency data.
 
-_Live Demo: [CryptoTracker Live](#)_
+_Live Demo: [CryptoTracker Live](https://crypto-tracker-frontend-heroku-96a37577175c.herokuapp.com/)_
 
 ## React Architecture
 
@@ -267,6 +267,11 @@ The Design documents for desktop were created with [Figma](https://figma.com/) t
 
 The project was managed using an Agile approach, with progress tracked via a Kanban board. Features were developed iteratively based on user stories derived from the initial strategy discussions.
 
+<details>
+<summary>Github Kanban Board:</summary>
+<img src="src/assets/kanban.png" width="50%"><br>
+</details><br>
+
 ## Features
 
 ### Implemented Features
@@ -307,6 +312,7 @@ The application is designed to be fully responsive across all devices, ensuring 
 
 **Purpose**: Utilized to visualize cryptocurrency data through interactive graphs and charts.
 **Justification**: Its simplicity in turning data into readable and comprehensive visualizations is crucial for users making informed decisions based on market trends.
+**This will be part of a future update**
 
 ### Bootstrap
 
@@ -396,18 +402,11 @@ These libraries and frameworks were chosen for their reliability, ease of use, a
 ### ESLint Validation
 
 - The JSX code was validated using the ESLint utility.
-- The library was preinstalled in Codeanywhere IDE
+- The library was preinstalled locally in VsCode
 - The code was getting validated so the errors were corrected during development process
 - The library was also installed later using [ESLint website](https://eslint.org/) for final validation
 - Few errors were shown which has been documented in Bug and fixes in TESTING.md
 - No errors remained before final submission
-
-<details><summary>Inbuild ESLint permission page</summary>
-<img src="add screenshot"  >
-</details>
-<details><summary>No error screenshot</summary>
-<img src="add screenshot" >
-</details>
 
 ## Testing
 
@@ -492,6 +491,30 @@ CryptoTracker was deployed on Heroku for public access. Steps for deployment are
 6. Type `git clone <copied URL>` into the terminal
 
 ## Credits
+
+### Code & Sources
+
+Sources
+
+The code was written with the help of Code Institute walkthrough project drf-api
+
+https://stackoverflow.com/questions/69510138/how-to-get-data-from-external-api-to-django-rest-framework - for connecting external API to Rest
+
+https://medium.com/@chilinski.a/how-to-seed-a-django-api-with-data-from-an-external-api-b577b6e6ad54 - connecting external API to Rest
+
+https://www.youtube.com/watch?v=QA6oTpMZp84 - using Coingeckos API
+
+https://www.datacamp.com/tutorial/making-http-requests-in-python - Making a http request in Python
+
+https://docs.djangoproject.com/en/4.2/howto/custom-management-commands/ - custom management commands
+
+https://www.youtube.com/watch?v=f3GfkvfpVAE - learning how to use coinmarketcaps api
+
+https://coinmarketcap.com/api/documentation/v1/#section/Quick-Start-Guide - how to use their api
+
+https://www.django-rest-framework.org/api-guide/permissions/ - Learning more about authentication
+
+https://www.freecodecamp.org/news/format-compact-numbers-with-javascript/ - format large numbers
 
 ### Content and Media
 
