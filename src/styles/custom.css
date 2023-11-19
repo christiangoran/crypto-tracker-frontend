@@ -11858,7 +11858,7 @@ textarea.form-control-lg {
 .form-control {
   background-color: #201740;
   border-radius: 15px;
-  padding: 5px 20px !important;
+  padding: 5px 20px;
   margin: 10px;
   color: white;
 }
@@ -11873,15 +11873,11 @@ textarea.form-control-lg {
 .form-control::placeholder {
   color: rgb(182, 182, 182);
   opacity: 1;
-  font-family: "Ubuntu", sans-serif !important;
-}
-
-.bg-body-tertiary {
-  background-color: #201740 !important;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h1, .h1 {
-  font-family: "Teko", sans-serif !important;
+  font-family: "Teko", sans-serif;
   color: white;
 }
 
@@ -11925,19 +11921,19 @@ h1, .h1 {
 }
 
 .navLink {
-  color: #6e34bf !important;
+  color: #6e34bf;
   text-decoration: none;
 }
 
 .activeNavLink {
-  color: #6e34bf !important;
-  text-decoration: none !important;
+  color: #6e34bf;
+  text-decoration: none;
 }
 
 .navbar {
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.5rem;
-  --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+  --bs-navbar-color: #201740;
   --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
   --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
   --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
@@ -11963,9 +11959,13 @@ h1, .h1 {
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
 
+.bg-body-tertiary {
+  background-color: #201740 !important;
+}
+
 a {
   color: none;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 a:hover {
   color: #6e34bf;

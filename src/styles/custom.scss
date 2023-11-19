@@ -1,4 +1,5 @@
 
+
 // Button Colors
 $primary: #2B1E59; 
 $success: #4ECDC4;  
@@ -16,17 +17,12 @@ $table-hover-bg: #42208C;
 $table-accent-bg: #201740; 
 $table-border-color: #201740;
 $table-border-radius: 30; 
-
-
-// Then import Bootstrap's SCSS
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
-
 
 .form-control {
     background-color: #201740;
     border-radius: 15px;
-    padding: 5px  20px !important;
+    padding: 5px  20px;
     margin: 10px;
     color: white;
 }
@@ -41,15 +37,11 @@ $table-border-radius: 30;
 .form-control::placeholder {
     color: rgb(182, 182, 182);
     opacity: 1;  
-    font-family: "Ubuntu", sans-serif !important;
+    font-family: "Ubuntu", sans-serif;
   }
 
-.bg-body-tertiary {
-    background-color: #201740 !important;
-}
-
 h1 {
-    font-family: "Teko", sans-serif !important;
+    font-family: "Teko", sans-serif;
     color: white;
 }
 
@@ -93,19 +85,19 @@ border-radius: 0px;
 }
 
 .navLink {
-    color: #6e34bf !important;
+    color: #6e34bf;
     text-decoration: none;
 }
 
 .activeNavLink {
-    color: #6e34bf !important;
-    text-decoration: none !important;
+    color: #6e34bf;
+    text-decoration: none ;
 }
 
 .navbar {
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.5rem;
-  --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+  --bs-navbar-color: #201740;
   --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
   --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
   --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
@@ -131,13 +123,18 @@ border-radius: 0px;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
 
+.bg-body-tertiary {
+  background-color: #201740 !important;
+}
+
 
   a {
     color: none;
-    text-decoration: none !important;
+    text-decoration: none;
   
     &:hover {
       color: #6e34bf;
       text-decoration: none;
     }
   }
+
