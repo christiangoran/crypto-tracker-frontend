@@ -10,6 +10,7 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
+import { Col, Row } from "react-bootstrap";
 
 function Currencies(currenciesProp) {
   const currentUser = useCurrentUser();
@@ -129,23 +130,38 @@ function Currencies(currenciesProp) {
 
   return (
     <div className={appStyles.Distance}>
-      <div className="search-and-ordering">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={search}
-          onChange={handleSearchChange}
-        />
-        <button onClick={resetSearch}>Reset Search</button>
-
-        <select value={ordering} onChange={handleOrderingChange}>
-          <option value="">Default Ordering</option>
-          <option value="name">Name</option>
-          <option value="-market_cap">Market Cap (High to Low)</option>
-          <option value="market_cap">Market Cap (Low to High)</option>
-          {/* Add more ordering options as needed */}
-        </select>
-      </div>
+      <Row className="col-md-10 mx-auto justify-content-center align-items-center my-3">
+        <Col xs={12} md={4} className="mb-2 mb-md-0">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={search}
+            onChange={handleSearchChange}
+          />
+        </Col>
+        <Col xs={12} md={3} className="mb-2 mb-md-0">
+          <select
+            className="form-select"
+            value={ordering}
+            onChange={handleOrderingChange}
+          >
+            <option value="">Default Ordering</option>
+            <option value="name">Name</option>
+            <option value="-market_cap">Market Cap (High to Low)</option>
+            <option value="market_cap">Market Cap (Low to High)</option>
+          </select>
+        </Col>
+        <Col
+          xs={12}
+          md={4}
+          className="d-flex justify-content-md-end justify-content-center"
+        >
+          <button className="btn btn-primary" onClick={resetSearch}>
+            Reset Search
+          </button>
+        </Col>
+      </Row>
       <div className="col-md-9 mx-auto">
         <Table
           striped

@@ -11858,7 +11858,7 @@ textarea.form-control-lg {
 .form-control {
   background-color: #201740;
   border-radius: 15px;
-  padding: 25px !important;
+  padding: 5px 20px !important;
   margin: 10px;
   color: white;
 }
@@ -11925,7 +11925,6 @@ h1, .h1 {
 }
 
 .navLink {
-  padding: 5px;
   color: #6e34bf !important;
   text-decoration: none;
 }
