@@ -162,7 +162,7 @@ const CurrencyPostForm = ({
           <Col sm={12}>
             <Form.Control
               as="textarea"
-              rows={3}
+              rows={6}
               placeholder="What does the TA tell you, going up, going down...?"
               onChange={handleChange}
               value={content}
@@ -175,6 +175,7 @@ const CurrencyPostForm = ({
           type="file"
           id="image-upload"
           accept="image/*"
+          rows={2}
           ref={imageInput}
           onChange={handleChangeImage}
         />
