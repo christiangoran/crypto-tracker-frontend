@@ -1,0 +1,95 @@
+.TableStyle {
+  background-color: #201740 !important;
+  color: white !important;
+  border-radius: 25px !important;
+}
+
+.divStyle {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.scrollBox {
+  max-height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: "Teko", sans-serif;
+  color: white;
+  text-align: left !important;
+  margin-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    margin-top: 0px !important;
+  }
+}
+
+h2 {
+  font-family: "Ubuntu", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1.5rem !important;
+  color: white !important;
+  text-align: left !important;
+}
+
+h3 {
+  font-family: "Ubuntu", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1.2rem !important;
+  color: #4ea66d !important;
+  text-align: left !important;
+}
+
+h4 {
+  font-family: "Ubuntu", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.1rem !important;
+  color: #4ea66d !important;
+  text-align: left !important;
+  margin-bottom: -5px !important;
+}
+
+p {
+  font-family: "Ubuntu", sans-serif !important;
+  font-size: 0.9rem;
+  color: white !important;
+  text-align: left !important;
+}
+
+.largerText {
+  font-size: 1rem !important;
+  text-align: left !important;
+}
+
+.greyText {
+  font-family: "Ubuntu", sans-serif !important;
+  color: rgb(182, 182, 182) !important;
+  text-align: left !important;
+}
+
+.window {
+  background-color: #2b1e59;
+  border-radius: 25px;
+  padding: 15px !important;
+  margin: 10px;
+}
+
+.Image {
+  border-radius: 25px;
+  margin: 15px 6px;
+  width: 60%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.dist {
+  margin-bottom: 20px;
+}
+
+.narrowSelect {
+  width: 150px;
+}

@@ -11,6 +11,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import "./styles/custom.css";
 import UserProfilePage from "./pages/profile/UserProfilePage";
 import { useCurrentUser } from "./context/CurrentUserContext";
+import { ForumPage } from "./pages/posts/ForumPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -23,7 +24,7 @@ function App() {
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/cryptocurrencies" element={<h1>Cryptocurrencies</h1>} />
-          <Route path="/forum" element={<h1>Forum</h1>} />
+          <Route path="/forum" element={<ForumPage />} />
           <Route path="/about" element={<h1>About</h1>} />
           <Route path="/currencies/:id" element={<CurrencyPage />} />
           <Route path="/currencies/" element={<Currencies />} />

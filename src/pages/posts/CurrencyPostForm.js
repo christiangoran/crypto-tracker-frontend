@@ -108,6 +108,7 @@ const CurrencyPostForm = ({
           image: "",
           currency: currencyId,
         });
+        console.log("Post created successfully");
         onPostCreated();
       }
       formRef.current.reset();
@@ -119,6 +120,7 @@ const CurrencyPostForm = ({
       });
       setAlertContent("Post was successfull!");
       setShowAlert(true);
+      onPostCreated();
     } catch (err) {
       // console.log(err);
       setAlertContent("There was problem with the submission.");
