@@ -457,7 +457,7 @@ The application is designed to be fully responsive across all devices, ensuring 
 3. **Bug: Responsive Layout Issues**
 
 - Description: The application had some responsive design issues, where certain components were not displaying correctly on smaller screens.
-  -Solution: I utilized CSS media queries and Bootstrap's responsive design classes to adjust the layout and styling of components based on the screen size. This ensured a consistent and user-friendly experience across various devices.
+  - Solution: I utilized CSS media queries and Bootstrap's responsive design classes to adjust the layout and styling of components based on the screen size. This ensured a consistent and user-friendly experience across various devices.
 
 4. **Bug: SCSS Compilation Issues**
 
