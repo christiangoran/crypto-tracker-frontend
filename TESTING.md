@@ -2,20 +2,23 @@
 
 ## Table of Contents
 
-1. [Base Setup](#base-setup)
-2. [User Account Management](#user-account-management)
-3. [Landing Page Display](#landing-page-display)
-4. [Cryptocurrency Details](#cryptocurrency-details)
-5. [User Interaction](#user-interaction)
-6. [Community Engagement](#community-engagement)
-7. [User Profile Management](#user-profile-management)
-8. [User Feedback](#user-feedback)
+- [Manual Testing](#manual-testing)
+  - [Base Setup](#base-setup)
+  - [User Account Management](#user-account-management)
+  - [Landing Page Display](#landing-page-display)
+  - [Cryptocurrency Details](#cryptocurrency-details)
+  - [User Interaction](#user-interaction)
+  - [Community Engagement](#community-engagement)
+  - [User Profile Management](#user-profile-management)
+  - [User Feedback](#user-feedback)
+- [Device Testing](#device-testing)
+- [Bugs & Solutions](#bugs-and-solutions)
 
 ---
 
-## Base Setup <a name="base-setup"></a>
+### Base Setup <a name="base-setup"></a>
 
-### User Story 1.1: Create base.html Page
+#### User Story 1.1: Create base.html Page
 
 **Goal:** Ensure a consistent layout across different pages.
 
@@ -32,7 +35,7 @@
 
 ---
 
-### User Story 1.2: Create Static Resources
+#### User Story 1.2: Create Static Resources
 
 **Goal:** Ensure that images, CSS, and JavaScript work on the website.
 
@@ -49,7 +52,7 @@
 
 ---
 
-### User Story 1.3: Navigation Menu
+#### User Story 1.3: Navigation Menu
 
 **Goal:** Provide easy navigation through the site.
 
@@ -66,7 +69,7 @@
 
 ---
 
-### User Story 1.4: Footer Visibility
+#### User Story 1.4: Footer Visibility
 
 **Goal:** Ensure the footer is visible and social media links are functional.
 
@@ -84,9 +87,9 @@
 
 ---
 
-## User Account Management <a name="user-account-management"></a>
+### User Account Management <a name="user-account-management"></a>
 
-### User Story 2.1: Sign Up for a New Account
+#### User Story 2.1: Sign Up for a New Account
 
 **Goal:** Enable new visitors to sign up for new accounts.
 
@@ -105,7 +108,7 @@
 
 ---
 
-### User Story 2.2: User Login
+#### User Story 2.2: User Login
 
 **Goal:** Allow returning users to log in to their accounts.
 
@@ -123,7 +126,7 @@
 
 ---
 
-### User Story 2.3: Authentication Status Indicator
+#### User Story 2.3: Authentication Status Indicator
 
 **Goal:** Visually indicate user authentication status.
 
@@ -140,9 +143,9 @@
 
 ---
 
-## Landing Page Display <a name="landing-page-display"></a>
+### Landing Page Display <a name="landing-page-display"></a>
 
-### User Story 3.1: Display Top 10 Cryptocurrencies
+#### User Story 3.1: Display Top 10 Cryptocurrencies
 
 **Goal:** Quickly inform visitors about the most valuable currencies.
 
@@ -159,7 +162,7 @@
 
 ---
 
-### User Story 3.2: Explore Beyond Top 10
+#### User Story 3.2: Explore Beyond Top 10
 
 **Goal:** Allow users to discover more information about various cryptocurrencies.
 
@@ -176,7 +179,7 @@
 
 ---
 
-### User Story 3.3: Additional Information for Sign Up
+#### User Story 3.3: Additional Information for Sign Up
 
 **Goal:** Attract users to sign up by providing additional page functions.
 
@@ -192,9 +195,9 @@
 
 ---
 
-## Cryptocurrency Details <a name="cryptocurrency-details"></a>
+### Cryptocurrency Details <a name="cryptocurrency-details"></a>
 
-### User Story 4.1: Cryptocurrency Detailed Information
+#### User Story 4.1: Cryptocurrency Detailed Information
 
 **Goal:** Provide detailed data to inform user decisions.
 
@@ -211,9 +214,9 @@
 
 ---
 
-## User Interaction <a name="user-interaction"></a>
+### User Interaction <a name="user-interaction"></a>
 
-### User Story 5.1: "Like" Cryptocurrencies
+#### User Story 5.1: "Like" Cryptocurrencies
 
 **Goal:** Personalize user experience with a "like" feature.
 
@@ -229,7 +232,7 @@
 
 ---
 
-### User Story 5.2: "Dislike" Cryptocurrencies
+#### User Story 5.2: "Dislike" Cryptocurrencies
 
 **Goal:** Allow users to remove currencies from their dashboard.
 
@@ -245,9 +248,9 @@
 
 ---
 
-## Community Engagement <a name="community-engagement"></a>
+### Community Engagement <a name="community-engagement"></a>
 
-### User Story 6.1: Post Comments
+#### User Story 6.1: Post Comments
 
 **Goal:** Enable users to share their thoughts within the community.
 
@@ -264,7 +267,7 @@
 
 ---
 
-### User Story 6.2: Read Comments
+#### User Story 6.2: Read Comments
 
 **Goal:** Provide community perspectives to all users.
 
@@ -280,7 +283,7 @@
 
 ---
 
-### User Story 6.3: Edit Comments
+#### User Story 6.3: Edit Comments
 
 **Goal:** Allow users to update their insights.
 
@@ -296,7 +299,7 @@
 
 ---
 
-### User Story 6.4: Delete Comments
+#### User Story 6.4: Delete Comments
 
 **Goal:** Empower users to manage their shared content.
 
@@ -312,7 +315,7 @@
 
 ---
 
-### User Story 6.5: Admin Comment Management
+#### User Story 6.5: Admin Comment Management
 
 **Goal:** Maintain community discussion quality.
 
@@ -328,9 +331,9 @@
 
 ---
 
-## User Profile Management <a name="user-profile-management"></a>
+### User Profile Management <a name="user-profile-management"></a>
 
-### User Story 7.1: Update Profile Details
+#### User Story 7.1: Update Profile Details
 
 **Goal:** Allow users to write relevant personal information.
 
@@ -346,7 +349,7 @@
 
 ---
 
-### User Story 7.2: Personalized User Dashboard
+#### User Story 7.2: Personalized User Dashboard
 
 **Goal:** Provide a tailored experience for tracking interests.
 
@@ -362,9 +365,9 @@
 
 ---
 
-## User Feedback <a name="user-feedback"></a>
+### User Feedback <a name="user-feedback"></a>
 
-### User Story 8.1: Registration Email Feedback
+#### User Story 8.1: Registration Email Feedback
 
 **Goal:** Inform users about account creation issues.
 
@@ -380,7 +383,7 @@
 
 ---
 
-### User Story 8.2: Login Credential Feedback
+#### User Story 8.2: Login Credential Feedback
 
 **Goal:** Communicate login issues to users.
 
@@ -396,7 +399,7 @@
 
 ---
 
-### User Story 8.3: Comment Posting Feedback
+#### User Story 8.3: Comment Posting Feedback
 
 **Goal:** Notify users of comment posting failures.
 
@@ -412,7 +415,7 @@
 
 ---
 
-### User Story 8.4: Empty Comment Alert
+#### User Story 8.4: Empty Comment Alert
 
 **Goal:** Prevent empty comments from being submitted.
 
@@ -425,3 +428,33 @@
 1. Attempt to submit an empty comment and check for alerts.
 
 **Outcome:** Pass
+
+## Device Testing
+
+The application is designed to be fully responsive across all devices, ensuring accessibility and a consistent experience for all users.
+
+**Tested devices:**
+
+    - iPhone 11
+    - iPhone 13
+    - iPhone 6/7/8
+    - Ipad
+    - Samsung Galaxy S8
+    - MacBook pro 16'' M2
+
+## Bugs and Solutions
+
+1. **Bug: Image Upload in UserProfilePage**
+
+- Description: The UserProfilePage component had an issue with handling image uploads. The profile image was not updating correctly when a new image was selected.
+  - Solution: We modified the handleChangeImage function to correctly update the profile_image state with the new file object. This ensured that the new image was properly sent to the backend on form submission, allowing the profile image to update correctly.
+
+2. **Bug: Pagination Implementation in Currencies**
+
+- Description: The pagination functionality in the Currencies component was not working as expected. The component did not correctly handle page changes, leading to incorrect or incomplete data being displayed.
+  - Solution: We revised the pagination logic, ensuring that the getCurrencies function was correctly called with the updated page number. The setCurrentPage function was used to update the state whenever a new page number was selected, triggering a re-fetch of the data with the correct pagination parameters.
+
+3. **Bug: Responsive Layout Issues**
+
+- Description: The application had some responsive design issues, where certain components were not displaying correctly on smaller screens.
+  -Solution: We utilized CSS media queries and Bootstrap's responsive design classes to adjust the layout and styling of components based on the screen size. This ensured a consistent and user-friendly experience across various devices.
