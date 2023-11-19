@@ -33,7 +33,7 @@ export const ForumPage = () => {
     <div className="col-md-10 mx-auto">
       <h1>ForumPage</h1>
       <Row>
-        <Col sm={6}>
+        <Col lg={6}>
           <ForumPagePosts
             currencyFilter={currencyFilter}
             setCurrencyFilter={setCurrencyFilter}
@@ -42,7 +42,7 @@ export const ForumPage = () => {
             handleEditPost={handleEditPost}
           />
         </Col>
-        <Col sm={6}>
+        <Col lg={6}>
           <CurrencyPostForm
             currencyId={currencyFilter}
             onPostCreated={handlePostCreated}

@@ -1,0 +1,90 @@
+.mainContainer {
+  position: relative;
+  min-height: 120vh;
+  padding-bottom: 300px;
+}
+
+.footer {
+  background-color: #201740;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  color: #6e34bf;
+  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .row {
+  display: flex;
+  align-items: center;
+}
+
+h5,
+h6,
+p {
+  color: #6e34bf;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-family: "Teko", sans-serif;
+}
+
+.P {
+  color: #6e34bf;
+}
+
+.NavLink {
+  font-family: "Teko", sans-serif !important;
+  color: white !important;
+  text-decoration: none;
+}
+
+.NavLink:hover {
+  color: #4ea66d !important;
+}
+
+.Active i {
+  color: #6e34bf !important;
+  padding: 5px;
+  text-decoration: none !important;
+}
+
+a {
+  color: #6e34bf !important;
+  font-size: 1rem;
+  margin-left: 10px;
+  text-decoration: none !important;
+  line-height: normal;
+
+  &:hover {
+    color: #6e34bf;
+    text-decoration: none !important;
+  }
+}
+
+.iconLink {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.iconLink:hover {
+  color: #4ea66d;
+}
+
+.footer h5,
+.footer p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .footer .row {
+    flex-direction: column;
+    text-align: center;
+  }
+}

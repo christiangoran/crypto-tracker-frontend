@@ -12,11 +12,14 @@ import "./styles/custom.css";
 import UserProfilePage from "./pages/profile/UserProfilePage";
 import { useCurrentUser } from "./context/CurrentUserContext";
 import { ForumPage } from "./pages/posts/ForumPage";
+import Footer from "./components/Footer";
+import fotStyles from "./styles/Footer.module.css";
 
 function App() {
   const currentUser = useCurrentUser();
+
   return (
-    <div className={styles.App}>
+    <div className={`${styles.App} ${fotStyles.mainContainer}`}>
       <NavBar key={currentUser?.profile_image} />
       <Container className={styles.Main}>
         <Routes>
@@ -33,6 +36,7 @@ function App() {
           <Route path="*" element={<h1>Uh oh, Page Not Found!</h1>} />
         </Routes>
       </Container>
+      <Footer />
     </div>
   );
 }
