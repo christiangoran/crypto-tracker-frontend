@@ -29,7 +29,6 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/cryptocurrencies" element={<h1>Cryptocurrencies</h1>} />
           <Route path="/forum" element={<ForumPage />} />
-          <Route path="/about" element={<h1>About</h1>} />
           <Route path="/currencies/:id" element={<CurrencyPage />} />
           <Route path="/currencies/" element={<Currencies />} />
           <Route path="/profiles/:id" element={<Dashboard />} />

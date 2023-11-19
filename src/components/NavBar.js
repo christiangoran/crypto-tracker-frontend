@@ -122,15 +122,6 @@ const NavBar = () => {
             >
               Forum
             </NavLink>
-
-            <NavLink
-              to={"/about"}
-              className={({ isActive }) =>
-                isActive ? styles.Active : styles.NavLink
-              }
-            >
-              About
-            </NavLink>
           </Nav>
 
           <Nav className={`ms-auto ${styles.NavLink}`}>
