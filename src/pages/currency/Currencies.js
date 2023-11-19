@@ -16,6 +16,8 @@ function Currencies(currenciesProp) {
   const [currencies, setCurrencies] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [ordering, setOrdering] = useState("");
   const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
@@ -30,6 +32,8 @@ function Currencies(currenciesProp) {
         params: {
           page: page,
           per_page: itemsPerPage,
+          search: search,
+          ordering: ordering,
         },
       });
       setCurrencies(response.data.results);
@@ -75,6 +79,20 @@ function Currencies(currenciesProp) {
     }).format(value);
   }
 
+  const handleOrderingChange = (e) => {
+    setOrdering(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const resetSearch = () => {
+    setSearch("");
+    setCurrentPage(1);
+  };
+
   // This formats the numbers in the table to a more readable
   function formatLargeNumbers(value) {
     if (value >= 1e3 && value < 1e6) return +(value / 1e3).toFixed(1) + "K";
@@ -90,7 +108,7 @@ function Currencies(currenciesProp) {
   useEffect(() => {
     getCurrencies();
     getFavourites();
-  }, [currentPage]);
+  }, [currentPage, search, ordering]);
 
   const renderPagination = () => {
     let items = [];
@@ -111,6 +129,23 @@ function Currencies(currenciesProp) {
 
   return (
     <div className={appStyles.Distance}>
+      <div className="search-and-ordering">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={handleSearchChange}
+        />
+        <button onClick={resetSearch}>Reset Search</button>
+
+        <select value={ordering} onChange={handleOrderingChange}>
+          <option value="">Default Ordering</option>
+          <option value="name">Name</option>
+          <option value="-market_cap">Market Cap (High to Low)</option>
+          <option value="market_cap">Market Cap (Low to High)</option>
+          {/* Add more ordering options as needed */}
+        </select>
+      </div>
       <div className="col-md-9 mx-auto">
         <Table
           striped
