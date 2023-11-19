@@ -282,25 +282,35 @@ These libraries and frameworks were chosen for their reliability, ease of use, a
 ### CSS
 
 - [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/)was used to validate the css in the project.
-- Validator with no errors.
-- The deployed app was passed as url input for validation
+- I am recieved a lot of errors (16) and warnings (425)
+
+  - I suspect the reason for this is that I am using a custom.scss file that I take through a sass compiler into a custom.css file. This to enable
+    me to use Bootstraps styling but with my own colors.
+  - I did an extensive troubleshooting, trying to change the structure of my custom.scss, change the bootstrap styling library imports and recompiling several times, without success.
+  - When doing research online I found several comments along the lines of <br>
+
+  _""As stated, this is a non-issue. CSS is moving and changing too fast for the Jigsaw W3C CSS validator to keep up, and it can no longer be relied on for checking anything other than the most mature feature sets such as those of CSS2, and of the earliest CSS3 specs._
+
+  _It's a shame that it can't even be used reliably to check for careless errors now (which is what it's always been intended for) because the real errors are constantly getting occluded by so many of these fake ones. For example, it may not spot a real typo because it was thrown off a few lines up by one of these features it doesn't support._
+
+  _The most reliable validator these days is to test in browsers and assume that if it works consistently across the board, then it's valid. Or, when in doubt, ask a question here and hope someone familiar with the specs will answer. If anyone asks you if you've tried validating your CSS, point them to me.""_ <br>
+
+- I decided to leave this error and move on with my testing. Correcting this will be part of a future version upgrade.
 
 <details><summary>Jigsaw validation using url</summary>
-<img src="image here">
+<img src="src/assets/w3c.png" width="60%">
 </details>
 
 ### Html
 
 - [WC3 Validator](https://validator.w3.org/) was used to validate the html in the project
 - The deployed app was passed as url input for validation
-- No errors were found
+- I had a few "Trailing slash on void elements" notifications
 - Note : info were provided regarding standard Meta code
+- No errors were found
 
 <details><summary>HTML validation screenshot</summary>
-<img src="image here"  >
-</details>
-<details><summary>No error screenshot</summary>
-<img src="image here" >
+<img src="src/assets/htmlvalidation.png" width="60%" >
 </details>
 
 ### Lighthouse

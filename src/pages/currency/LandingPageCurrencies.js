@@ -116,6 +116,7 @@ export const LandingPageCurrencies = () => {
                     src={currency.logo_url}
                     alt={`${currency.name} logo`}
                     height={25}
+                    width={25}
                   />
                   {currency.name} - {currency.symbol}
                 </td>
