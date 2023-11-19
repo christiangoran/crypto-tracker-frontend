@@ -1,37 +1,427 @@
-| EPIC                              | ID  | User Story                                                                                                                                                                                                                                                                                                                                                                  | Project Goals Mapped                                                                                                        |
-| --------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Project Inception**             |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Base Setup_                      | 1.1 | As a developer, I need to create the base setup and structure so that other pages can reuse the layout. Acceptance Criteria: The base layout should be consistent across different pages.                                                                                                                                                                                   | Easy-to-use interface that allows seamless navigation, enabling users to find currency data effortlessly.                   |
-|                                   | 1.2 | As a developer, I need to create static resources so that images, CSS, and JavaScript work on the website. Acceptance Criteria: All static resources must load without errors.                                                                                                                                                                                              | Ensure the platform is accessible and functional across a range of devices, promoting inclusivity and convenience.          |
-|                                   | 1.3 | As a site user, I can see a navigation menu so that I can easily navigate through the site. Acceptance Criteria: The navigation menu must be functional and present on all pages.                                                                                                                                                                                           | Easy-to-use interface that allows seamless navigation, enabling users to find currency data effortlessly.                   |
-|                                   | 1.4 | As a site user, I can see the footer throughout the entire site. Acceptance Criteria: Footer is visible throughout the entire site, and social media links are clickable and open in a new tab.                                                                                                                                                                             | Ensure the platform is accessible and functional across a range of devices, promoting inclusivity and convenience.          |
-| **User Account Management**       |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Registration and Authentication_ | 2.1 | As a new visitor, I want to sign up for a new account so that I can access registered user features. Acceptance Criteria: A "Sign Up" button is present on the navbar. Upon successful registration, the user is logged in automatically.                                                                                                                                   | Implement a secure authentication system that supports a personalized and secure user experience.                           |
-|                                   | 2.2 | As a returning user, I want to log in to my account so that I can access my personalized settings and community features. Acceptance Criteria: A "Log In" button is present on the main page. Upon successful login, the user is redirected to their personalized dashboard.                                                                                                | Implement a secure authentication system that supports a personalized and secure user experience.                           |
-|                                   | 2.3 | As a user, my username is visible on the navbar as a clear indication of my authentication status. Acceptance Criteria: Upon successful login, the username of the authenticated user is visible on the right side of the navbar.                                                                                                                                           | Implement a secure authentication system that supports a personalized and secure user experience.                           |
-| **Landing Page Display**          |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Crypto Market Overview_          | 3.1 | As a visitor, I want to see the top 10 cryptocurrencies on the landing page so that I can quickly understand the most valuable currencies. Acceptance Criteria: The landing page displays a list of the top 10 cryptocurrencies sorted by market cap in descending order.                                                                                                   | Enable users to posts and publish images, facilitating knowledge sharing and community growth.                              |
-|                                   | 3.2 | As a user, I want to click on a "read more" button to view more information about a range of cryptocurrencies so that I can explore beyond the top 10. Acceptance Criteria: A "read more" button is visible below the top 10 list. Clicking the button redirects to the "cryptocurrencies" subpage.                                                                         | Enable users to posts and publish images, facilitating knowledge sharing and community growth.                              |
-|                                   | 3.3 | As a user, I want to see additional information about the functions of the page to make it more attractive to sign up for all features. Acceptance Criteria: Additional information section further down on the landing page.                                                                                                                                               | Foster an interactive community by allowing users to communicate with each other, thereby encouraging active participation. |
-| **Cryptocurrency Details**        |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Crypto Information_              | 4.1 | As a user, I want to click on a cryptocurrency to see detailed price data, charts, and information about the currency so that I can make informed decisions. Acceptance Criteria: Clicking on a cryptocurrency name or symbol takes the user to a detailed page for that specific currency.                                                                                 | Enable users to posts and publish images, facilitating knowledge sharing and community growth.                              |
-| **User Interaction**              |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _User Preferences_                | 5.1 | As a registered user, I want to "like" cryptocurrencies of my choice so that I can personalize my experience and keep track of specific currencies. Acceptance Criteria: A "like" button or icon is present next to each cryptocurrency. Clicking the "like" button highlights it, indicating the cryptocurrency has been added to the user's favorites.                    | Give users the ability to indicate their favourite currencies, curating a personalized feed of relevant price action.       |
-|                                   | 5.2 | As a registered user, I want to "dislike" cryptocurrencies of my choice so that I can personalize my experience and remove specific currencies from my dashboard. Acceptance Criteria: Clicking the highlighted "like" button removes the highlight, indicating the cryptocurrency has been removed from the user's favorites.                                              | Give users the ability to indicate their favourite currencies, curating a personalized feed of relevant price action.       |
-| **Community Engagement**          |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _User Comments_                   | 6.1 | As a registered user, I want to post comments on each specific cryptocurrency's page so that I can share my insights and opinions with the community. Acceptance Criteria: A comment input field or form is present on each cryptocurrency's detailed page. After submitting a comment, it appears in the comment section.                                                  | Foster an interactive community by allowing users to communicate with each other, thereby encouraging active participation. |
-|                                   | 6.2 | As a user (registered or not), I want to read comments on a cryptocurrency's page so that I can understand the community's perspective on that cryptocurrency. Acceptance Criteria: All comments related to a cryptocurrency are displayed in a designated comment section on its detailed page.                                                                            | Foster an interactive community by allowing users to communicate with each other, thereby encouraging active participation. |
-| _Comment Management_              | 6.3 | As a registered user, I want to edit my comments on a cryptocurrency's page so that I can correct or update my insights. Acceptance Criteria: Next to my comments, there's an "edit" button or icon. Clicking the "edit" option allows me to modify the content of my comment.                                                                                              | Allow users to edit and update their posts and profile information, maintaining a dynamic and current platform.             |
-|                                   | 6.4 | As a registered user, I want to delete my comments on a cryptocurrency's page so that I can remove opinions or information I no longer want to share. Acceptance Criteria: Next to my comments, there's a "delete" button or icon. Clicking the "delete" option prompts a confirmation message to ensure accidental deletions are minimized.                                | Allow users to edit and update their posts and profile information, maintaining a dynamic and current platform.             |
-|                                   | 6.5 | As an admin user, I want to read, edit, and delete any user's comments on a cryptocurrency's page so that I can moderate and maintain the quality of community discussions. Acceptance Criteria: As an admin, I have the ability to edit and delete any comment. Regular users do not have these admin privileges and can only edit or delete their own comments.           | Allow users to edit and update their posts and profile information, maintaining a dynamic and current platform.             |
-| **User Profile Management**       |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Profile Customization_           | 7.1 | As a registered user, I want to update my profile details (name, info, profile picture) so that I can share more relevant information about myself with the community. Acceptance Criteria: A "Profile" section is accessible from the user's dashboard. The user can update their name, bio, and upload a profile picture.                                                 | Create detailed user profiles that showcase personal information and preferences, enhancing community connection.           |
-|                                   | 7.2 | As a registered user, I want a personal landing page showing my liked cryptocurrencies and the median price development of my portfolio so that I can easily monitor my interests. Acceptance Criteria: The user's dashboard displays a list of their liked cryptocurrencies and a chart or graph showing the median price development of these cryptocurrencies over time. | Give users the ability to indicate their favourite currencies, curating a personalized feed of relevant price action.       |
-| **User Feedback**                 |     |                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                             |
-| _Registration Feedback_           | 8.1 | As a user, I want to receive feedback when I try to register with an email that's already in use so that I know I might already have an account. Acceptance Criteria: When attempting to register with an existing email, a clear and concise error message is displayed.                                                                                                   | Implement a secure authentication system that supports a personalized and secure user experience.                           |
-| _Login Feedback_                  | 8.2 | As a user, I want to be informed if my login credentials are incorrect so that I can re-enter them or reset my password. Acceptance Criteria: If the entered password doesn't match the associated email, an error message is displayed.                                                                                                                                    | Implement a secure authentication system that supports a personalized and secure user experience.                           |
-| _Comment Posting Feedback_        | 8.3 | As a user, I want feedback when my comment fails to post so that I can try again or report the issue. Acceptance Criteria: If there's an error while posting a comment, a clear error message is displayed.                                                                                                                                                                 | Foster an interactive community by allowing users to communicate with each other, thereby encouraging active participation. |
-| _Empty Comment Alert_             | 8.4 | As a user, I want to be alerted if I try to submit an empty comment so that I can provide content before posting. Acceptance Criteria: If the comment field is empty upon submission, an error message is displayed prompting the user to enter content.                                                                                                                    | Foster an interactive community by allowing users to communicate with each other, thereby encouraging active participation. |
+# Crypto Tracker Project Testing Documentation
 
-<br>
-<br>
+## Table of Contents
+
+1. [Base Setup](#base-setup)
+2. [User Account Management](#user-account-management)
+3. [Landing Page Display](#landing-page-display)
+4. [Cryptocurrency Details](#cryptocurrency-details)
+5. [User Interaction](#user-interaction)
+6. [Community Engagement](#community-engagement)
+7. [User Profile Management](#user-profile-management)
+8. [User Feedback](#user-feedback)
+
+---
+
+## Base Setup <a name="base-setup"></a>
+
+### User Story 1.1: Create base.html Page
+
+**Goal:** Ensure a consistent layout across different pages.
+
+**Acceptance Criteria:**
+
+- The base layout is consistent across different pages.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Navigate through various pages to check for layout consistency.
+
+**Outcome:** Pass
+
+---
+
+### User Story 1.2: Create Static Resources
+
+**Goal:** Ensure that images, CSS, and JavaScript work on the website.
+
+**Acceptance Criteria:**
+
+- All static resources load without errors.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Inspect the loading of images, CSS, and JavaScript.
+
+**Outcome:** Pass
+
+---
+
+### User Story 1.3: Navigation Menu
+
+**Goal:** Provide easy navigation through the site.
+
+**Acceptance Criteria:**
+
+- The navigation menu is functional and present on all pages.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Verify the presence and functionality of the navigation menu on various pages.
+
+**Outcome:** Pass
+
+---
+
+### User Story 1.4: Footer Visibility
+
+**Goal:** Ensure the footer is visible and social media links are functional.
+
+**Acceptance Criteria:**
+
+- Footer is visible on all pages.
+- Social media links are clickable and open in a new tab.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Scroll to the footer and click on social media links.
+
+**Outcome:** Pass
+
+---
+
+## User Account Management <a name="user-account-management"></a>
+
+### User Story 2.1: Sign Up for a New Account
+
+**Goal:** Enable new visitors to sign up for new accounts.
+
+**Acceptance Criteria:**
+
+- "Sign Up" button is present on the navbar.
+- Users are redirected to login page after successful registration
+
+**Testing Steps:**
+
+1. Open the website.
+2. Locate and click on the "Sign Up" button.
+3. Fill out the registration form and submit.
+
+**Outcome:** Pass
+
+---
+
+### User Story 2.2: User Login
+
+**Goal:** Allow returning users to log in to their accounts.
+
+**Acceptance Criteria:**
+
+- "Log In" button is present on the main page.
+- Users are redirected to the landing page upon successful login.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Click on the "Log In" button and enter credentials.
+
+**Outcome:** Pass
+
+---
+
+### User Story 2.3: Authentication Status Indicator
+
+**Goal:** Visually indicate user authentication status.
+
+**Acceptance Criteria:**
+
+- Username is visible on the navbar after login.
+
+**Testing Steps:**
+
+1. Log in to the website.
+2. Check for the visibility of the username on the navbar.
+
+**Outcome:** Pass
+
+---
+
+## Landing Page Display <a name="landing-page-display"></a>
+
+### User Story 3.1: Display Top 10 Cryptocurrencies
+
+**Goal:** Quickly inform visitors about the most valuable currencies.
+
+**Acceptance Criteria:**
+
+- Top 10 cryptocurrencies are displayed on the homepage.
+
+**Testing Steps:**
+
+1. Open the website.
+2. Observe the listing of top cryptocurrencies.
+
+**Outcome:** Pass
+
+---
+
+### User Story 3.2: Explore Beyond Top 10
+
+**Goal:** Allow users to discover more information about various cryptocurrencies.
+
+**Acceptance Criteria:**
+
+- "Read more" button is functional and redirects appropriately.
+
+**Testing Steps:**
+
+1. Locate and click on the "Read more" button.
+2. Confirm redirection to the "cryptocurrencies" subpage.
+
+**Outcome:** Pass
+
+---
+
+### User Story 3.3: Additional Information for Sign Up
+
+**Goal:** Attract users to sign up by providing additional page functions.
+
+**Acceptance Criteria:**
+
+- Additional features are presented in various parts of the website
+
+**Testing Steps:**
+
+1. Scroll through the website to find additional information.
+
+**Outcome:** Pass
+
+---
+
+## Cryptocurrency Details <a name="cryptocurrency-details"></a>
+
+### User Story 4.1: Cryptocurrency Detailed Information
+
+**Goal:** Provide detailed data to inform user decisions.
+
+**Acceptance Criteria:**
+
+- Detailed information is available upon clicking a cryptocurrency name or symbol.
+
+**Testing Steps:**
+
+1. Click on a cryptocurrency from the list.
+2. Check for detailed information and data accuracy.
+
+**Outcome:** Pass
+
+---
+
+## User Interaction <a name="user-interaction"></a>
+
+### User Story 5.1: "Like" Cryptocurrencies
+
+**Goal:** Personalize user experience with a "like" feature.
+
+**Acceptance Criteria:**
+
+- "Like" button is functional and visually indicates a liked cryptocurrency and add it to the dashboard.
+
+**Testing Steps:**
+
+1. "Like" various cryptocurrencies and check for visual confirmation.
+
+**Outcome:** Pass
+
+---
+
+### User Story 5.2: "Dislike" Cryptocurrencies
+
+**Goal:** Allow users to remove currencies from their dashboard.
+
+**Acceptance Criteria:**
+
+- "Dislike" functionality is present and removes currencies from favorites.
+
+**Testing Steps:**
+
+1. Dislike previously liked cryptocurrencies and check for removal.
+
+**Outcome:** Pass
+
+---
+
+## Community Engagement <a name="community-engagement"></a>
+
+### User Story 6.1: Post Comments
+
+**Goal:** Enable users to share their thoughts within the community.
+
+**Acceptance Criteria:**
+
+- Comments can be posted and are visible on cryptocurrency pages as well as in the Forum page.
+
+**Testing Steps:**
+
+1. Post comments on various cryptocurrency pages.
+2. Check for the visibility and accuracy of posted comments.
+
+**Outcome:** Pass
+
+---
+
+### User Story 6.2: Read Comments
+
+**Goal:** Provide community perspectives to all users.
+
+**Acceptance Criteria:**
+
+- All comments are visible on cryptocurrency detail pages.
+
+**Testing Steps:**
+
+1. Navigate to different cryptocurrency pages to read comments.
+
+**Outcome:** Pass
+
+---
+
+### User Story 6.3: Edit Comments
+
+**Goal:** Allow users to update their insights.
+
+**Acceptance Criteria:**
+
+- "Edit" functionality is available and operational for user comments.
+
+**Testing Steps:**
+
+1. Edit own comments and check for updates.
+
+**Outcome:** Pass
+
+---
+
+### User Story 6.4: Delete Comments
+
+**Goal:** Empower users to manage their shared content.
+
+**Acceptance Criteria:**
+
+- "Delete" functionality is available with confirmation for comment deletion.
+
+**Testing Steps:**
+
+1. Attempt to delete own comments and confirm action.
+
+**Outcome:** Pass
+
+---
+
+### User Story 6.5: Admin Comment Management
+
+**Goal:** Maintain community discussion quality.
+
+**Acceptance Criteria:**
+
+- Admin users can edit and delete any comments.
+
+**Testing Steps:**
+
+1. As an admin, edit and delete user comments.
+
+**Outcome:** Planned for future feature update
+
+---
+
+## User Profile Management <a name="user-profile-management"></a>
+
+### User Story 7.1: Update Profile Details
+
+**Goal:** Allow users to write relevant personal information.
+
+**Acceptance Criteria:**
+
+- Profile customization options are available and functional.
+
+**Testing Steps:**
+
+1. Update profile details and check for changes.
+
+**Outcome:** Pass
+
+---
+
+### User Story 7.2: Personalized User Dashboard
+
+**Goal:** Provide a tailored experience for tracking interests.
+
+**Acceptance Criteria:**
+
+- The user dashboard reflects liked cryptocurrencies and their price development.
+
+**Testing Steps:**
+
+1. Review the personalized dashboard for accuracy and personalization.
+
+**Outcome:** Pass
+
+---
+
+## User Feedback <a name="user-feedback"></a>
+
+### User Story 8.1: Registration Email Feedback
+
+**Goal:** Inform users about account creation issues.
+
+**Acceptance Criteria:**
+
+- Clear feedback is provided for email issues during registration.
+
+**Testing Steps:**
+
+1. Attempt to register with an existing email and observe feedback.
+
+**Outcome:** Pass
+
+---
+
+### User Story 8.2: Login Credential Feedback
+
+**Goal:** Communicate login issues to users.
+
+**Acceptance Criteria:**
+
+- Incorrect credential usage results in informative feedback.
+
+**Testing Steps:**
+
+1. Enter incorrect login credentials and check for error messages.
+
+**Outcome:** Pass
+
+---
+
+### User Story 8.3: Comment Posting Feedback
+
+**Goal:** Notify users of comment posting failures.
+
+**Acceptance Criteria:**
+
+- Clear error messages are displayed for failed comment submissions.
+
+**Testing Steps:**
+
+1. Test comment posting under various conditions and observe feedback.
+
+**Outcome:** Pass
+
+---
+
+### User Story 8.4: Empty Comment Alert
+
+**Goal:** Prevent empty comments from being submitted.
+
+**Acceptance Criteria:**
+
+- Empty comment submissions prompt the user to provide content.
+
+**Testing Steps:**
+
+1. Attempt to submit an empty comment and check for alerts.
+
+**Outcome:** Pass
