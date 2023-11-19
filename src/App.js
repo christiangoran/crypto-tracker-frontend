@@ -14,6 +14,7 @@ import { useCurrentUser } from "./context/CurrentUserContext";
 import { ForumPage } from "./pages/posts/ForumPage";
 import Footer from "./components/Footer";
 import fotStyles from "./styles/Footer.module.css";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -33,7 +34,7 @@ function App() {
           <Route path="/currencies/" element={<Currencies />} />
           <Route path="/profiles/:id" element={<Dashboard />} />
           <Route path="/edit-profile/" element={<UserProfilePage />} />
-          <Route path="*" element={<h1>Uh oh, Page Not Found!</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
       <Footer />
