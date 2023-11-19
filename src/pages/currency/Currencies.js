@@ -11,6 +11,10 @@ import styles from "../../styles/Currencies.module.css";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { Col, Row } from "react-bootstrap";
+import {
+  formatLargeNumbers,
+  formatNumbers,
+} from "../../utils/NumbersFormatting";
 
 function Currencies(currenciesProp) {
   const currentUser = useCurrentUser();
@@ -70,16 +74,6 @@ function Currencies(currenciesProp) {
     }
   };
 
-  //  This formats the numbers in the table to currency format
-  function formatNumbers(value, locale = "en-US", currency = "USD") {
-    return new Intl.NumberFormat(locale, {
-      style: "currency",
-      currency: currency,
-      maximumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(value);
-  }
-
   const handleOrderingChange = (e) => {
     setOrdering(e.target.value);
     setCurrentPage(1);
@@ -93,14 +87,6 @@ function Currencies(currenciesProp) {
     setSearch("");
     setCurrentPage(1);
   };
-
-  // This formats the numbers in the table to a more readable
-  function formatLargeNumbers(value) {
-    if (value >= 1e3 && value < 1e6) return +(value / 1e3).toFixed(1) + "K";
-    if (value >= 1e6 && value < 1e9) return +(value / 1e6).toFixed(1) + "M";
-    if (value >= 1e9 && value < 1e12) return +(value / 1e9).toFixed(1) + "B";
-    if (value >= 1e12) return +(value / 1e12).toFixed(1) + "T";
-  }
 
   const handleRowClick = (id) => {
     navigate(`/currencies/${id}`);

@@ -3,7 +3,7 @@ import { rest } from "msw";
 const baseUrl = "https://crypto-tracker-heroku-b5acda38c706.herokuapp.com/";
 
 export const handlers = [
-  rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
+  rest.get(`${baseUrl}dj-rest-auth/user/`, (req, res, ctx) => {
     return res(
       ctx.json({
         pk: 1,

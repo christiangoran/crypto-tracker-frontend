@@ -46,13 +46,71 @@ _Live Demo: [CryptoTracker Live](#)_
 
 ## React Architecture
 
-CryptoTracker's frontend architecture is built using React, showcasing a modular and reusable component structure. The approach is visible in components such as **Favourite** which is a reusable button that allows users to select favorite cryptocurrencies and is used on both individual currency pages and the dashboard. Another is **Avatar**, which is used to display user images consistently across different parts of the application.
+CryptoTracker's frontend, built with React, emphasizes modularity and reusability in its component structure. This architecture aligns with specific user stories, enhancing the overall user experience:
 
-The **NavBar** component is another example of reusable architecture, appearing across various pages to maintain a seamless user experience. It uses hooks such as **useClickOutsideToggle** to handle UI state across the app.
+### Components and Pages Documentation
 
-Components like **CurrencyPostForm** and **ShowPosts** demonstrate the use of React's state and effect hooks to manage form submissions and data fetching, further illustrating the dynamic nature of the platform.
+- **Avatar Component** (`Avatar.js`):
 
-By embracing the principles of DRY (Don't Repeat Yourself) and component composition, CryptoTracker's frontend architecture facilitates scalability and maintainability.
+  - **User Story 7.1**: Enables users to upload and display personalized profile images, fostering individuality within the community.
+
+- **Favourite Component** (`Favourite.js`):
+
+  - **User Story 5.1**: This reusable button lets users mark cryptocurrencies as favorites, providing a tailored experience by highlighting preferred currencies.
+
+- **Footer Component** (`Footer.js`):
+
+  - **User Story 1.4**: Consistently present across the site, offering navigational aids and contact information, contributing to a cohesive user experience.
+
+- **NavBar Component** (`NavBar.js`):
+
+  - **User Story 1.3**: Utilizes the custom hook `useClickOutsideToggle` for responsive navigation, enhancing usability across various pages.
+
+- **CurrencyPostForm and ShowPosts Components** (`CurrencyPostForm.js` & `ShowPosts.js`):
+
+  - **User Story 6.1 & 6.2**: These components manage the interactive aspects of the cryptocurrency forum, enabling users to post comments and engage with the community.
+
+- **UserProfilePage Component** (`UserProfilePage.js`):
+
+  - **User Story 7.1 & 7.2**: Allows users to update their profile details, reflecting a responsive and user-centric design approach.
+
+- **Currencies Component** (`Currencies.js`):
+
+  - **User Story 3.1 & 3.2**: Implements search, filter, and listing functionalities, making it easy for users to find and explore cryptocurrencies.
+
+- **LandingPage and LandingPageCurrencies Components** (`LandingPage.js` & `LandingPageCurrencies.js`):
+
+  - **User Story 3.1 & 3.2**: The LandingPage provides a welcoming introduction to the site, while LandingPageCurrencies showcases top cryptocurrencies, aligning with the user’s interest in market trends.
+
+- **ForumPage and ForumPagePosts Components** (`ForumPage.js` & `ForumPagePosts.js`):
+
+  - **User Story 6.1 & 6.2**: These components foster community engagement by displaying forum posts and enabling interactive discussions related to cryptocurrencies.
+
+- **Dashboard Component** (`Dashboard.js`):
+  - **User Story 7.2**: Personalizes user experience by displaying a dashboard of selected and favored currencies.
+
+### Contribution of React Library to User Experience
+
+- **React Router** (`react-router-dom`): Facilitates seamless navigation without page reloads, enhancing the user's journey through the application.
+- **State and Effect Hooks**: Used across various components like `Currencies` and `ForumPagePosts` for dynamic content rendering and interactive features, significantly improving the site's responsiveness and interactivity.
+
+### Search, Filter, and List Functionality
+
+- **Implemented in Currencies Component**:
+
+  - The `Currencies.js` file incorporates these functionalities, allowing users to easily search and filter through a vast array of cryptocurrencies. It aligns with **User Story 3.1 & 3.2**, enhancing the user's ability to quickly find and analyze currencies.
+
+- **ForumPagePosts Component**:
+  - Implements a filter functionality in the community forum, enabling users to sort posts by specific currencies. This feature, addressing **User Story 6.1 & 6.2**, makes it easier for users to engage in relevant discussions.
+
+### Utility: numberFormatting.js
+
+CryptoTracker incorporates a key utility, `numberFormatting.js`, located within the utils directory. This utility plays a vital role in the application's user experience:
+
+- **Functions**: It includes essential functions like `formatNumbers` and `formatLargeNumbers`, crucial for converting numerical data into a format that is easy to read and understand by users.
+- **User-Friendly Presentation**: These functions are used to present financial figures, such as cryptocurrency prices and market caps, in a way that is immediately comprehensible, enhancing the user's interaction with data.
+- **DRY Principle**: By exporting these functions, they can be imported and reused across multiple components, adhering to the "Don't Repeat Yourself" (DRY) principle. This approach significantly reduces code redundancy.
+- **Simplifies Maintenance**: This centralized formatting logic simplifies maintenance and updates, as changes to number formatting need to be made only in one place.
 
 ## Project Goals
 
@@ -293,7 +351,7 @@ These libraries and frameworks were chosen for their reliability, ease of use, a
 
   _It's a shame that it can't even be used reliably to check for careless errors now (which is what it's always been intended for) because the real errors are constantly getting occluded by so many of these fake ones. For example, it may not spot a real typo because it was thrown off a few lines up by one of these features it doesn't support._
 
-  _The most reliable validator these days is to test in browsers and assume that if it works consistently across the board, then it's valid. Or, when in doubt, ask a question here and hope someone familiar with the specs will answer. If anyone asks you if you've tried validating your CSS, point them to me.""_ <br>
+  _The most reliable validator these days is to test in browsers and assume that if it works consistently across the board, then it's valid. Or, when in doubt, ask a question here and hope someone familiar with the specs will answer. If anyone asks you if you've tried validating your CSS, point them to me.""_ - [Source - StackOverFlow](https://stackoverflow.com/questions/57661659/w3c-css-validation-parse-error-on-variables)<br>
 
 - I decided to leave this error and move on with my testing. Correcting this will be part of a future version upgrade.
 
@@ -319,10 +377,19 @@ These libraries and frameworks were chosen for their reliability, ease of use, a
 
 - While conducting lighthouse validation of profile edit page, username and password change page lighthouse was refreshing and testing the home page so I have not included the test results
 
-- Note: Lighthouse results of testing the project may be inconsistent due to the functionality of user-uploaded images,Hosting project on Heroku may affected the results (server response time, caching, and network latency). Also additional external libraries reduce the response of the website. I will try improve in further projects to acheive better.
+- Note: Lighthouse results of testing the project may be inconsistent due to the functionality of user-uploaded images,Hosting project on Heroku may affected the results (server response time, caching, and network latency). Also additional external libraries reduce the response of the website. I will try improve in further projects to acheive better performance results.
 
-<details><summary>Enter all different pages</summary>
-<img src="image link here" >
+  - I did try to implement some of the suggestions for improvements from Lighthouse, such as providing both width and height to image elements. But there was no improvements in performance.
+
+- Note 2: Performance results on the mobile platform resulted in insanely poor results. I believe that this also has its roots in the poor performance of the Heroku deployment.
+
+<details><summary>Test Results Desktop</summary>
+<img src="src/assets/lighthouse.png" width="60%" >
+
+</details>
+
+<details><summary>Test Results Mobile</summary>
+<img src="src/assets/lighthousemobile.png" width="60%" >
 
 </details>
 
