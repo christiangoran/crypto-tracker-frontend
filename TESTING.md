@@ -447,14 +447,19 @@ The application is designed to be fully responsive across all devices, ensuring 
 1. **Bug: Image Upload in UserProfilePage**
 
 - Description: The UserProfilePage component had an issue with handling image uploads. The profile image was not updating correctly when a new image was selected.
-  - Solution: We modified the handleChangeImage function to correctly update the profile_image state with the new file object. This ensured that the new image was properly sent to the backend on form submission, allowing the profile image to update correctly.
+  - Solution: I modified the handleChangeImage function to correctly update the profile_image state with the new file object. This ensured that the new image was properly sent to the backend on form submission, allowing the profile image to update correctly.
 
 2. **Bug: Pagination Implementation in Currencies**
 
 - Description: The pagination functionality in the Currencies component was not working as expected. The component did not correctly handle page changes, leading to incorrect or incomplete data being displayed.
-  - Solution: We revised the pagination logic, ensuring that the getCurrencies function was correctly called with the updated page number. The setCurrentPage function was used to update the state whenever a new page number was selected, triggering a re-fetch of the data with the correct pagination parameters.
+  - Solution: I revised the pagination logic, ensuring that the getCurrencies function was correctly called with the updated page number. The setCurrentPage function was used to update the state whenever a new page number was selected, triggering a re-fetch of the data with the correct pagination parameters.
 
 3. **Bug: Responsive Layout Issues**
 
 - Description: The application had some responsive design issues, where certain components were not displaying correctly on smaller screens.
-  -Solution: We utilized CSS media queries and Bootstrap's responsive design classes to adjust the layout and styling of components based on the screen size. This ensured a consistent and user-friendly experience across various devices.
+  -Solution: I utilized CSS media queries and Bootstrap's responsive design classes to adjust the layout and styling of components based on the screen size. This ensured a consistent and user-friendly experience across various devices.
+
+4. **Bug: SCSS Compilation Issues**
+
+- Description: During development, there were issues with the SCSS compilation process. The custom styles written in SCSS were not being correctly applied to the components, leading to inconsistent styling across the application.
+  - Solution: The problem was traced back to the SCSS setup and file structure. I reorganized the SCSS files to follow a more logical and hierarchical structure, ensuring that variables, mixins, and base styles were correctly imported and applied. I also ensured that the SCSS compiler was correctly configured in the project's build process. This restructuring and reconfiguration resolved some of the styling inconsistencies and allowed for a better style management across the application.
