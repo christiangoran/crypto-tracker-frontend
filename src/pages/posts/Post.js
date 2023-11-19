@@ -2,15 +2,42 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import styles from "../../styles/Post.module.css";
 import Avatar from "../../components/Avatar";
+import { PostDropdown } from "../../components/PostDropdown";
+import { axiosRes } from "../../api/axiosDefaults";
 
-const Post = ({ post }) => {
+const Post = ({ post, handleEditPost, decrementPostTrigger }) => {
+  const handleEdit = async (id) => {
+    handleEditPost(id);
+  };
+
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (!confirmDelete) return;
+    try {
+      await axiosRes.delete(`/currencyposts/${id}/`);
+      decrementPostTrigger();
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
   return (
     <div className={`col-md-10 mx-auto ${styles.window}`}>
       <Row>
         <Col sm={10}>
           <h4>{post.topic}</h4>
         </Col>
-        <Col sm={2}>Dropdown?</Col>
+        <Col sm={2}>
+          {" "}
+          {post.is_owner && (
+            <PostDropdown
+              handleEdit={() => handleEdit(post.id)}
+              handleDelete={() => handleDelete(post.id)}
+            />
+          )}
+        </Col>
         <Col sm={12}>
           <p>{post.created_at}</p>
         </Col>

@@ -49,6 +49,8 @@ export const ForumPage = () => {
             editPost={editPost}
             isEditing={isEditing}
             onPostUpdated={onPostUpdated}
+            handleEditPost={handleEditPost}
+            decrementPostTrigger={decrementPostTrigger}
           />
         </Col>
       </Row>

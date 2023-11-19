@@ -8,6 +8,8 @@ export const ForumPagePosts = ({
   currencyFilter,
   setCurrencyFilter,
   updateTrigger,
+  handleEditPost,
+  decrementPostTrigger,
 }) => {
   const [posts, setPosts] = useState([]);
   const [currencies, setCurrencies] = useState([]);
@@ -89,7 +91,12 @@ export const ForumPagePosts = ({
           </div>
           <div className={styles.scrollBox}>
             {posts.map((post) => (
-              <Post key={post.id} post={post} />
+              <Post
+                key={post.id}
+                post={post}
+                handleEditPost={handleEditPost}
+                decrementPostTrigger={decrementPostTrigger}
+              />
             ))}
           </div>
         </Col>

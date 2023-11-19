@@ -80,6 +80,11 @@ const CurrencyPostForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!currencyId) {
+      setAlertContent("Please select a currency before submitting.");
+      setShowAlert(true);
+      return;
+    }
     const formData = new FormData();
 
     formData.append("topic", topic);
