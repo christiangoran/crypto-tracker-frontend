@@ -229,9 +229,14 @@ CryptoTracker is meticulously designed with a focus on user experience and is or
 - Exclusive to authenticated users, the Dashboard serves as a personal hub for tracking individual portfolios and market preferences.
 - Users can customize their dashboard to display their preferred cryptocurrencies, watchlists, and portfolio performance.
 
-### Market Overview:
+### Currencies:
 
 - This page offers a comprehensive view of the cryptocurrency market, displaying real-time prices, market caps, trading volumes, and historical data.
+- Users can explore detailed pages for each cryptocurrency, which include interactive charts, technical analysis, and community discussions.
+
+### Currency Specific Page:
+
+- This page offers a comprehensive view on a specific currency, displaying real-time price and a customisable price action chart. As well as a currency specific chat where authenticated users can post their thoughts together with images. The posts are of course editable and removable.
 - Users can explore detailed pages for each cryptocurrency, which include interactive charts, technical analysis, and community discussions.
 
 ### Community Forum:
@@ -308,7 +313,7 @@ The project was managed using an Agile approach, with progress tracked via a Kan
 
 ## Responsive Design
 
-The application is designed to be fully responsive across all devices, ensuring accessibility and a consistent experience for all users.
+The application is designed to be fully responsive across all devices with the help of Bootstrap, ensuring accessibility and a consistent experience for all users.
 
 **Tested devices:**
 
@@ -548,6 +553,8 @@ https://coinmarketcap.com/api/documentation/v1/#section/Quick-Start-Guide - how 
 https://www.django-rest-framework.org/api-guide/permissions/ - Learning more about authentication
 
 https://www.freecodecamp.org/news/format-compact-numbers-with-javascript/ - format large numbers
+
+https://www.youtube.com/watch?v=bMknfKXIFA8 - More insights into React by FreeCodeCamp.org
 
 ### Content and Media
 
