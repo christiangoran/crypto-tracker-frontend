@@ -334,6 +334,17 @@ The application is designed to be fully responsive across all devices, ensuring 
 **Justification**: Its simplicity in turning data into readable and comprehensive visualizations is crucial for users making informed decisions based on market trends.
 **This will be part of a future update**
 
+### TradingView Widget Integration
+
+**Purpose**: Integrate TradingView widgets to provide real-time cryptocurrency market data and analysis within the CryptoTracker application.
+**Justification**: These widgets offer advanced market insights, including news updates, sentiment analysis, and price tickers, vital for informed trading decisions.
+**Key Widgets**:
+
+- TradingViewNewsWidget: Updates users with the latest cryptocurrency news.
+- TradingViewSentiment Widget: Analyzes market sentiment for cryptocurrencies like Bitcoin.
+- TradingViewTicker Widget: Displays real-time prices for various cryptocurrencies.
+- Chart TradingView Widget: Customizable for diverse market data display.
+
 ### Bootstrap
 
 **Purpose**: Provides a responsive layout and styled UI components.
