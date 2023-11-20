@@ -13,6 +13,7 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
+import TradingViewTicker from "./TradingViewTicker";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -81,6 +82,7 @@ const NavBar = () => {
       expand="md"
       className={`bg-body-tertiary ${styles.navBar}`}
     >
+      <TradingViewTicker />
       <Container>
         <NavLink to={"/"}>
           <Navbar.Brand className={styles.navLink}>

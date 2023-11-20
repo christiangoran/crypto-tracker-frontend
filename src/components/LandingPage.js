@@ -10,7 +10,7 @@ import appStyles from "../App.module.css";
 import styles from "../styles/LandingPage.module.css";
 import rocket from "../assets/rocket.mp4";
 import LandingPageCurrencies from "../pages/currency/LandingPageCurrencies";
-import axiosRes from "../api/axiosDefaults";
+import TradingViewTicker from "./TradingViewTicker";
 
 function LandingPage() {
   const [currencies, setCurrencies] = useState([]);

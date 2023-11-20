@@ -112,6 +112,26 @@ CryptoTracker incorporates a key utility, `numberFormatting.js`, located within 
 - **DRY Principle**: By exporting these functions, they can be imported and reused across multiple components, adhering to the "Don't Repeat Yourself" (DRY) principle. This approach significantly reduces code redundancy.
 - **Simplifies Maintenance**: This centralized formatting logic simplifies maintenance and updates, as changes to number formatting need to be made only in one place.
 
+### TradingView Widget Integration
+
+CryptoTracker integrates several TradingView Widgets to provide real-time market data and analysis tools. These widgets enhance the user experience by offering in-depth insights into cryptocurrency market trends and sentiments directly within the application.
+
+#### TradingViewNewsWidget
+
+- **Description**: Displays the latest news and updates related to cryptocurrencies, keeping users informed about market dynamics and significant events.
+
+#### TradingViewSentiment Widget
+
+- **Description**: Provides sentiment analysis of particular cryptocurrencies, such as Bitcoin (BTCUSD), allowing users to see market mood and make informed decisions.
+
+#### TradingViewTicker Widget
+
+- **Description**: Lists real-time price information for various cryptocurrencies, including Bitcoin, Ethereum, Solana, and more.
+
+#### TradingViewWidget (General)
+
+- **Description**: A chart widget that can be customized to display different types of market data based on user preferences.
+
 ## Project Goals
 
 ### Overall Objective
@@ -491,6 +511,8 @@ CryptoTracker was deployed on Heroku for public access. Steps for deployment are
 6. Type `git clone <copied URL>` into the terminal
 
 ## Credits
+
+- TradingView & CoinMarketCap for providing real time data for the crypto market.
 
 ### Code & Sources
 

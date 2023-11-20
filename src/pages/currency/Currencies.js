@@ -15,6 +15,8 @@ import {
   formatLargeNumbers,
   formatNumbers,
 } from "../../utils/NumbersFormatting";
+import TradingViewNewsWidget from "../../components/TradingViewNewsWidget";
+import TradingViewSentiment from "../../components/TradingViewSentiment";
 
 function Currencies(currenciesProp) {
   const currentUser = useCurrentUser();
@@ -116,6 +118,14 @@ function Currencies(currenciesProp) {
 
   return (
     <div className={appStyles.Distance}>
+      <Row className="col-md-10 mx-auto">
+        <Col xs={12} lg={6}>
+          <TradingViewNewsWidget />
+        </Col>
+        <Col xs={12} lg={6}>
+          <TradingViewSentiment />
+        </Col>
+      </Row>
       <Row className="col-md-10 mx-auto justify-content-center align-items-center my-3">
         <Col xs={12} md={4} className="mb-2 mb-md-0">
           <input
