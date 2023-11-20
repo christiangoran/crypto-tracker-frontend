@@ -9,6 +9,7 @@ import CurrencyPostForm from "../posts/CurrencyPostForm";
 import ShowPosts from "../posts/ShowPosts";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Favourite } from "../../components/Favourite";
+import TradingViewWidget from "../../components/TradingViewWidget";
 
 function CurrencyPage(props) {
   const { id } = useParams();
@@ -55,24 +56,24 @@ function CurrencyPage(props) {
 
   return (
     <Container className="col-md-10 mx-auto">
-      <Row>
+      <Row className="gx-10">
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>Rank #{currency.id}</p>
           <h1>{currency.name}</h1>
         </Col>
 
-        <Col sm={3} className={styles.window}>
+        <Col sm={4} className={styles.window}>
           <p className={styles.greyText}>Add to your dashboard:</p>
           <Favourite currency={currency} currentUser={currentUser} />
         </Col>
       </Row>
 
-      <Row>
-        <Col lg={8} className={styles.window}>
-          Chart goes in here
+      <Row className="gx-3">
+        <Col lg={8} className={styles.windowTaller}>
+          <TradingViewWidget />
         </Col>
 
-        <Col lg={3} className={styles.window}>
+        <Col lg={4} className={styles.window}>
           <h3>Background:</h3>
           <p className={styles.greyText}>{currency.description}</p>
         </Col>
@@ -102,7 +103,7 @@ function CurrencyPage(props) {
           </Col>
         </Row>
 
-        <Col md={11}>
+        <Col md={12}>
           {currentUser ? (
             <CurrencyPostForm
               currencyId={currency.id}

@@ -68,8 +68,18 @@ export const ForumPagePosts = ({
     setCurrencyFilter(e.target.value);
   };
 
-  if (isLoading) return <div>Loading posts...</div>;
-  if (error) return <div>Error loading posts.</div>;
+  if (isLoading)
+    return (
+      <div>
+        <p>Loading posts...</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <p>Error loading posts.</p>
+      </div>
+    );
 
   return (
     <div className="col-md-12 mx-auto">

@@ -87,4 +87,12 @@ a {
     flex-direction: column;
     text-align: center;
   }
+
+  .footer {
+    height: 400px;
+  }
+
+  .mainContainer {
+    padding-bottom: 400px;
+  }
 }

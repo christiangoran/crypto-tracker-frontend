@@ -66,7 +66,12 @@ export const Dashboard = () => {
           );
 
           return matchedCurrency ? (
-            <Col sm={3} key={favourite.id} className={styles.windowBright}>
+            <Col
+              xs={5}
+              lg={3}
+              key={favourite.id}
+              className={styles.windowBright}
+            >
               <h2 className={styles.h2}>{matchedCurrency.name}</h2>
               <h3 className={styles.h3}>{matchedCurrency.symbol}</h3>
               <p>{formatNumbers(matchedCurrency.current_price)}</p>

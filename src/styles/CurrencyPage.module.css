@@ -54,7 +54,17 @@ p {
   background-color: #201740;
   border-radius: 25px;
   padding: 25px !important;
-  margin: 10px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.windowTaller {
+  background-color: #201740;
+  border-radius: 25px;
+  padding: 25px !important;
+  min-height: 400px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .border {
