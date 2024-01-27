@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import React from "react";
+
 import logo from "../assets/logo2.webp";
 import styles from "../styles/NavBar.module.css";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+
+import { removeTokenTimestamp } from "../utils/utils";
+import TradingViewTicker from "./TradingViewTicker";
+import Avatar from "./Avatar";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../context/CurrentUserContext";
-import Avatar from "./Avatar";
-import axios from "axios";
-import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
-import { removeTokenTimestamp } from "../utils/utils";
-import TradingViewTicker from "./TradingViewTicker";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -24,6 +27,7 @@ const NavBar = () => {
   const handleLogout = async () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (!confirmLogout) return;
+
     try {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
@@ -32,7 +36,6 @@ const NavBar = () => {
       // console.log(err);
     }
   };
-  useEffect(() => {}, [currentUser]);
 
   const loggedInIcons = (
     <>
@@ -55,6 +58,7 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
   const loggedOutIcons = (
     <>
       <NavLink
@@ -83,7 +87,11 @@ const NavBar = () => {
       className={`bg-body-tertiary ${styles.navBar}`}
     >
       <TradingViewTicker />
+
       <Container>
+        {/* Each NavLink takes a "to" prop which is where we want to 
+      navigate the user to when the NavLink is clicked. 
+      Just like an href-attribute on an anchor tag. */}
         <NavLink to={"/"}>
           <Navbar.Brand className={styles.navLink}>
             <img src={logo} alt="logo" height="25"></img>
@@ -104,6 +112,7 @@ const NavBar = () => {
                 isActive ? styles.Active : styles.NavLink
               }
             >
+              {" "}
               Home
             </NavLink>
 
@@ -113,6 +122,7 @@ const NavBar = () => {
                 isActive ? styles.Active : styles.NavLink
               }
             >
+              {" "}
               Cryptocurrencies
             </NavLink>
 
