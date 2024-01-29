@@ -12,6 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // Router holds all the state required and keeps the UI in sync with the URL.
   <Router>
+    {/* CurrentUserProvider provides a global user info context to the app */}
     <CurrentUserProvider>
       <App />
     </CurrentUserProvider>

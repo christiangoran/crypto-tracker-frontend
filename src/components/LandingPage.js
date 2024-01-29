@@ -1,38 +1,26 @@
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+//React & React Hooks:
+import React from "react";
+//Routing:
 import { Link } from "react-router-dom";
-import axios from "axios";
+//UI Framework Components:
+import { Button, Col, Row, Container } from "react-bootstrap";
+//Styling
 import btnStyles from "../styles/Button.module.css";
 import appStyles from "../App.module.css";
 import styles from "../styles/LandingPage.module.css";
+//Assets
 import rocket from "../assets/rocket.mp4";
+//Components
 import LandingPageCurrencies from "../pages/currency/LandingPageCurrencies";
-import TradingViewTicker from "./TradingViewTicker";
+
+//----------------------------------------------------------------
 
 function LandingPage() {
-  const [currencies, setCurrencies] = useState([]);
-  const [errors, setErrors] = useState([]);
-
-  const getCurrencies = async () => {
-    try {
-      const response = await axios.get("/currencies/");
-      setCurrencies(response.data.results.slice(0, 10));
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
-  };
-
-  useEffect(() => {
-    getCurrencies();
-  }, []);
-
   return (
     <div className={appStyles.Distance}>
       <Container className="col-md-10 mx-auto">
         <Row className="align-items-center">
+          {/* Left column element */}
           <Col xs={12} lg={4}>
             <h1 className={styles.h1}>Launch Your Portfolio</h1>
             <h2 className={styles.h2}>Endless Possibilities with</h2>
@@ -45,7 +33,7 @@ function LandingPage() {
               investors make informed decisions.{" "}
             </p>
           </Col>
-
+          {/* Right column element */}
           <Col xs={12} lg={8}>
             <video
               className={`${appStyles.FillerImage}`}
@@ -61,7 +49,7 @@ function LandingPage() {
           </Col>
         </Row>
       </Container>
-
+      {/* Imported currency list component */}
       <LandingPageCurrencies />
       <Link to="/currencies">
         <Button className={`${btnStyles.Button} ${btnStyles.Dark}`}>
