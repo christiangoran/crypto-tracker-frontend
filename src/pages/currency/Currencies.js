@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from "react";
-import Image from "react-bootstrap/Image";
-import Table from "react-bootstrap/Table";
-import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Pagination from "react-bootstrap/Pagination";
-import { useNavigate } from "react-router-dom";
+//React & React Hooks:
+import React, { useCallback, useEffect, useState } from "react";
+//Routing:
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+//UI Framework Components:
+import { Col, Row, Table, Pagination, Image } from "react-bootstrap";
+//Styling:
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Currencies.module.css";
+//Context/Hooks:
 import { useCurrentUser } from "../../context/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
-import { Col, Row } from "react-bootstrap";
+//Local components:
+import TradingViewNewsWidget from "../../components/TradingViewNewsWidget";
+import TradingViewSentiment from "../../components/TradingViewSentiment";
+import { Favourite } from "../../components/Favourite";
+//Utilities:
 import {
   formatLargeNumbers,
   formatNumbers,
 } from "../../utils/NumbersFormatting";
-import TradingViewNewsWidget from "../../components/TradingViewNewsWidget";
-import TradingViewSentiment from "../../components/TradingViewSentiment";
 
+//----------------------------------------------------------------
 function Currencies(currenciesProp) {
+  //Current user context
   const currentUser = useCurrentUser();
+  //Currencies will return an array of objects
   const [currencies, setCurrencies] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  //Pagination, search and ordering states
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [ordering, setOrdering] = useState("");
@@ -29,26 +35,43 @@ function Currencies(currenciesProp) {
 
   const navigate = useNavigate();
 
+  //Pagination variables
   const itemsPerPage = 32;
   const totalItems = 56;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+  //----------------------------------------------------------------
+  //Is triggered on mount to retrieve currency data
+  //from backend API. (Authorization not required.)
+  //Is also triggered when user uses the server side
+  //search and sort function
 
-  const getCurrencies = async (page = currentPage) => {
-    try {
-      const response = await axios.get("/currencies/", {
-        params: {
-          page: page,
-          per_page: itemsPerPage,
-          search: search,
-          ordering: ordering,
-        },
-      });
-      setCurrencies(response.data.results);
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
-  };
-
+  //The use of useCallback here is to preserve function instance
+  //across serveral renders to so that currencies are not fetched
+  //on every render unless the items in the dependency array
+  //changes.
+  const getCurrencies = useCallback(
+    async (page = currentPage) => {
+      try {
+        const response = await axios.get("/currencies/", {
+          params: {
+            page: page, //Pagination item
+            per_page: itemsPerPage, //Pagination item
+            search: search, //List Search function state
+            ordering: ordering, //List Ordering function state
+          },
+        });
+        setCurrencies(response.data.results);
+      } catch (err) {
+        setErrors(err.response?.data);
+      }
+    },
+    [currentPage, itemsPerPage, search, ordering]
+  );
+  //----------------------------------------------------------------
+  // Triggered on mount to retrieve user-specific favorite currencies.
+  // Each request implicitly includes an access/refresh token
+  // in its header to identify the user and validate their access to the resource.
+  //(Authorization required.)
   const getFavourites = async () => {
     try {
       const { data } = await axios.get("/favouritecurrencies/");
@@ -57,25 +80,8 @@ function Currencies(currenciesProp) {
       setErrors(err.response?.data);
     }
   };
-
-  const toggleFavourite = async (currencyId) => {
-    const favourite = favourites.find((fav) => fav.currency === currencyId);
-
-    try {
-      if (favourite) {
-        await axiosRes.delete(`/favouritecurrencies/${favourite.id}/`);
-      } else {
-        const { data } = await axios.post("/favouritecurrencies/", {
-          currency: currencyId,
-        });
-        setFavourites([...favourites, data]);
-      }
-      getFavourites();
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
-  };
-
+  //----------------------------------------------------------------
+  //Ordering & Search Functions
   const handleOrderingChange = (e) => {
     setOrdering(e.target.value);
     setCurrentPage(1);
@@ -94,10 +100,17 @@ function Currencies(currenciesProp) {
     navigate(`/currencies/${id}`);
   };
 
+  //----------------------------------------------------------------
+
+  useEffect(() => {
+    getFavourites();
+  }); // Fetch only on component mount
+
   useEffect(() => {
     getCurrencies();
-    getFavourites();
-  }, [currentPage, search, ordering]);
+  }, [getCurrencies, currentPage, search, ordering]);
+
+  //----------------------------------------------------------------
 
   const renderPagination = () => {
     let items = [];
@@ -112,20 +125,24 @@ function Currencies(currenciesProp) {
         </Pagination.Item>
       );
     }
-
     return <Pagination>{items}</Pagination>;
   };
+
+  //----------------------------------------------------------------
 
   return (
     <div className={appStyles.Distance}>
       <Row className="col-md-10 mx-auto">
+        {/* Column with TradingView Component */}
         <Col xs={12} lg={6}>
           <TradingViewNewsWidget />
         </Col>
+        {/* Another column with a TradingView Component */}
         <Col xs={12} lg={6}>
           <TradingViewSentiment />
         </Col>
       </Row>
+      {/* Row with search and ordering elements */}
       <Row className="col-md-10 mx-auto justify-content-center align-items-center my-3">
         <Col xs={12} md={4} className="mb-2 mb-md-0">
           <input
@@ -136,6 +153,7 @@ function Currencies(currenciesProp) {
             onChange={handleSearchChange}
           />
         </Col>
+        {/* form-select field with 4 options for sorting currency list */}
         <Col xs={12} md={3} className="mb-2 mb-md-0">
           <select
             className="form-select"
@@ -157,6 +175,7 @@ function Currencies(currenciesProp) {
             Reset Search
           </button>
         </Col>
+        {/* Currency table row */}
       </Row>
       <div className="col-md-9 mx-auto">
         <Table
@@ -203,42 +222,14 @@ function Currencies(currenciesProp) {
                 <td className={styles.centerText}>
                   {formatLargeNumbers(currency.total_volume)}
                 </td>
-
-                <td
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleFavourite(currency.id);
-                  }}
-                >
-                  {currentUser ? (
-                    <i
-                      className={
-                        favourites.some(
-                          (favCurrency) => favCurrency.currency === currency.id
-                        )
-                          ? "fas fa-star"
-                          : "far fa-star"
-                      }
-                      style={{
-                        color: favourites.some(
-                          (favCurrency) => favCurrency.currency === currency.id
-                        )
-                          ? "#ff9200"
-                          : undefined,
-                        cursor: "pointer",
-                      }}
-                    />
-                  ) : (
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={<Tooltip>Log in to select currencies!</Tooltip>}
-                    >
-                      <i
-                        className="far fa-star"
-                        style={{ cursor: "not-allowed" }}
-                      />
-                    </OverlayTrigger>
-                  )}
+                <td>
+                  {/* Toggle Favourite Component */}
+                  <Favourite
+                    currencyId={currency.id}
+                    currentUser={currentUser}
+                    favourites={favourites}
+                    setFavourites={setFavourites}
+                  />
                 </td>
               </tr>
             ))}

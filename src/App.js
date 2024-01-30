@@ -1,11 +1,14 @@
+//Routing:
+import { Route, Routes } from "react-router-dom";
+//UI Framework Components:
+import Container from "react-bootstrap/Container";
+//Styling:
+import fotStyles from "./styles/Footer.module.css";
 import styles from "./App.module.css";
 import "./styles/custom.css";
-import fotStyles from "./styles/Footer.module.css";
-import Container from "react-bootstrap/Container";
-
-import { Route, Routes } from "react-router-dom";
+//Context/Hooks:
 import { useCurrentUser } from "./context/CurrentUserContext";
-
+//Components
 import NavBar from "./components/NavBar";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -16,10 +19,10 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Footer from "./components/Footer";
 import UserProfilePage from "./pages/profile/UserProfilePage";
 import { ForumPage } from "./pages/posts/ForumPage";
-
 import NotFound from "./components/NotFound";
 
 function App() {
+  //Current user context
   const currentUser = useCurrentUser();
 
   return (

@@ -1,25 +1,40 @@
+//React & React Hooks:
 import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import styles from "../../styles/CurrencyPage.module.css";
+//Routing:
 import { useParams } from "react-router-dom";
+//HTTP Reqeusts:
+import axios from "axios";
 import { axiosRes } from "../../api/axiosDefaults";
+//UI Framework Components:
+import { Col, Row, Container } from "react-bootstrap";
+//Styling:
+import styles from "../../styles/CurrencyPage.module.css";
+//Context/Hooks:
+import { useCurrentUser } from "../../context/CurrentUserContext";
+//Local Components
 import CurrencyPostForm from "../posts/CurrencyPostForm";
 import ShowPosts from "../posts/ShowPosts";
-import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Favourite } from "../../components/Favourite";
 import TradingViewWidget from "../../components/TradingViewWidget";
 
+//----------------------------------------------------------------
+
 function CurrencyPage(props) {
+  //Current user context
+  const currentUser = useCurrentUser();
+  //useParams() hook is used to access URL parameters.
+  //This id corresponds to the pk in the backend Django URL pattern
   const { id } = useParams();
+  //The specific currency is returned as an object
   const [currency, setCurrency] = useState({});
-  const [errors, setErrors] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [updatePostTrigger, setUpdatePostTrigger] = useState(0);
   const [editPost, setEditPost] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const currentUser = useCurrentUser();
+  const [errors, setErrors] = useState([]);
 
+  //----------------------------------------------------------------
+  //On mount the data for the page specific currency is retrieved
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -29,18 +44,30 @@ function CurrencyPage(props) {
         // console.log(err);
       }
     };
-
     handleMount();
+    //When id changes if the user visits another currency page
+    //then the new currency is fetched from the API.
   }, [id]);
 
+  //To be able to have the favourite child component function
+  //the favourites array is retrieved incase user is logged in.
+  useEffect(() => {
+    const getFavourites = async () => {
+      try {
+        const { data } = await axios.get("/favouritecurrencies/");
+        setFavourites(data.results);
+      } catch (err) {
+        setErrors(err.response?.data);
+      }
+    };
+    getFavourites();
+  }, []); // Fetch only on component mount
+
+  //----------------------------------------------------------------
   // This function is passed to the CurrencyPostForm component and
   // triggers the showpost component to update
   const incrementPostTrigger = () => {
     setUpdatePostTrigger((prev) => prev + 1);
-  };
-
-  const decrementPostTrigger = () => {
-    setUpdatePostTrigger((prev) => prev - 1);
   };
 
   const handleEditPost = (id) => {
@@ -54,30 +81,42 @@ function CurrencyPage(props) {
     setEditPost(null);
   };
 
+  //----------------------------------------------------------------
   return (
     <Container className="col-md-10 mx-auto">
       <Row className="gx-10">
+        {/* Column with Currency name */}
         <Col sm={8} className={styles.window}>
           <p className={styles.p}>Rank #{currency.id}</p>
           <h1>{currency.name}</h1>
         </Col>
-
+        {/* Column with currency favourite star icon */}
         <Col sm={4} className={styles.window}>
           <p className={styles.greyText}>Add to your dashboard:</p>
-          <Favourite currency={currency} currentUser={currentUser} />
+
+          {/* Favourite component is imported with 4 props */}
+          <Favourite
+            currencyId={currency.id}
+            currentUser={currentUser}
+            favourites={favourites}
+            setFavourites={setFavourites}
+          />
         </Col>
       </Row>
 
       <Row className="gx-3">
+        {/* Column with TradingView price chart */}
         <Col lg={8} className={styles.windowTaller}>
           <TradingViewWidget />
         </Col>
-
+        {/* Column with information about the specific currency */}
         <Col lg={4} className={styles.window}>
           <h3>Background:</h3>
           <p className={styles.greyText}>{currency.description}</p>
         </Col>
       </Row>
+
+      {/* Currency Forum Section */}
 
       <Row className="col-md-11 mx-auto">
         <Row className="mx-auto">
@@ -87,11 +126,14 @@ function CurrencyPage(props) {
         </Row>
 
         <Col md={12} className={styles.distanceLessTop}>
+          {/* The conditional rendering is here to ensure that the 
+        component are not rendered until the currency object has 
+        been successfully fetched. To avoid potential errors */}
+
           {currency.id && (
             <ShowPosts
               currencyId={currency.id}
               updatePostTrigger={updatePostTrigger}
-              decrementPostTrigger={decrementPostTrigger}
               handleEditPost={handleEditPost}
             />
           )}
