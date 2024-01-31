@@ -12,6 +12,8 @@ import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 //----------------------------------------------------------------
 
 //To create a context, the createContext function has to be called
+// These contexts will allow any child component to access and
+//modify the current user's data.
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 //HTTP Reqeusts:
 import axios from "axios";
+//HTTP Interceptor
 import { axiosRes } from "../../api/axiosDefaults";
 //UI Framework Components:
 import { Col, Row, Container } from "react-bootstrap";
@@ -64,21 +65,32 @@ function CurrencyPage(props) {
   }, []); // Fetch only on component mount
 
   //----------------------------------------------------------------
-  // This function is passed to the CurrencyPostForm component and
-  // triggers the showpost component to update
-  const incrementPostTrigger = () => {
-    setUpdatePostTrigger((prev) => prev + 1);
-  };
 
+  // handleEditPost is triggered from ShowPosts. It's called with the ID of
+  // the post selected for editing. This ID is then used to fetch the correct
+  // post data for editing and set the form in edit mode.
   const handleEditPost = (id) => {
+    //The id is passed on to the CurrencyPostForm child component
+    //to retrieve the right post object from API and populate
+    //the post form for editing.
     setEditPost(id);
     setIsEditing(true);
   };
 
+  // onPostUpdated is invoked after a post is successfully updated in
+  // CurrencyPostForm. It increments updatePostTrigger to trigger a re-fetch
+  // of posts in ShowPosts and resets the editing state and editPost ID.
   const onPostUpdated = () => {
     setUpdatePostTrigger((prev) => prev + 1);
     setIsEditing(false);
     setEditPost(null);
+  };
+
+  // This function changes the value of the UpdatePostTrigger state
+  //which is passed down to the ShowPosts child component
+  //where it triggers the useEffect hook to fetch updated post data
+  const incrementPostTrigger = () => {
+    setUpdatePostTrigger((prev) => prev + 1);
   };
 
   //----------------------------------------------------------------
@@ -130,11 +142,17 @@ function CurrencyPage(props) {
         component are not rendered until the currency object has 
         been successfully fetched. To avoid potential errors */}
 
+          {/* 'handleEditPost' is triggered in the PostDropdown 
+          component (two components down) and then passed up the 
+          component tree to invoke the 'handleEditPost' function 
+          defined in this component. */}
+
           {currency.id && (
             <ShowPosts
               currencyId={currency.id}
-              updatePostTrigger={updatePostTrigger}
+              incrementPostTrigger={incrementPostTrigger}
               handleEditPost={handleEditPost}
+              updatePostTrigger={updatePostTrigger}
             />
           )}
         </Col>
@@ -149,9 +167,9 @@ function CurrencyPage(props) {
           {currentUser ? (
             <CurrencyPostForm
               currencyId={currency.id}
-              onPostCreated={incrementPostTrigger}
               editPost={editPost}
               isEditing={isEditing}
+              incrementPostTrigger={incrementPostTrigger}
               onPostUpdated={onPostUpdated}
             />
           ) : (

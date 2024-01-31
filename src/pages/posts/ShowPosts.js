@@ -14,9 +14,14 @@ import { PostDropdown } from "../../components/PostDropdown";
 
 //----------------------------------------------------------------
 
-const ShowPosts = ({ currencyId, handleEditPost }) => {
+const ShowPosts = ({
+  currencyId,
+  handleEditPost,
+  incrementPostTrigger,
+  updatePostTrigger,
+}) => {
   const [posts, setPosts] = useState([]);
-  const [updatePostTrigger, setUpdatePostTrigger] = useState(0);
+  // const [updatePostTrigger, setUpdatePostTrigger] = useState(0);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]);
 
@@ -39,21 +44,26 @@ const ShowPosts = ({ currencyId, handleEditPost }) => {
 
   //----------------------------------------------------------------
 
+  // is invoked by the arrow function passed to the 'handleEdit' prop
+  // of the PostDropdown component. The arrow function captures the specific post ID
+  // from the .map iteration in ShowPosts, allowing 'handleEdit' to pass this ID up
+  // to the 'handleEditPost' function in the parent component.
   const handleEdit = async (id) => {
-    handleEditPost(id);
+    handleEditPost(id); //Prop from CurrencyPage
   };
 
+  // This function is called when a user chooses to delete a post via the PostDropdown
+  // component. It sends a request to delete the post with the specified 'id' and then
+  // triggers a re-render.
   const handleDelete = async (id) => {
     try {
       await axiosRes.delete(`/currencyposts/${id}/`);
-      decrementPostTrigger();
+      incrementPostTrigger();
     } catch (err) {
       // console.log(err);
     }
   };
-  const decrementPostTrigger = () => {
-    setUpdatePostTrigger((prev) => prev - 1);
-  };
+
   //----------------------------------------------------------------
 
   if (loading) {

@@ -37,9 +37,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/forum" element={<ForumPage />} />
-          <Route path="/currencies/:id" element={<CurrencyPage />} />
           <Route path="/currencies/" element={<Currencies />} />
+          <Route path="/currencies/:id" element={<CurrencyPage />} />
+          <Route path="/forum" element={<ForumPage />} />
           <Route path="/profiles/:id" element={<Dashboard />} />
           <Route path="/edit-profile/" element={<UserProfilePage />} />
           <Route path="*" element={<NotFound />} />

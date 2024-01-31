@@ -86,11 +86,15 @@ export const ForumPagePosts = ({
       <Row>
         <Col sm={12}>
           <div>
+            {/* Here the user can select which currency specific posts they 
+          want to display */}
             <select
               className={`${styles.narrowSelect} form-select mx-auto`}
               value={currencyFilter}
               onChange={handleCurrencyChange}
             >
+              {/* The .map function iterates through all the currencies available
+            and display the names in a list */}
               <option value="">Select Currency</option>
               {currencies.map((currency) => (
                 <option key={currency.id} value={currency.id}>
@@ -99,7 +103,10 @@ export const ForumPagePosts = ({
               ))}
             </select>
           </div>
+          {/* Here all the posts are iterated through with the help of the 
+          Post-component */}
           <div className={styles.scrollBox}>
+            {/* Post component is rendered for each iteration */}
             {posts.map((post) => (
               <Post
                 key={post.id}
