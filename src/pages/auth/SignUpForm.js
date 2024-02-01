@@ -22,10 +22,13 @@ import appStyles from "../../App.module.css";
 import signUpImage from "../../assets/signup.webp";
 //Context/Hooks:
 import { useRedirect } from "../../hooks/useRedirect";
+import { useSetCurrentUser } from "../../context/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 //----------------------------------------------------------------
 
 const SignUpForm = () => {
+  const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn"); //Redirects logged in user to landingpage
   //signUpData state consisting of on object with username,
   //password1 and password2 (for confirmation of password)
@@ -46,12 +49,23 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      //1:
       //Makes an asynchronous http/POST request to registration
       //endpoint using axios with the Sign-up data
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      //When successful redirects the user to login page using
+      //2
+      //if successful automatically log in the user
+      const { data } = await axios.post("dj-rest-auth/login/", {
+        username: signUpData.username,
+        password: signUpData.password1,
+      });
+
+      //Set the current user and token timestamp
+      setCurrentUser(data.user);
+      setTokenTimestamp(data);
+      //When successful redirects the user to landing page using
       //React Router DOM's useNavigate()
-      navigate("/signin");
+      navigate("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
