@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 //HTTP Requests:
 import axios from "axios";
-import { axiosRes } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 //UI Framework Components:
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
@@ -24,13 +24,13 @@ export const Favourite = (props) => {
       //If there is a match and the currency is already a favourite
       //a delete request is sent to the API endpoint.
       if (favourite) {
-        await axiosRes.delete(`/favouritecurrencies/${favourite.id}/`);
+        await axiosReq.delete(`/favouritecurrencies/${favourite.id}/`);
         // Update the favorites by removing the deleted favorite
         setFavourites(favourites.filter((fav) => fav.currency !== currencyId));
       } else {
         //If there was no match and the selected currency is a new favourite,
         //a post request is sent to add the currency to the favourite array.
-        const { data } = await axios.post("/favouritecurrencies/", {
+        const { data } = await axiosReq.post("/favouritecurrencies/", {
           currency: currencyId,
         });
         //After successful API post, the currency is also added

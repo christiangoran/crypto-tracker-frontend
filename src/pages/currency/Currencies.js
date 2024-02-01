@@ -91,7 +91,6 @@ function Currencies(currenciesProp) {
   }, [getCurrencies, currentPage, search, ordering]);
 
   //----------------------------------------------------------------
-  //----------------------------------------------------------------
   //Ordering & Search Functions
   const handleOrderingChange = (e) => {
     setOrdering(e.target.value);
@@ -137,6 +136,8 @@ function Currencies(currenciesProp) {
           <TradingViewNewsWidget />
         </Col>
         {/* Another column with a TradingView Component */}
+        {/* Seem like tradingview updated the widget. It gives a return of
+        'null' in the console, but still functions. */}
         <Col xs={12} lg={6}>
           <TradingViewSentiment />
         </Col>

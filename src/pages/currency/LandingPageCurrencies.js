@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //HTTP Requests:
 import axios from "axios";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 //UI Framework components:
 import { Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
 //Styling:
@@ -52,7 +52,7 @@ export const LandingPageCurrencies = () => {
   //(Authorization required.)
   const getFavourites = async () => {
     try {
-      const { data } = await axiosRes.get("/favouritecurrencies/");
+      const { data } = await axiosReq.get("/favouritecurrencies/");
       setFavourites(data.results);
     } catch (err) {
       setErrors(err.response?.data);
