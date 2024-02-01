@@ -81,6 +81,17 @@ function Currencies(currenciesProp) {
     }
   };
   //----------------------------------------------------------------
+
+  useEffect(() => {
+    getFavourites();
+  }, []); // Fetch only on component mount
+
+  useEffect(() => {
+    getCurrencies();
+  }, [getCurrencies, currentPage, search, ordering]);
+
+  //----------------------------------------------------------------
+  //----------------------------------------------------------------
   //Ordering & Search Functions
   const handleOrderingChange = (e) => {
     setOrdering(e.target.value);
@@ -99,18 +110,6 @@ function Currencies(currenciesProp) {
   const handleRowClick = (id) => {
     navigate(`/currencies/${id}`);
   };
-
-  //----------------------------------------------------------------
-
-  useEffect(() => {
-    getFavourites();
-  }); // Fetch only on component mount
-
-  useEffect(() => {
-    getCurrencies();
-  }, [getCurrencies, currentPage, search, ordering]);
-
-  //----------------------------------------------------------------
 
   const renderPagination = () => {
     let items = [];
@@ -160,9 +159,8 @@ function Currencies(currenciesProp) {
             value={ordering}
             onChange={handleOrderingChange}
           >
-            <option value="">Default Ordering</option>
+            <option value="">Market Cap High to Low</option>
             <option value="name">Name</option>
-            <option value="-market_cap">Market Cap (High to Low)</option>
             <option value="market_cap">Market Cap (Low to High)</option>
           </select>
         </Col>
@@ -222,15 +220,14 @@ function Currencies(currenciesProp) {
                 <td className={styles.centerText}>
                   {formatLargeNumbers(currency.total_volume)}
                 </td>
-                <td>
-                  {/* Toggle Favourite Component */}
-                  <Favourite
-                    currencyId={currency.id}
-                    currentUser={currentUser}
-                    favourites={favourites}
-                    setFavourites={setFavourites}
-                  />
-                </td>
+
+                {/* Toggle Favourite Component */}
+                <Favourite
+                  currencyId={currency.id}
+                  currentUser={currentUser}
+                  favourites={favourites}
+                  setFavourites={setFavourites}
+                />
               </tr>
             ))}
           </tbody>

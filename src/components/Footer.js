@@ -23,6 +23,7 @@ const Footer = () => {
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our Facebook page"
                 className={styles.iconLink}
               >
                 <i className="fab fa-facebook-f"></i>
@@ -31,6 +32,7 @@ const Footer = () => {
                 href="https://www.instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our Instagram page"
                 className={styles.iconLink}
               >
                 <i className="fab fa-instagram"></i>
@@ -39,6 +41,7 @@ const Footer = () => {
                 href="https://discord.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Join our Discord server"
                 className={styles.iconLink}
               >
                 <i className="fab fa-discord"></i>
@@ -47,6 +50,7 @@ const Footer = () => {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our Github page"
                 className={styles.iconLink}
               >
                 <i className="fab fa-github"></i>
