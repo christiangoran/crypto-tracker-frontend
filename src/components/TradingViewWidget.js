@@ -35,7 +35,7 @@ export default function TradingViewWidget() {
       ) {
         new window.TradingView.widget({
           autosize: true,
-          symbol: "BITSTAMP:BTCUSD",
+          symbol: "BITSTAMP:BTCUSD", //This could be tweaked
           interval: "D",
           timezone: "Etc/UTC",
           theme: "dark",
