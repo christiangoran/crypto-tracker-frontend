@@ -6,6 +6,8 @@ const useClickOutsideToggle = () => {
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
+      //Checks if ref is not null and if the clicked element is not
+      //inside the ref element.
       if (ref.current && !ref.current.contains(e.target)) {
         setExpanded(false);
       }
